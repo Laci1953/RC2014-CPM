@@ -1,7 +1,10 @@
-Text editor "te" .COM files (in .HEX format) for RC2014's 
+Text editor "te" for RC2014's following hardware:
+
 -Steve Cousins SC108 128KB RAM (128), 
 -Phillip Stevens 32KB ROM + 128KB RAM memory module (MM) ,
 -and Spencer Owen 512KB RAM + 512KB ROM memory module (512)
+
+Use the HiTech tools to compile & link the sources.
 
 Settings:
 
