@@ -6,5 +6,11 @@ The advantage is to be able to assemble/compile larger files.
 
 Execute *_PutSys .hex to set-up a CP/M that loads at 0DA00H
 
+How these .hex files were builded:
+
+First, assemble the bdosbios.z80, using the appropriate settings (I used Z80ASM)
+
+Then
+
 (makecks MUST be run on Z80SIM)
 
