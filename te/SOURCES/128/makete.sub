@@ -1,0 +1,14 @@
+c -ij0: -v -s -o te.c
+zas -j te.as
+era te.as
+c -ij0: -v -c teconf.c
+c -ij0: -v -c teedit.c
+c -ij0: -v -c teerror.c
+c -ij0: -v -c tefile.c
+c -ij0: -v -c tekeys.c
+c -ij0: -v -c telines.c
+c -ij0: -v -c temacro.c
+c -ij0: -v -c temisc.c
+c -ij0: -v -c teui.c
+c -ij0: -v -c tews100.c
+zas -j dynm128.as

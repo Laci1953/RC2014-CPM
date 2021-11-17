@@ -1,0 +1,4 @@
+xsub
+link
+-c100H -ptext=0,data,bss -mte.map -ote.com crtcpm.obj te.obj tews100.obj teedit.obj teerror.obj \
+ teconf.obj tefile.obj tekeys.obj telines.obj temacro.obj temisc.obj teui.obj dynm128.obj libc.lib
