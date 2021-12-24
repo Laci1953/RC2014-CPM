@@ -1,0 +1,14 @@
+xsub
+link
+-x -ptext=0C000H,data,nearstack,bss=0B750H -ocomm.obj -mcomm.map -dcomm.sym overlays.obj zorkrand.obj\
+ comprss.obj common.obj datadefs.obj exit.obj libc.lib
+type comm.map
+era comm.map
+objtohex comm.obj zorkcomm.hex
+era comm.obj
+type zorkcomm.hex
+era zorkcomm.hex
+era overlays.obj
+era zorkrand.obj
+era comprss.obj
+era common.obj

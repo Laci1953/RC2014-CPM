@@ -1,0 +1,11 @@
+xsub
+link
+-pdata=8000H/0 -odata2.obj -mdata2.map -ddata2.sym tables1.obj\
+ tables3.obj tables4.obj tables5.obj tables6.obj tables7.obj
+type data2.map
+era data2.map
+objtohex data2.obj data2.hex
+era data2.obj
+type data2.hex
+era data2.hex
+era tables?.obj

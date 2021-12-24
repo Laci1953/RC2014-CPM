@@ -1,0 +1,12 @@
+xsub
+link
+-pdata=4000H/0 -odata1.obj -mdata1.map -ddata1.sym data.obj gametab1.obj gametb2a.obj\
+ gametb2b.obj gametab3.obj gametab4.obj
+type data1.map
+era data1.map
+objtohex data1.obj data1.hex
+era data1.obj
+type data1.hex
+era data1.hex
+era data.obj
+era game????.obj

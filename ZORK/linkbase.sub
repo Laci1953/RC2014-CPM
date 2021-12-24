@@ -1,0 +1,5 @@
+xsub
+link
+-ptext=0,data,bss -c100H -ozork.com -mzork.map crtcpm.obj zorkbase.obj loadhex.obj basedefs.obj libc.lib
+era zorkbase.obj
+era loadhex.obj

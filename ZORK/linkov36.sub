@@ -1,0 +1,11 @@
+xsub
+link
+-ptext=100H,data -oovr36.obj -movr36.map -dovr36.sym zorkpars.obj miscpars.obj commdefs.obj libc.lib
+type ovr36.map
+era ovr36.map
+era zorkpars.obj
+era miscpars.obj
+objtohex ovr36.obj ovr36.hex
+type ovr36.hex
+era ovr36.hex
+era ovr36.obj
