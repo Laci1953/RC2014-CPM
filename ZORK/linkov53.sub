@@ -1,0 +1,11 @@
+xsub
+link
+-ptext=100H,data -oovr53.obj -movr53.map -dovr53.sym parsdrop.obj miscdrop.obj commdefs.obj libc.lib
+type ovr53.map
+era ovr53.map
+era parsdrop.obj
+era miscdrop.obj
+objtohex ovr53.obj ovr53.hex
+type ovr53.hex
+era ovr53.hex
+era ovr53.obj

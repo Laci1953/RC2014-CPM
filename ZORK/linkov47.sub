@@ -1,0 +1,11 @@
+xsub
+link
+-ptext=100H,data -oovr47.obj -movr47.map -dovr47.sym villbusy.obj villblow.obj commdefs.obj libc.lib
+type ovr47.map
+era ovr47.map
+era villbusy.obj
+era villblow.obj
+objtohex ovr47.obj ovr47.hex
+type ovr47.hex
+era ovr47.hex
+era ovr47.obj

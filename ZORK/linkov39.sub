@@ -1,0 +1,10 @@
+xsub
+link
+-x -ptext=100H,data -oovr39.obj -movr39.map -dovr39.sym ovrmdesc.obj commdefs.obj libc.lib
+type ovr39.map
+era ovr39.map
+era ovrmdesc.obj
+objtohex ovr39.obj ovr39.hex
+type ovr39.hex
+era ovr39.hex
+era ovr39.obj

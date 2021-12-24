@@ -1,0 +1,13 @@
+xsub
+link
+-ptext=100H,data -oovr45.obj -movr45.map -dovr45.sym psactdir.obj miscpsa1.obj\
+ tables2.obj commdefs.obj libc.lib
+type ovr45.map
+era ovr45.map
+era psactdir.obj
+era miscpsa1.obj
+era tables2.obj
+objtohex ovr45.obj ovr45.hex
+type ovr45.hex
+era ovr45.hex
+era ovr45.obj

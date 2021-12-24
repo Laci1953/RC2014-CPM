@@ -1,0 +1,12 @@
+xsub
+link
+-ptext=100H,data -oovr54.obj -movr54.map -dovr54.sym parstake.obj misctak1.obj misctak2.obj commdefs.obj libc.lib
+type ovr54.map
+era ovr54.map
+era parstake.obj
+era misctak1.obj
+era misctak2.obj
+objtohex ovr54.obj ovr54.hex
+type ovr54.hex
+era ovr54.hex
+era ovr54.obj

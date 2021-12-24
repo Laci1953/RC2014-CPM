@@ -1,0 +1,10 @@
+xsub
+link
+-ptext=100H,data -oovr48.obj -movr48.map -dovr48.sym domiscex.obj commdefs.obj libc.lib
+type ovr48.map
+era ovr48.map
+era domiscex.obj
+objtohex ovr48.obj ovr48.hex
+type ovr48.hex
+era ovr48.hex
+era ovr48.obj

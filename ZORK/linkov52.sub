@@ -1,0 +1,11 @@
+xsub
+link
+-ptext=100H,data -oovr52.obj -movr52.map -dovr52.sym domiscdo.obj miscdomi.obj commdefs.obj libc.lib
+type ovr52.map
+era ovr52.map
+era domiscdo.obj
+era miscdomi.obj
+objtohex ovr52.obj ovr52.hex
+type ovr52.hex
+era ovr52.hex
+era ovr52.obj
