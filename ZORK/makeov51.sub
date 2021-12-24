@@ -1,0 +1,6 @@
+c -v -s -o domwtext.c
+zas -j domwtext.as
+era domwtext.as
+c -v -s -o miscwtex.c
+zas -j miscwtext.as
+era miscwtext.as

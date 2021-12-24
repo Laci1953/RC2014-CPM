@@ -1,0 +1,4 @@
+c -v -c parsdrop.c
+c -v -s -o miscdrop.c
+zas -j miscdrop.as
+era miscdrop.as
