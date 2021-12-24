@@ -1,0 +1,8 @@
+c -v -s -o common.c
+zas -j common.as
+era common.as
+c -v -s -o comprss.c
+zas -j comprss.as
+era comprss.as
+zas -j zorkrand.as
+zas -j overlays.as

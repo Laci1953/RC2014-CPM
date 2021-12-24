@@ -1,0 +1,12 @@
+c -v -s -o villain1.c
+zas -j villain1.as
+era villain1.as
+c -v -s -o villain2.c
+zas -j villain2.as
+era villain2.as
+c -v -s -o villain3.c
+zas -j villain3.as
+era villain3.as
+c -v -s -o villmisc.c
+zas -j villmisc.as
+era villmisc.as

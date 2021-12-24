@@ -1,0 +1,9 @@
+c -v -s -o domisc.c
+zas -j domisc.as
+era domisc.as
+c -v -s -o dogofrom.c
+zas -j dogofrom.as
+era dogofrom.as
+c -v -s -o miscdomi.c
+zas -j miscdomi.as
+era miscdomi.as

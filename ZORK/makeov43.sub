@@ -1,0 +1,6 @@
+c -v -s -o gofrom.c
+zas -j gofrom.as
+era gofrom.as
+c -v -s -o gofrmisc.c
+zas -j gofrmisc.as
+era gofrmisc.as

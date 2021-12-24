@@ -1,0 +1,2 @@
+c -v -c saverest.c
+zas -j fileio.as

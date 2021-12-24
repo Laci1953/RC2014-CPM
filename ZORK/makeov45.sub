@@ -1,0 +1,7 @@
+c -v -s -o psactdir.c
+zas -j psactdir.as
+era psactdir.as
+c -v -s -o miscpsa1.c
+zas -j miscpsa1.as
+era miscpsa1.as
+c -v -c tables2.c

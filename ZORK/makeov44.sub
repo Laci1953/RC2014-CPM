@@ -1,0 +1,6 @@
+c -v -s -o domiscwt.c
+zas -j domiscwt.as
+era domiscwt.as
+c -v -s -o miscwt.c
+zas -j miscwt.as
+era miscwt.as

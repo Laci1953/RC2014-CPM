@@ -1,0 +1,4 @@
+c -v -s -o ovrmdesc.c
+zas -j ovrmdesc.as
+era ovrmdesc.as
+
