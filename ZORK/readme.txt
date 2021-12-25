@@ -1,21 +1,41 @@
 ZORK for Z80 on RC2014 
+----------------------
 
 ZORK is a famous adventure game, introduced by Infocom 40 years ago.
+
+This folder contains ZORK versions for RC2014 provided with a 512KB ROM + 512KB RAM module, with a serial SIO, ACIA and KIO board; it works with 64MB CF's.
 
 The present project is an adaptation of the game, ported to the RC2014 Z80 homebrew computer, 
 from the Donnie Russel II ZORK1 C version published on GitHub ( https://github.com/donnierussellii/zork1c ).
 
-It can be played on a RC2014 computer provided with a 512MB ROM + 512MB RAM module.
+An example of an RC2014 system configuration on which ZORK can run:
 
-The necessary files are: 
+- SC112 mother board
+- any Z80 CPU board (without RAM or ROM !)
+- SC110 SIO board ( or any ACIA or KIO - serial board - take care of which zork_rom_serial.hex you burn!)
+- 512KB RAM + 512KB ROM, with the "zork_rom_SIO.hex" EEPROM burned
+- Digital I/O module (optional)
+- CF board with CP/M installed on a 64MB CF
+
+You must have also an EEPROM burner, to burn the zork_rom_serial.hex file on the 512KB EEPROM. 
+This EEPROM will contain a CP/M booter and the ZORK overlays. 
+The booter will boot a CP/M from a 64MB CF.
+You must first copy CP/M sytem files to the 64MB CF, using the appropriate PutSys.hex file.
+
+The PutSys hex files needed to install CP/M on a 64MB CF are included, for ACIA, SIO and KIO serial interfaces.
+
+The necessary files to play ZORK are: 
 
 zork.hex (to be converted to zork.com using LOAD & SAVE CP/M commands), 
 zorkcomm.hex (will be loaded by zork.com) ,
 zork_rom_serial.hex (serial=acia or sio or kio) to be burned to the 512MB EEPROM.
 
-At startup, the zorkcomm.hex (which contains code & must be stored on the same disk as zork.com) is loaded in memory, just below the BDOS. 
+At startup, the zorkcomm.hex (which contains code & must be stored on the same disk as zork.com) will be loaded in memory, just below the BDOS. 
 
 If a Digital I/O module is present, it will "display" the flow of execution (the "index" of the current overlay is showed on the leds).
+
+The architecture of the implementation
+--------------------------------------
 
 The Donnie Russel II C version is huge (13273 C & H lines, with a total size of 454935 bytes).
 Just take a look at those files!
@@ -30,34 +50,19 @@ The choice proved to be good enough, apart some unpleasant surprises:
 
 I re-wrote in assembler the file-accessing routines (for the ZORK Save/Restore commands) and modified small parts of the text parser.
 
-This folder contains versions for RC2014 provided with a 512KB ROM + 512KB RAM module, with a serial SIO, ACIA and KIO board; it works with 64MB CF's.
-
-You must have also an EEPROM burner, to burn the zork_rom_serial.hex file on the 512KB EEPROM. 
-This EEPROM will contain a CP/M booter and the ZORK overlays. 
-The booter will boot a CP/M from a 64MB CF.
-You must first copy CP/M sytem files to the 64MB CF, using the appropriate PutSys.hex file (the PutSys.hex files are included - for ACIA,SIO or KIO).
-
-An example of an RC2014 system configuration on which ZORK can run:
-
-- SC112 mother board
-- any Z80 CPU board (without RAM or ROM !)
-- SC110 SIO board ( or any ACIA or KIO - serial board - take care of which zork_rom_serial.hex you burn!)
-- 512KB RAM + 512KB ROM, with the "zork_rom_SIO.hex" EEPROM burned
-- Digital I/O module (optional)
-- CF board with CP/M installed on 64MB CF
-
-The PutSys hex files needed to install CP/M on a 64MB CF are included, for ACIA, SIO and KIO serial interfaces.
-
-The architecture of the implementation
---------------------------------------
-
 The 512KB RAM + 512KB ROM module allows the use of 16KB memory-mapped segments (32 RAM & 32 ROM segments).
+
 I used some 20 of the RAM segments for storing the BASE + OVERLAYS code segments (copied at start-up from ROM).
+
 I used the first 16KB (0000-3FFF) to load the BASE program and then the OVERLAYS called by the BASE or by other OVERLAYS (there are 20 of them).
+
 The next two 16KB (4000-BFFF) segments contain the data used by the game (texts, tables, pointers to routines). 
+
 All the texts used are compressed at a ~60% ratio and will be decompressed at run-time. 
+
 The last 16KB contains the COMMON code part (overlays.as, zorkrand.as, comprss.c, common.c), + some C library routines + stack + CP/M BDOS & BIOS
 (all BDOS & BIOS functions are accessible from BASE & OVERLAYS, including disk file routines).
+
 The OVERLAYS manager (overlays.as) handles calling an overlay (optionally passing a parameter) and returning a value from an OVERLAY.
 
 Some details concerning the architecture follows below:
@@ -415,13 +420,13 @@ ALLOC_BUF (500H) at BB00H-BFFFH
 ==>DATADEFS.OBJ
 ==>COMMDEFS.OBJ
 
---------------------------------------------
-NOTE: this must be included in OVERLAYS
+NOTE: the table below must be included in OVERLAYS
 tables2.c:
 	RoomPassages
 
-Building procedure
-------------------
+
+How ZORK was built for RC2014
+-----------------------------
 
 (symtoas.com & symtoh.com are provided as .hex files)
 
@@ -457,7 +462,7 @@ Building procedure
 
 4. Now we must store the "real" routine addresses to the DATA segments, and build the overlays...
 
-Building order  : use submit makeovN, then submit linkovN
+Building order  : (use submit makeovN, then submit linkovN)
 ---------------------------------------------------------
 COMMON	(makecomm,linkcomm)		==> zorkcomm.hex, commdefs.obj , basedefs.obj
 38 OVR_OVERRIDE_OBJECT_DESC 		==> ovr38.h, ovr38.hex
