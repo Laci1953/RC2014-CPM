@@ -75,10 +75,13 @@ D880-DFFFH	system buffers
 E000-E200H		app stack
 E200-FFFFH		BDOS,BIOS
 
-All the applications may use a “base” .COM program, which can call (load) up to 28 separate 16KB “overlays”, stored on the 512KB EEPROM. An overlay may call any other overlay (overlays calls and returns use the “stack” principle).
+All the applications may use a “base” .COM program, which can call (load) up to 28 separate 16KB “overlays”, stored on the 512KB EEPROM. 
+An overlay may call any other overlay (overlays calls and returns use the “stack” principle).
 The base or overlays can allocate/deallocate dynamic memory ( up to 16 KB for a single alloc, the total size allocated up to 448KB )
 The base and overlays can access all the CP/M BDOS/BIOS functions.
-An example follows: (BASE calls OVERLAY4calls OVERLAY5)
+
+An example follows: (BASE calls OVERLAY4 which calls OVERLAY5)
+
 BASE:
 #include <stdio.h>
 #include <string.h>
