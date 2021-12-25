@@ -417,7 +417,7 @@ tables2.c:
 Building procedure
 ------------------
 
-(symtoas.com & symtoh.com are provided)
+(symtoas.com & symtoh.com are provided as .hex files)
 
 1.
 - fill in (gametab1.c, gametb2a.c, gametb2b.c, gametab3.c, gametab4.c) with fictive routine addresses (0)
@@ -483,13 +483,14 @@ The ovrN.H files must be builded using symtoh.com
 
 How to use symtoh:
 -----------------
-Let's say we must "define" the xyz symbol, for the ovrN.
-We edit ovrN.sym that was builded after linkovN (it contains the value 1234H for _xyz).
+Let's say we must "define" all the symbols having as prefix "xyz", for the ovrN.
+We edit ovrN.sym that was builded after linkovN (it contains the values: 1234H for _xyzABC and 3456H for __xyzXYZ).
 We insert _xyz as the first line.
 Then, we use:
 >symtoh ovrN.h ovrN.sym
-...which will build the ovrN.h file, containing 
-#define xyz 0x1234
+...which will build the ovrN.h file, containing: 
+#define xyzABC 0x1234
+#define xyzXYZ 0x3456
 
 OUTPUT:
 -------
