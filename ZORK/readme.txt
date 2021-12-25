@@ -2,11 +2,15 @@ ZORK for Z80 on RC2014
 
 ZORK is a famous adventure game, introduced by Infocom 40 years ago.
 
-The present project is an adaptation of the game, ported to the RC2014 Z80 homebrew computer, from the Donnie Russel II ZORK1 C version published on GitHub ( https://github.com/donnierussellii/zork1c ).
+The present project is an adaptation of the game, ported to the RC2014 Z80 homebrew computer, 
+from the Donnie Russel II ZORK1 C version published on GitHub ( https://github.com/donnierussellii/zork1c ).
 
 It can be played on a RC2014 computer provided with a 512MB ROM + 512MB RAM module.
 
-The necessary files are: zork.hex (to be converted to zork.com using LOAD & SAVE CP/M commands), zorkcomm.hex (will be loaded by zork.com) and the zork_rom_serial.hex (serial=acia or sio or kio) to be burned to the 512MB EEPROM.
+The necessary files are: 
+zork.hex (to be converted to zork.com using LOAD & SAVE CP/M commands), 
+zorkcomm.hex (will be loaded by zork.com) ,
+and the zork_rom_serial.hex (serial=acia or sio or kio) to be burned to the 512MB EEPROM.
 
 At startup, the zorkcomm.hex (which contains code & must be stored on the same disk as zork.com) is loaded in memory, just below the BDOS. 
 
@@ -51,7 +55,8 @@ I used some 20 of the RAM segments for storing the BASE + OVERLAYS code segments
 I used the first 16KB (0000-3FFF) to load the BASE program and then the OVERLAYS called by the BASE or by other OVERLAYS (there are 20 of them).
 The next two 16KB (4000-BFFF) segments contain the data used by the game (texts, tables, pointers to routines). 
 All the texts used are compressed at a ~60% ratio and will be decompressed at run-time. 
-The last 16KB contains the COMMON code part (overlays.as, zorkrand.as, comprss.c, common.c), + some C library routines + stack + CP/M BDOS & BIOS (all BDOS & BIOS functions are accessible from BASE & OVERLAYS, including disk file routines).
+The last 16KB contains the COMMON code part (overlays.as, zorkrand.as, comprss.c, common.c), + some C library routines + stack + CP/M BDOS & BIOS
+(all BDOS & BIOS functions are accessible from BASE & OVERLAYS, including disk file routines).
 The OVERLAYS manager (overlays.as) handles calling an overlay (optionally passing a parameter) and returning a value from an OVERLAY.
 
 Some details concerning the architecture follows below:
