@@ -25,12 +25,12 @@ The choice proved to be good enough, apart some unpleasant surprises:
 
 I re-wrote in assembler the file-accessing routines (for the ZORK Save/Restore commands) and modified small parts of the text parser.
 
-Z80SIM was used as a development platform, because of the large size of the C files being compiled.
-
-This folder contains versions for RC2014 provided with a 512KB ROM + 512KB RAM module, with a serial SIO, ACIA and KIO board; it works with either 64MB or 128MB CF's.
+This folder contains versions for RC2014 provided with a 512KB ROM + 512KB RAM module, with a serial SIO, ACIA and KIO board; it works with 64MB CF's.
 
 You must have also an EEPROM burner, to burn the zork_rom_serial.hex file on the 512KB EEPROM. 
-This EEPROM will contain a CP/M booter and the ZORK overlays. The booter will boot a CP/M from a 64MB CF (the PutSys hex files are included).
+This EEPROM will contain a CP/M booter and the ZORK overlays. 
+The booter will boot a CP/M from a 64MB CF.
+You must first copy CP/M sytem files to the 64MB CF, using the appropriate PutSys.hex file (the PutSys.hex files are included - for ACIA,SIO or KIO).
 
 An example of an RC2014 system configuration on which ZORK can run:
 
@@ -42,7 +42,6 @@ An example of an RC2014 system configuration on which ZORK can run:
 - CF board with CP/M installed on 64MB CF
 
 The PutSys hex files needed to install CP/M on a 64MB CF are included, for ACIA, SIO and KIO serial interfaces.
-
 
 The architecture of the implementation
 --------------------------------------
@@ -414,10 +413,6 @@ ALLOC_BUF (500H) at BB00H-BFFFH
 NOTE: this must be included in OVERLAYS
 tables2.c:
 	RoomPassages
-
-
-
-
 
 Building procedure
 ------------------
