@@ -58,9 +58,9 @@ I used the first 16KB (0000-3FFF) to load the BASE program and then the OVERLAYS
 
 The next two 16KB (4000-BFFF) segments contain the data used by the game (texts, tables, pointers to routines). 
 
-All the texts used are compressed at a ~60% ratio and will be decompressed at run-time. 
+All the texts used in ZORK are compressed at a ~60% ratio and will be decompressed at run-time. 
 
-The last 16KB contains the COMMON code part (overlays.as, zorkrand.as, comprss.c, common.c), + some C library routines + stack + CP/M BDOS & BIOS
+The last 16KB contains the COMMON code part (overlays.as, zorkrand.as, comprss.c, common.c) + some C library routines + stack + CP/M BDOS & BIOS
 (all BDOS & BIOS functions are accessible from BASE & OVERLAYS, including disk file routines).
 
 The OVERLAYS manager (overlays.as) handles calling an overlay (optionally passing a parameter) and returning a value from an OVERLAY.
@@ -181,6 +181,7 @@ List of routines called in overlays
 
 BASE (zorkbase.c, loadhex.c) 					- linkbase
 -----------------------------------
+Calls Parse
 
 OVR_PARSE (zorkpars.c, miscpars.c) 				- linkov36
 -----------------------------------
@@ -299,7 +300,6 @@ OVR_DO_PARSE_ACTION_EX1	(parsdrop.c, miscdrop.c)		- linkov53
 Routines:
 ParseActionDropPut_ext
 
-
 OVR_DO_PARSE_ACTION_EX2 (parstake.c, misctak1.c, misctak2.c)	- linkov54
 -----------------------------------
 Routines:
@@ -327,7 +327,7 @@ Memory map
 16K (C000H-FFFFH) COMMON - 16K RAM (compress,overlays manager,rand,basic parser,C lib), STACK(~200H), BDOS,BIOS
 
 
-COMMON routines
+Routines contained in COMMON:
 ------
 DecompressText
 PrintNewLine
@@ -420,7 +420,7 @@ ALLOC_BUF (500H) at BB00H-BFFFH
 ==>DATADEFS.OBJ
 ==>COMMDEFS.OBJ
 
-NOTE: the table below must be included in OVERLAYS
+NOTE: the table below is not part of DATA2 and must be included in OVERLAYS, if needed:
 tables2.c:
 	RoomPassages
 
@@ -495,13 +495,14 @@ The ovrN.H files must be builded using symtoh.com
 How to use symtoh:
 -----------------
 Let's say we must "define" all the symbols having as prefix "xyz", for the ovrN.
-We edit ovrN.sym that was builded after linkovN (it contains the values: 1234H for _xyzABC and 3456H for __xyzXYZ).
+We edit ovrN.sym that was builded after linkovN (it contains the values: 1234H for _xyzABC and 3456H for _xyzXYZ).
 We insert _xyz as the first line.
 Then, we use:
 >symtoh ovrN.h ovrN.sym
 ...which will build the ovrN.h file, containing: 
 #define xyzABC 0x1234
 #define xyzXYZ 0x3456
+Now, ovrN.h can be included where necessary...
 
 OUTPUT:
 -------
