@@ -8,9 +8,10 @@ from the Donnie Russel II ZORK1 C version published on GitHub ( https://github.c
 It can be played on a RC2014 computer provided with a 512MB ROM + 512MB RAM module.
 
 The necessary files are: 
+
 zork.hex (to be converted to zork.com using LOAD & SAVE CP/M commands), 
 zorkcomm.hex (will be loaded by zork.com) ,
-and the zork_rom_serial.hex (serial=acia or sio or kio) to be burned to the 512MB EEPROM.
+zork_rom_serial.hex (serial=acia or sio or kio) to be burned to the 512MB EEPROM.
 
 At startup, the zorkcomm.hex (which contains code & must be stored on the same disk as zork.com) is loaded in memory, just below the BDOS. 
 
