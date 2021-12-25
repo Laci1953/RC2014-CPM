@@ -8,12 +8,12 @@ This folder contains ZORK versions for RC2014 provided with a 512KB ROM + 512KB 
 The present project is an adaptation of the game, ported to the RC2014 Z80 homebrew computer, 
 from the Donnie Russel II ZORK1 C version published on GitHub ( https://github.com/donnierussellii/zork1c ).
 
-An example of an RC2014 system configuration on which ZORK can run:
+RC2014 system configurations on which ZORK can run:
 
-- SC112 mother board
+- any mother board (e.g. SC112)
 - any Z80 CPU board (without RAM or ROM !)
-- SC110 SIO board ( or any ACIA or KIO - serial board - take care of which zork_rom_serial.hex you burn!)
-- 512KB RAM + 512KB ROM, with the "zork_rom_SIO.hex" EEPROM burned
+- any serial board (e.g. SC110 or other any ACIA or KIO - serial board - take care of which zork_rom_serial.hex you burn!)
+- 512KB RAM + 512KB ROM memory module, with its EEPROM burned with the appropriate zork_rom_serial.hex file
 - Digital I/O module (optional)
 - CF board with CP/M installed on a 64MB CF
 
@@ -24,7 +24,7 @@ You must first copy CP/M sytem files to the 64MB CF, using the appropriate PutSy
 
 The PutSys hex files needed to install CP/M on a 64MB CF are included, for ACIA, SIO and KIO serial interfaces.
 
-The necessary files to play ZORK are: 
+The necessary files (included) to play ZORK are: 
 
 zork.hex (to be converted to zork.com using LOAD & SAVE CP/M commands), 
 zorkcomm.hex (will be loaded by zork.com) ,
