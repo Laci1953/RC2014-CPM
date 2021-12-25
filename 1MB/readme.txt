@@ -82,7 +82,8 @@ The base and overlays can access all the CP/M BDOS/BIOS functions.
 
 An example follows: (BASE calls OVERLAY4 which calls OVERLAY5)
 
-BASE:
+BASE: use makebase.sub
+
 #include <stdio.h>
 #include <string.h>
 #include <dyn512.h>
@@ -108,7 +109,8 @@ void main(void)
   free512(pBuf,bank);
 }
 
-OVERLAY4:
+OVERLAY4: use linkov4.sub
+
 #include <stdio.h>
 #include <string.h>
 #include <dyn512.h>
@@ -127,7 +129,7 @@ void proc(char* p, char bank)
   ReturnOverlay2(1);
 }
 
-OVERLAY5
+OVERLAY5: use linkov5.sub
 
 #include <stdio.h>
 #include <string.h>
