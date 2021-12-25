@@ -505,8 +505,8 @@ Then, we use:
 
 OUTPUT:
 -------
-zork.com, zorkcomm.hex (moved to CP/M disk)
-
+zork.com
+zorkcomm.hex (to be moved to the CP/M disk containing zork.com)
 zork_rom.hex (cpm boot + ovrNs.hex merged) --> burned on 512KB EEPROM (use "extended segment address" records!)
 
 Starting zork.com will first read zorkcomm.hex, then initialize the overlays support (copy all ROM segments to RAM), then will display the introductory message.
