@@ -512,6 +512,6 @@ zork_rom.hex (cpm boot + ovrNs.hex merged) --> burned on 512KB EEPROM (use "exte
 
 Starting zork.com will first read zorkcomm.hex, then initialize the overlays support (copy all ROM segments to RAM), then will display the introductory message.
 
-See the Infocom manual to learn how to play the game.
+See the Infocom manual (included) to learn how to play the game.
 
 Enjoy!
