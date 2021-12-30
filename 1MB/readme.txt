@@ -19,11 +19,13 @@ I will describe below the advantages of this configuration.
 2.	The TE editor can be used to handle large files (up to 8000 lines, 400KB)
 3.	The CP/M execution platform that will be presented below allows running huge executables (up to 464KB) which may access up to 448KB dynamic memory.
 
-The development platform
+The CP/M development platform
+-----------------------------
 
 The API that can be used:
 
 dyn512.h
+--------
 
 void	Init512Banks(void);
 Initializes the dynamic allocation buffers.
@@ -41,6 +43,7 @@ int	GetTotalFree();
 Returns the size of the free dynamic memory ( in KB ).
 
 overlays.h
+----------
 
 void InitOverlays(void);
 Initializes the overlays system.
@@ -66,9 +69,11 @@ Returns a value from an overlay that has been called with one parameter.
 void ReturnOverlay2(short ret_val);
 Returns a value from an overlay that has been called with two parameters.
 
-The execution platform
+The CP/M execution platform
+---------------------------
 
 The memory map of such a platform is the following:
+
 0000-3FFFH		base .com area (code,data,buffers)
 4000-7FFFH		overlays area (code, data)
 8000-BFFFH		dynamic memory buffer
@@ -85,6 +90,7 @@ The base and overlays can access all the CP/M BDOS/BIOS functions.
 An example follows: (BASE calls OVERLAY4 which calls OVERLAY5)
 
 BASE: use makebase.sub
+----------------------
 
 #include <stdio.h>
 #include <string.h>
@@ -112,6 +118,7 @@ void main(void)
 }
 
 OVERLAY4: use linkov4.sub
+-------------------------
 
 #include <stdio.h>
 #include <string.h>
@@ -132,6 +139,7 @@ void proc(char* p, char bank)
 }
 
 OVERLAY5: use linkov5.sub
+-------------------------
 
 #include <stdio.h>
 #include <string.h>
@@ -149,20 +157,20 @@ void proc(void)
 
 HEX file to be burned (commented):
 
-:20000000F33E00D3783E21D3793E22D37A3E23D37B3E01D37C3100D0AFD3003E03D3803E7A-CP/M boot
+:20000000F33E00D3783E21D3793E22D37A3E23D37B3E01D37C3100D0AFD3003E03D3803E7A     -CP/M boot
 :2000200016D380CDA0003E05D312DB12FE05280921C100CDB800C33600CDA0003E01D311B1
 :200040003EEFD317CDA0003E82D3113EEFD317CDA00006180E002100D079D313AFD314D30F
 :20006000153EE0D3163E01D3123E20D317CDA000DB17CB5F28FA1E04C50E100680EDB21D06
 :2000800020F9C10C10D3110080219400010C00EDB0C300803E20D3783E01320300C300F094
 :2000A000DB17CB7F20FADB17CB7728F4C9F5DB80CB4F28FAF1D381C97EB7C8CDAD00231885
 :1B00C000F70D0A4346206E6F7420666F756E64206F7220646566656374210034
-:020000021000EC- overlay 4
+:020000021000EC                                                                 - overlay 4
 :20000000CD5712FEFFDD6E08E5CD1D0321020039F9217140E5DD6E06DD6607E5CD5F40216F
 :20002000040039F92E05E5210040E5CDAB01D921040039F9D96D64DD75FEDD74FFDD6EFEF0
 :20004000DD66FFE5218440E5CDFE0421040039F9210100E5CD170221020039F9C34F12C162
 :20006000D1E1E5D5C54B427E121323B720F96960C90D0A53746F7265642062792070726FA6
 :1B008000635F34000D0A4F7665726C6179352072657475726E6564202564000F
-:020000021400E8 – overlay 5
+:020000021400E8                                                                 – overlay 5
 :20000000CD5712FEFFDD36FE02DD36FF00212B40E5CDFE0421020039F9DD6EFEDD66FFE583
 :1F002000CDE70121020039F9C34F120D0A5072696E7465642062792070726F635F350043
 :00000001FF
