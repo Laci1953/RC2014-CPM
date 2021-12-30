@@ -1,6 +1,8 @@
 RC2014 + 512KB RAM/ROM board
+----------------------------
 
 A powerful CP/M development & execution platform
+------------------------------------------------
 
 The RC2014, if provided with the 512MB RAM + 512MB ROM memory board, can be used as a powerful CP/M development and execution platform.
 The needed RC2014 configuration is :
