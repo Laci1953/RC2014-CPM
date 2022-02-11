@@ -76,7 +76,7 @@ _cf_name:        ; 32 bytes > Configuration name + ZERO.
               defb 0,0,0,0,0,0,0,0
 
 _cf_rows:      defb 50               ;  1 byte  > Screen rows or 0 for auto.
-_cf_cols:      defb 99               ;  1 byte  > Screen columns or 0 for auto.
+_cf_cols:      defb 105               ;  1 byte  > Screen columns or 0 for auto.
 
 _cf_mx_lines:  defw 4096               ;  2 bytes > Max. number of lines in editor.
                                     ;            Each line takes 2 bytes (1 word) of memory.
