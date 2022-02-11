@@ -80,4 +80,12 @@ Then, the initial file opening when starting the editor is faster.
 
 But, I consider both versions of the TE editor as a step forward in the right direction, allowing larger files to be edited in memory, with an elegant an efficient user interface.
 
-  
+February 2022
+-------------
+
+TE now supports TABs.
+
+The files, when loaded, will be displayed using TABs alignment.
+
+The TAB interval (4 or 8) may be set from the command line: >TE file.ext [ 4 | 8 ] ; default = 8.
+
