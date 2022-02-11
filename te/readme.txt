@@ -1,14 +1,13 @@
 Text editor "te" for RC2014's following hardware:
 
 -Steve Cousins SC108 128KB RAM (128), 
--Phillip Stevens 32KB ROM + 128KB RAM memory module (MM) ,
--and Spencer Owen 512KB RAM + 512KB ROM memory module (512)
+-Spencer Owen 512KB RAM + 512KB ROM memory module (512)
 
 Use the HiTech tools to compile & link the sources.
 
 Settings:
 
-128 & MM - up to 2048 lines, 50x99 screen, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+128 - up to 2048 lines, 50x99 screen, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 512 - up to 8192 lines, 50x99 screen, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 
 Design details and some constraints:
