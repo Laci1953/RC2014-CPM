@@ -46,3 +46,8 @@ Here, I use MYDW.COM:
 
 Byte count & checksum is verified (but I must confess that I never received such error messages...).
 
+MYDW must be configured according to:
+- the serial (ACIA, SIO, KIO)
+- 512RAM+512ROM memory, if available
+
+FILE2TXT does not have any settings
