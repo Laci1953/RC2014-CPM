@@ -6,7 +6,7 @@ First of all, the limitations: I can only handle files up to (roughly) 50KB on a
 
 Now, the advantages: for serial speed, I use always 115200, and I do not need to set any delay. 
 
-It works because on RC2014 the characters are received without using BIOS, are stored to memory, and only after receiving all of them, the disk file is written.
+It works very fast because on RC2014 the characters are received without using BIOS, are stored to memory, and only after receiving all of them, the disk file is written.
 
 The use scenario:
 
