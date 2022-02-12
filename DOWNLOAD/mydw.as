@@ -45,7 +45,7 @@ CTRL      EQU 80H
 ENDC
 ENDC
 
-start:
+start:	DI
 	ld	sp,stack
 
 	LD	C,DELF
@@ -258,6 +258,7 @@ COND	M512
 	ld	a,33	;RAM bank 33 set back to 4000H 
 	out	(79H),a
 ENDC
+	EI
 	JP	REBOOT
 	
 ; Wait for a char into A (no echo)
