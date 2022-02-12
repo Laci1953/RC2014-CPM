@@ -4,7 +4,7 @@ The framework is based on the Grant Searle's DOWNLOAD, with some modifications t
 
 First of all, the limitations: I can only handle files up to (roughly) 50KB on any RC2014, and up to 512KB on RC2014's provided with the 512RAM+512ROM memory board. 
 
-Now, the advantages: for serial speed, I use allways 115200, and I do not need to set any delay. 
+Now, the advantages: for serial speed, I use always 115200, and I do not need to set any delay. 
 
 It works because on RC2014 the characters are received without using BIOS, are stored to memory, and only after receiving all of them, the disk file is written.
 
