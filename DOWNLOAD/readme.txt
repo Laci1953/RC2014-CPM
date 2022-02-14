@@ -2,7 +2,10 @@ Here is how I copy files (text & binaries) from my laptop to the RC2014.
 
 The framework is based on the Grant Searle's DOWNLOAD, with some modifications that bring limitations but also advantages.
 
-First of all, the limitations: I can only handle files up to (roughly) 50KB on any RC2014, up to 115KB on RC2014 provided with SC108 32KB ROM+128KB RAM board and up to 512KB on RC2014's provided with the 512RAM+512ROM memory board. 
+First of all, the limitations: I can only handle files up to:
+-(roughly) 50KB on any RC2014
+- 115KB on RC2014 provided with SC108 32KB ROM+128KB RAM board 
+- 512KB on RC2014's provided with the 512RAM+512ROM memory board. 
 
 Now, the advantages: for serial speed, I use always 115200, and I do not need to set any delay. 
 
