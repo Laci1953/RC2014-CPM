@@ -85,7 +85,7 @@ February 2022
 
 TE now supports TABs.
 
-The files, when loaded, will be displayed using TABs alignment.
+The files, when loaded, will be displayed using TABs indentation.
 
 The TAB interval (4 or 8) may be set from the command line: >TE file.ext [ 4 | 8 ] ; default = 8.
 
