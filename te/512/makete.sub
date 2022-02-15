@@ -1,5 +1,5 @@
 c -v -s -o te.c
-zas -j te.as
+zas te.as
 era te.as
 c -v -c teconf.c
 c -v -c teedit.c
@@ -11,5 +11,5 @@ c -v -c temacro.c
 c -v -c temisc.c
 c -v -c teui.c
 c -v -c tews100.c
-zas -j dynm512.as
-zas -j tabs.as
+zas dynm512.as
+zas tabs.as
