@@ -7,4 +7,4 @@ CP/M and some tools & games for RC2014:
 - Miguel Garcia's text editor "te", configured for boards with 128KB or 512KB RAM, allowing large text files to be edited in the internal memory
 - an "extended" model of CP/M, making possible to build huge executables (up to 496KB code, and up to 448 KB memory space to store data),
 when using the 512KB RAM + 512KB ROM memory module.
-- ZORK - the famous Infocom game, can be palyed on RC2014+512KB RAM/ROM memory module
+- ZORK - the famous Infocom game, can be played on RC2014+512KB RAM/ROM memory module
