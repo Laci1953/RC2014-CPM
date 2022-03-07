@@ -1,4 +1,12 @@
-Execute *_PutSys*.hex to set-up a CP/M system to your CF (you must choose the appropriate serial type & CF size)
+How to install CP/M
+-------------------
+
+Under SCM, load the appropriate *_PutSys*.hex (according to your RC2014's serial type & CF size)
+then
+*g8000<CR>
+
+Your CP/M is ready and can be booted:
+*cpm<CR>
 
 How these .hex files were builded:
 
