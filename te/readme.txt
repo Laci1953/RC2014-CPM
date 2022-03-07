@@ -53,6 +53,7 @@ But, for the memory allocator, we have also another important constraint: the sh
 
 Now, studying the "classic" RC2014 CP/M that is currently used with 64/128MB CF's, I discovered that the BIOS "eats" practically all the space to FFFF ! There was no room for my shadow code! 
 
+I solved this issue by building a smaller CP/M, for both 64MB & 128MB CF's.
 But, I remembered that I built recently a "custom" CP/M for RC2014 systems that use a 64MB CF. This version of CP/M loads its BDOS at DA00, and has also the advantage of having a small "free" RAM area on top of the BIOS (around 40H ! ). This was a perfect match, I stored there (FFA0 - FFFF) the shadow code. This allows also having (almost) 64KB RAM available to be allocated in the upper RAM bank! 
 
 If the usual call to malloc fails, the new allocator accesses the upper 64KB RAM bank and allocates there the buffer. 
