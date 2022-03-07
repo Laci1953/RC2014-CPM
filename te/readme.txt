@@ -13,6 +13,7 @@ Settings:
 Design details and some constraints:
 
 1. For the 512KB version: 
+-------------------------
 
 To handle the memory allocation requests, a new memory allocator was written. 
 
@@ -34,6 +35,7 @@ Text files up to 350KB can be edited.
 The 521KB version can be run on any CP/M version, regardless of its TPA area size.
 
 2. For the 128KB version: 
+-------------------------
 
 To handle the memory allocation requests, a new memory allocator was written. 
 
@@ -51,10 +53,9 @@ Therefore, by using this $2B SCM API call, the shadow code can be moved to the u
 
 But, for the memory allocator, we have also another important constraint: the shadow code must be stored in top of the physical 64KB RAM, in order to offer as much possible RAM available to be allocated (storing at the bottom of the physical 64KB RAM is out of question, we have there the 100H BIOS buffers area). There is only one possible solution: storing a small shadow code on top of CP/M's BIOS. My shadow code is less than 40H. 
 
-Now, studying the "classic" RC2014 CP/M that is currently used with 64/128MB CF's, I discovered that the BIOS "eats" practically all the space to FFFF ! There was no room for my shadow code! 
+Studying the "classic" RC2014 CP/M that is currently used with 64/128MB CF's, I discovered that the BIOS "eats" practically all the space to FFFF ! There was no room for my shadow code! 
 
-I solved this issue by building a smaller CP/M, for both 64MB & 128MB CF's.
-You may find this CP/M in the PutSys folder.
+I solved this issue by building a smaller CP/M, for both 64MB & 128MB CF's. You may find this CP/M in the PutSys folder.
 
 The algorithm used to allocate memory is the following: if the usual call to malloc fails, the new allocator accesses the upper 64KB RAM bank and allocates there the buffer. 
 
@@ -72,8 +73,8 @@ As a conclusion: the TE editor 128KB version will work only for RC2014 systems p
 
 Comparing the two versions of TE (128KB vs. 512KB), the 512KB version is by far the best. 
 
-First, the size of files that can be edited is larger.
-Then, the initial file opening when starting the editor is faster.
+First, the size of files that can be edited is larger (400KB vs. 70KB).
+Then, the initial phase of file reading when starting the editor is faster.
 
 But, I consider both versions of the TE editor as a step forward in the right direction, allowing larger files to be edited in memory, with an elegant an efficient user interface.
 
