@@ -13,7 +13,7 @@ How these .hex files were builded:
 >z80as putsys
 >objtohex putsys.obj putsys.hex
 
-Then, edit bdosbios.as, configure the serial & CF size
+Then, edit bdosbios.as, configure the serial & CF size, then:
 
 >z80as bdosbios
 >link
@@ -22,15 +22,13 @@ Then, edit bdosbios.as, configure the serial & CF size
 -pbdos=0da00h,bios=0f000h,top=0fffeh -obb.obj bdosbios.obj (if you have a 64MB CF)  
 >objtohex bb.obj bb.hex
 
-Then, paste putsys.hex + bb.hex into a single sys.hex file
-Take care on keeping only one EOF hex record, at end...
+Then, "move" in bb.hex all records from the (D000H - FFFFH) range of loading addresses to the (9000H - BFFFH) range 
+(simply edit the bb.hex file, substitute all ":20D" with ":209", ...and so on...)
 
-Then, "move" the "bdosbios" part of the .hex from the D000H - FFFFH range of loading addresses to the 9000H - BFFFH range 
-(simply edit the .hex file, substitute all ":20D" with ":209", ...and so on...)
+Then, on Z80SIM, run makecks.com, then paste bb.hex... makecks will type the correct hex records, copy these lines to bbOK.hex file.
 
-Then, on Z80SIM, run makecks.com, paste all the "displaced" hex fragment... makecks will type the correct hex records.
-
-Take those correct hex records and copy them into the sys.hex, replacing the "moved" part.
+Then, paste putsys.hex + bbOK.hex into a single sys.hex file
+Take care to keep only one EOF hex record, at end...
 
 Now, your sys.hex is ready.
 
