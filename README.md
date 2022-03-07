@@ -1,6 +1,7 @@
 # RC2014-CPM
 CP/M and some tools & games for RC2014:
 
+- CP/M for RC2014's configured with 128MB CF
 - enhanced CP/M for RC2014's configured with 64MB CF (2 and half KB extra TPA space)
 - CP/M booters (to be burned to EEPROM)
 - PutSys
