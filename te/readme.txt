@@ -54,9 +54,9 @@ But, for the memory allocator, we have also another important constraint: the sh
 Now, studying the "classic" RC2014 CP/M that is currently used with 64/128MB CF's, I discovered that the BIOS "eats" practically all the space to FFFF ! There was no room for my shadow code! 
 
 I solved this issue by building a smaller CP/M, for both 64MB & 128MB CF's.
-But, I remembered that I built recently a "custom" CP/M for RC2014 systems that use a 64MB CF. This version of CP/M loads its BDOS at DA00, and has also the advantage of having a small "free" RAM area on top of the BIOS (around 40H ! ). This was a perfect match, I stored there (FFA0 - FFFF) the shadow code. This allows also having (almost) 64KB RAM available to be allocated in the upper RAM bank! 
+You may find this CP/M in the PutSys folder.
 
-If the usual call to malloc fails, the new allocator accesses the upper 64KB RAM bank and allocates there the buffer. 
+The algorithm used to allocate memory is the following: if the usual call to malloc fails, the new allocator accesses the upper 64KB RAM bank and allocates there the buffer. 
 
 Besides the address of the buffer, a byte containing the RAM bank index is returned too (0=lower 64KB RAM, 1=upper 64KB RAM).
 
@@ -68,11 +68,7 @@ But, this comes with a cost: when opening a file to be edited, the editor reads 
 
 Once the file is read, the browse/search operations prove to be quick (compared for example with the performance of WordStar), because no more file read operations are needed, all the text is in the memory.
 
-As a conclusion:
- 
-- The TE editor 128KB version will work only for RC2014 systems provided with 64MB CF
-- The TE editor 128KB version will NOT work with the "classic" RC2014's CP/M, my "custom" large TPA CP/M must be used (use CPM/PutSys/SIO_PutSys_CF64_CPM_DA00H.hex)
-- The TE editor 128KB version will work only with SC108 boards (or compatible) provided with a SCM version containing the (undocumented) API function $2B (write A to address DE on Upper 64KB RAM). I received my SCM EPROM in July this year, an it contains this function. I hope that also older versions of SCM contain this function.
+As a conclusion: the TE editor 128KB version will work only for RC2014 systems provided with my "custom CP/M"
 
 Comparing the two versions of TE (128KB vs. 512KB), the 512KB version is by far the best. 
 
