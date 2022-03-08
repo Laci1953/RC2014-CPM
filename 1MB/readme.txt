@@ -188,4 +188,3 @@ D>
 
 The game ZORK was builded using this development platform.
 
-The CP/M booters and PutSys for CP/M (ACIA,SIO,KIO) are included.
