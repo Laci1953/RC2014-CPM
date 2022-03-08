@@ -4,6 +4,8 @@
 ;       Reads a .HEX file (with wrong checksums), compute the correct checksums,
 ;       and types the correct .HEX file on the console
 ;
+;       MUST BE EXECUTED ONLY ON Z80SIM
+;
 MACRO   CharToNumber
         sub     '0'
         cp      10
