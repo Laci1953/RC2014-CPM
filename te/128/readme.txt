@@ -1,4 +1,6 @@
-For Steve Cousins SC108
+Upated on 23 April 2022
+
+For Steve Cousins SC108,SC114,SC118, and Phillip Stenens 32KB ROM + 128KB RAM 
 
 Version supporting "arrow keys" and TABs
 
