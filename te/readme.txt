@@ -1,3 +1,5 @@
+Updated at 24 April 2022
+
 Text editor "te" for RC2014's following hardware:
 
 -Steve Cousins SC108 128KB RAM (128), 
