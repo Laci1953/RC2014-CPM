@@ -1,3 +1,5 @@
+Updated at 24 April 2022
+
 For Spencer Owen 512KB ROM + 512KB RAM memory module
 
 Version supporting "arrow keys" and TABs
