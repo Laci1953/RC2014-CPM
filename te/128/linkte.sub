@@ -1,0 +1,3 @@
+-Z -Dte128.sym -N -C -Mte128.map -Ptext=0,data,bss -C100H -Ote128.COM mycrtcpm.obj \
+te.obj teconf.obj teedit.obj teerror.obj tefile.obj tekeys.obj telines.obj \
+temisc.obj teui.obj tews100.obj tabs.obj dynm128.obj LIBC.LIB
