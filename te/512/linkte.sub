@@ -1,0 +1,3 @@
+-Z -Dte512.sym -N -C -Mte512.map -Ptext=0,data,bss -C100H -Ote512.COM mycrtcpm.obj \
+te.obj teconf.obj teedit.obj teerror.obj tefile.obj tekeys.obj telines.obj \
+temisc.obj teui.obj tews100.obj tabs.obj dynm512.obj LIBC.LIB
