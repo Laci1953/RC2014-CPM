@@ -7,3 +7,5 @@ Works ONLY for systems provided with both:
 
 Best results are obtained with RC2014's provided with 64MB CF.
 
+The executable is OPTIMNEW.COM
+
