@@ -16,7 +16,7 @@ ZORK - the famous Infocom game, can be played on RC2014+512KB RAM/ROM memory mod
 
 DOWNLOAD - tools for moving files to CF
 
-HiTech C tools - various enhancements for the HiTech toolchain
+HiTech C Compiler optimization - various enhancements for the HiTech toolchain
 
 BDOS_BIOS - CP/M BDOS & BIOS
 
