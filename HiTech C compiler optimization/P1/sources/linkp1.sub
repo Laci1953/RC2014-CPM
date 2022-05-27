@@ -1,0 +1,5 @@
+xsub
+link
+-ptext=100h,data,bss,top -c100h -mp1.map -dtt.sym -op1new.com \
+p1a.obj p1b.obj p1c.obj p1d.obj p1e.obj p1libc.obj \
+p1data.obj p1bss.obj p1top.obj
