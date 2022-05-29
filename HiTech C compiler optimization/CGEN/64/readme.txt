@@ -1,1 +1,1 @@
-Version valid for RC2014's with any hardware configuration
+Version valid for RC2014's with only 64 KB RAM
