@@ -22,8 +22,9 @@ However, this loss of speed ( 10 to 15% ) is largely compensated by the big adva
 
 The results:
 
-1. For the generic environment (all Z80 computers running CP/M 2.2) some limited improvements were obtained, mainly for P1 (4KB more RAM available)
-2. For RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module) and 64MB CF, 
+For the generic environment (all Z80 computers running CP/M 2.2) some limited improvements were obtained, mainly for P1 (4KB more RAM available)
+
+For RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module) and 64MB CF, 
 some significant improvements were obtained, listed below:
 
 - P1 (4KB more RAM available)
@@ -35,5 +36,7 @@ is that OPTIM can handle now files that cannot be compiled on any available Z80 
 For example, I was able to compile some of the CGEN files ONLY on my SC108 based RC2014. 
 Z80SIM and ZXCC failed to run OPTIM on those files ("no room"), 
 while the enhanced OPTIM, executed on my SC108 based RC2014, finished the job without any problem.
+
+Also, remember that Z80AS eliminates now all the worries related to the size of files to be assembled.
 
 As a conclusion, the RC2014's provided with 128 KB RAM can now take full advantage of having more memory space, while working with the HiTech C tools.
