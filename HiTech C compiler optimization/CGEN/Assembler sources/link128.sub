@@ -28,4 +28,5 @@ link
  setup.obj \
  ctype.obj \
  alloc128.obj \
+ cgentop.obj \
  nularg.obj
