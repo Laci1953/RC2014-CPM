@@ -8,7 +8,7 @@ TOTAL           Name         Link     Load   Length
 (optimized)
 TOTAL           Name         Link     Load   Length
                 (abs)           0        0        0
-                text            0        0     7CFB
-                data         7CFB     7CFB     2D56
-                bss          AA51     AA51      4A3	ends at 0AEF4H (2EFH less)
-                top          AEF4     AEF4      15C
+                text            0        0     7BAC
+                data         7BAC     7BAC     2D56
+                bss          A902     A902      4A3	end at 0ADA5H (43EH less)
+                top          ADA5     ADA5      283
