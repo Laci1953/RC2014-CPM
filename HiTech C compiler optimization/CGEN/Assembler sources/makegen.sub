@@ -22,7 +22,8 @@ z80as -j -x libc2
 z80as -j -x libc3
 z80as -j -x libc4
 z80as -j -x libc5
-z80as -j -x sym2.as
-z80as -j -x cgen2.as
-z80as -j -x local1.as
-z80as -x alloc128.as
+z80as -j -x sym2
+z80as -j -x cgen2
+z80as -j -x local1
+z80as -x alloc128
+z80as -x -j cgentop
