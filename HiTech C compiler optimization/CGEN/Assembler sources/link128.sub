@@ -1,0 +1,32 @@
+xsub
+link
+-Z -Dcgen128.sym -N -C -Mcgen128.map -Ptext=0,data,bss,top -C100H -Ocgen128.COM \
+ zcrtcpm.obj \
+ data.obj \
+ lex1.obj \
+ lex2.obj \
+ code.obj \
+ sym1.obj \
+ sym2.obj \
+ sym3.obj \
+ cgen1.obj \
+ cgen2.obj \
+ cgen3.obj \
+ tree1.obj \
+ tree2.obj \
+ tree3.obj \
+ local1.obj \
+ local2.obj \
+ main.obj \
+ malloc.obj \
+ getchar.obj \
+ libc1.obj \
+ libc2.obj \
+ libc3.obj \
+ libc4.obj \
+ libc5.obj \
+ setup.obj \
+ ctype.obj \
+ alloc128.obj \
+ cgentop.obj \
+ nularg.obj
