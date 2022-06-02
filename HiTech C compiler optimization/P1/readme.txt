@@ -18,10 +18,10 @@ And here is the improved P1.COM map:
 
 TOTAL           Name         Link     Load   Length
                 (abs)           0        0        0
-                text          100      100     8440
-                data         8540     8540      8E8
-                bss          8E28     8E28      681	end at 094A9H , that means 1007H (= 4KB) less !!!
-                top          94A9     94A9       F5
+                text          100      100     841E
+                data         851E     851E      8E8
+                bss          8E06     8E06      681	end at 9487H ( 1029H less )
+                top          9487     9487       F5
 
 To obtain this, I followed a less-used path... because I did not had the C sources, I started working directly on the disassembled source file.
 
