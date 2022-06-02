@@ -1,4 +1,4 @@
-Improvement for the P1.COM
+Improvement for the P1.COM - updated on 2 June 2022
 
 It works on any Z80-based computer running CP/M.
 
