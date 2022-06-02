@@ -1,4 +1,4 @@
-Updated on 1 June 2022
+Updated on 2 June 2022
 
 Improvement for the CGEN.COM for:
 - RC2014's with 64 KB RAM
