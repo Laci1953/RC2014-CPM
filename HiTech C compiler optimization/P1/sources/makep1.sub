@@ -1,0 +1,9 @@
+z80as -x -j p1a
+z80as -x -j p1b
+z80as -x -j p1c
+z80as -x -j p1d
+z80as -x -j p1e
+z80as -x -j p1libc
+z80as -x p1data
+z80as -x p1bss
+z80as -x -j p1top
