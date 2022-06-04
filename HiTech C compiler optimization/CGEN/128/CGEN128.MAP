@@ -1,6 +1,6 @@
 TOTAL           Name         Link     Load   Length
                 (abs)           0        0        0
-                text            0        0     7E52
-                data         7E52     7E52     2D56
-                bss          ABA8     ABA8      4DF	end at B087H
-                top          B087     B087      37B
+                text            0        0     7FA1
+                data         7FA1     7FA1     2D56
+                bss          ACF7     ACF7      4DF	ends at 0B1D6H
+                top          B1D6     B1D6      254
