@@ -1,6 +1,6 @@
 c -v -c -o te.c
 c -v -c teconf.c
-c -v -c -o teedit.c
+c -v -c teedit.c
 c -v -c -o teerror.c
 c -v -c -o tefile.c
 c -v -c -o tekeys.c
