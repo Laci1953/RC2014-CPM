@@ -1,4 +1,4 @@
-Improvement for the P1.COM - updated on 2 June 2022
+Improvement for the P1.COM - updated on 6 December 2022
 
 It works on any Z80-based computer running CP/M.
 
@@ -37,3 +37,9 @@ What I did:
 
 The P1 source files must be assembled using Z80AS; submit files to assemble and link are provided.
 
+P1 version for 128KB RAM RC2014 systems
+---------------------------------------
+
+The folder 128 contains now a new P1 version, for 128KB RAM RC2014 systems
+
+It improves the old P1 version, allowing processing of larger C files.
