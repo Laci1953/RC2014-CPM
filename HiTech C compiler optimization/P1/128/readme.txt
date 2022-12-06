@@ -22,3 +22,5 @@ Use -n option to get the statistics about how much of the upper RAM was used.
 While executing P1, the possible syntax errors are displayed using ONLY an error number; use the attached file to identify the issue. 
 
 The SOURCES folder contains the source files.
+
+Many thanks to Mark Ogden for recreating the C sources for P1.COM and to Andrey Nikitin for publishing these files; I used these files as a starting point.
