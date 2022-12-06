@@ -1,4 +1,4 @@
-Various enhancments for the HiTech's C compiler
+Various enhancments for the HiTech's C compiler - updated on 6 December 2022
 
 This work is based on the decompiled HiTech tools found at https://github.com/nikitinprior
 
