@@ -37,7 +37,7 @@ What I did:
 
 The P1 source files must be assembled using Z80AS; submit files to assemble and link are provided.
 
-P1 version for 128KB RAM RC2014 systems
+NEW - P1 version for 128KB RAM RC2014 systems
 ---------------------------------------
 
 The folder 128 contains now a new P1 version, for 128KB RAM RC2014 systems
