@@ -19,4 +19,6 @@ You may change settings in p1alloc.as, to choose SC114, SC118 or Phillip Stevens
 
 Use -n option to get the statistics about how much of the upper RAM was used.
 
+While executing P1, the possible errors are displayed using ONLY an error number; use the attached file to identify the issue. 
+
 The SOURCES folder contains the source files.
