@@ -1,3 +1,5 @@
+(updated on 8 December 2022)
+
 Improvement for the P1.COM for RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module).
 
 Enables P1.COM to process larger files, compared to the original version.
