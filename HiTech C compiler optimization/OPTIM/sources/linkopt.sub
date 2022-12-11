@@ -1,6 +1,0 @@
-xsub
-link
- -Z -Doptim11.sym -Moptim11.map -Ptext=0,data,bss -C100H -Ooptim11.COM mycrtcpm.obj \
- optim1.obj part21a.obj part21b.obj part21c.obj part21c2.obj part21d.obj \
- part31a.obj part31b.obj part31c.obj part41a.obj part41b.obj \
- ctype1.obj initvar1.obj myalloc.obj mylibc.obj LIBC.LIB
