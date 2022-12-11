@@ -27,12 +27,12 @@ For the generic environment (all Z80 computers running CP/M 2.2) some limited im
 For RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module) and 64MB CF, 
 some significant improvements were obtained, listed below:
 
-- P1 (4KB more RAM available)
+- P1 (using the upper 64KB RAM for some of the malloc's)
 - CGEN (using the upper 64KB RAM for some of the malloc's)
 - OPTIM (using the upper 64KB RAM for some of the malloc's)
 
 The most significant improvement for this second environment (128KB RAM computers),
-is that OPTIM can handle now files that cannot be compiled on any available Z80 computer, including here also the emulators/simulators (Z80SIM, ZXCC).
+is that P1 and OPTIM can handle now files that cannot be compiled on any available Z80 computer, including here also the emulators/simulators (Z80SIM, ZXCC).
 For example, I was able to compile some of the CGEN files ONLY on my SC108 based RC2014. 
 Z80SIM and ZXCC failed to run OPTIM on those files ("no room"), 
 while the enhanced OPTIM, executed on my SC108 based RC2014, finished the job without any problem.
