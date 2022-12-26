@@ -1,2 +1,2 @@
-Contains some tests using large C source files
+Contains some tests to compile large C source files
 
