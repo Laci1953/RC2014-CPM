@@ -1,0 +1,28 @@
+c -v -c -o data.c
+c -v -c -o lex1.c
+c -v -c -o lex2.c
+c -v -c -o code.c
+c -v -c -o sym1.c
+c -v -c -o sym2.c
+c -v -c -o sym3.c
+c -v -c -o cgen1.c
+c -v -c -o cgen2.c
+c -v -c -o cgen3.c
+c -v -c -o tree1.c
+c -v -c -o tree2.c
+c -v -c -o tree3.c
+c -v -c -o local1.c
+c -v -c -o local2.c
+c -v -c -o main.c
+c -v -c -o malloc.c
+c -v -c -o getchar.c
+c -v -c setup.c
+c -v -c ctype.c
+z80as -j alloc128.as
+z80as zcrtcpm.as
+z80as nularg.as
+z80as -j libc1.as
+z80as -j libc2.as
+z80as -j libc3.as
+z80as -j libc4.as
+z80as -j libc5.as
