@@ -1,3 +1,6 @@
+I took the source of the OPTIM.COM, the optim.c file, and sliced-it in 3 parts: optima.c, optimb.c and optimc.c.
+You can see below the size of these files...
+
 D>sdir optim?.c
 
 Directory For Drive D:  User  0
