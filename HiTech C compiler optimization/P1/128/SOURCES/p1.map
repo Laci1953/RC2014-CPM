@@ -1,0 +1,212 @@
+Machine type is Z80
+
+mycrtcpm.obj    text            0      13D      data         9993        1
+p1cclass.obj    data         9994       81
+p1emit.obj      text          13D      7C1      data         9A15       91
+                bss          A387       42
+p1expr1.obj     text          8FE      312      data         9AA6        6
+                bss          A3C9       8F
+p1expr2.obj     text          C10      183
+p1expr3.obj     text          D93      528      data         9AAC        4
+p1expr4.obj     text         12BB      3DA
+p1expr5.obj     text         1695      6FE
+p1expr6.obj     text         1D93      B49      data         9AB0       25
+p1lex1.obj      text         28DC      5B9      data         9AD5      10F
+                bss          A458       97
+p1lex2.obj      text         2E95      95A      data         9BE4       8A
+p1main.obj      text         37EF      399      data         9C6E       A1
+                bss          A4EF      192      top          AC9A      2AF
+p1op.obj        data         9D0F      220
+p1prog.obj      text         3B88      64F      data         9F2F       47
+                bss          A681        9
+p1stmt.obj      text         41D7      D74      data         9F76       53
+p1sym.obj       text         4F4B     1536      data         9FC9      126
+                bss          A68A        4
+p1type1.obj     text         6481      284      data         A0EF        4
+p1type2.obj     text         6705      308
+p1type3.obj     text         6A0D      338      data         A0F3       1A
+p1type4.obj     text         6D45      6DA      data         A10D       2B
+                bss          A68E      402
+p1type5.obj     text         741F      75B
+p1type6.obj     text         7B7A      4DC      data         A138        6
+p1type7.obj     text         8056      1A7      data         A13E       10
+p1hash.obj      text         81FD      281
+p1alloc.obj     text         847E      143      top          AF49      12C
+libc.obj        text         85C1     13D2      data         A14E      239
+                bss          AA90      20A
+
+TOTAL           Name         Link     Load   Length
+                (abs)           0        0        0
+                text            0        0     9993
+                data         9993     9993      9F4
+                bss          A387     A387      913
+                top          AC9A     AC9A      3DB
+
+                                  Symbol Table
+
+_AddToList               text  82CB  _ComputeHashEntry        text  4F4E
+_GetByte                 text  8556  _GetFirstSym             text  844F
+_GetNextSym              text  8416  _GetString               text  852B
+_GetWord                 text  8572  _Get_SymList             text  84CC
+_Get_hashtab             text  84BD  _InitDynM                top   AF49
+_InitHash                text  81FD  _InitHashEntry           text  8274
+_IsHeader                text  847E  _IsValid                 text  85A6
+_PutByte                 text  8549  _PutString               text  853A
+_PutWord                 text  8563  _ReadMem                 text  8580
+_RemoveFromList          text  837B  _StringLen               text  8520
+_TotalSize               text  84D1  _WriteMem                text  8593
+__Hbss                   bss   AC9A  __Hdata                  data  A387
+__Htext                  text  9993  __Htop                   top   B075
+__Lbss                   bss   A387  __Ldata                  data  9993
+__Ltext                  text  0000  __Ltop                   top   AC9A
+__argc_                  bss   AC94  __ctype_                 data  A1B6
+__fcb                    data  A237  __iob                    data  A156
+__sibuf                  bss   AA94  _allocFConst             text  1DB8
+_allocIConst             text  2703  _allocId                 text  2675
+_allocSConst             text  26D7  _allocSType              text  272E
+_args                    bss   A68E  _atoi                    text  9257
+_base                    bss   AC99  _bdos                    text  8E78
+_bdoshl                  text  8D0D  _blank                   data  9FC9
+_blkclr                  text  9983  _breakpoint              text  8498
+_brk                     text  88B3  _byte_8f85               data  9AAA
+_byte_8f86               data  9AAB  _byte_968b               bss   A42D
+_byte_9d37               bss   A3C9  _byte_a289               bss   A683
+_byte_a299               bss   A68C  _byte_a29a               bss   A68D
+_ca9CB1                  bss   A389  _calledBy                text  8491
+_ccClass                 data  9994  _checkScopeExit          text  5965
+_cleanup                 text  89C7  _closeFiles              text  3AF0
+_common_6fab             text  7B7A  _complexErr              text  2755
+_copyTmp                 text  3A91  _crfFile                 bss   A590
+_crfFp                   bss   A594  _crfNameBuf              bss   A4EF
+_curFuncNode             bss   A687  _def_fcb                 text  95C1
+_depth                   bss   A684  _doprnt                  text  8FC7
+_emitLabelDef            text  02A5  _emitSrcInfo             text  35AB
+_enterScope              text  5941  _errBuf                  bss   A50F
+_errCnt                  bss   A592  _escCh                   text  3615
+_exit                    text  894F  _exitScope               text  5951
+_expect                  text  37B2  _expectErr               text  3A79
+_fatalErr                text  3A15  _fclose                  text  8C88
+_ffile                   bss   AC97  _fflush                  text  8D23
+_fgetc                   text  8B23  _fgets                   text  8AAC
+_filbuf                  text  8B9F  _findMember              text  5C35
+_flsbuf                  text  9503  _fopen                   text  8A6C
+_format_and_print        text  3894  _fprintf                 text  93BA
+_fputc                   text  8EDD  _fputs                   text  8E92
+_free                    text  9969  _freopen                 text  93DC
+_getCh                   text  336C  _getargs                 text  8F5A
+_inBuf                   bss   A596  _inCnt                   bss   A4A1
+_isValidDimType          text  63D9  _keywords                data  9AD5
+_lInfoEmitted            bss   A4A8  _l_opt                   bss   A618
+_lastEmitFunc            bss   A478  _lastEmitSrc             bss   A4A9
+_leds                    text  84AB  _left                    bss   AC96
+_lineNo                  bss   A616  _lookup                  text  4FA7
+_main                    text  37EF  _malloc                  text  9795
+_myallocstr              text  8516  _myallocsym              text  84FE
+_n_opt                   bss   A61C  _nameBuf                 bss   A458
+_newTmpLabel             text  5D5C  _nodeAlloc               text  57E2
+_nodeCnt                 data  9FCA  _opTable                 data  9D0F
+_p12_a297                bss   A68A  _p25_a28f                bss   A681
+_p2List                  data  9AA6  _pad9d00                 bss   A43B
+_parseAsm                text  320C  _parseName               text  30F7
+_parseNumber             text  2E95  _parseStmt               text  425D
+_parseStmtAsm            text  44D0  _parseStmtBreak_Continue text  4B1C
+_parseStmtCase           text  4BC9  _parseStmtDefault        text  4B58
+_parseStmtDo             text  45E9  _parseStmtFor            text  496B
+_parseStmtGoto           text  4D3C  _parseStmtGroup          text  443B
+_parseStmtIf             text  46C8  _parseStmtLabel          text  4DA5
+_parseStmtReturn         text  4CE0  _parseStmtSwitch         text  47C7
+_parseStmtWhile          text  4542  _parseString             text  328C
+_peekCh                  text  376A  _pnum                    text  92A4
+_popExpr                 text  2781  _pputc                   text  9290
+_prErrMsg                text  33FA  _prError                 text  39D5
+_prFuncBrace             text  0278  _prMsg                   text  385E
+_prMsgAt                 text  34D0  _prWarning               text  3A40
+_printf                  text  8FA8  _pushS13                 text  275E
+_putchar                 text  8EC7  _reduceNodeRef           text  5891
+_releaseNodeFreeList     text  57DF  _rindex                  text  8607
+_runtop                  top   AC9A  _s13Alloc                text  23F9
+_s13FreeList             bss   A41A  _s13ReleaseFreeList      text  23CB
+_s13SP                   bss   A429  _s13Stk                  bss   A3CA
+_s13_9d1b                bss   A41C  _s13_9d28                bss   A42E
+_s2_9cf3                 bss   A3F2  _sInfoEmitted            bss   A4A7
+_s_opt                   bss   A61B  _sbrk                    text  88BB
+_setbuf                  text  89EC  _skipStmt                text  3783
+_skipToSemi              text  37D7  _skipWs                  text  35FA
+_sprintf                 text  8986  _srcFile                 bss   A61D
+_srcFileArg              bss   A619  _startTokCnt             bss   A4A3
+_strChCnt                bss   A4ED  _strId                   data  9AA8
+_strcat                  text  9369  _strcmp                  text  932D
+_strcpy                  text  9384  _strlen                  text  9396
+_strncmp                 text  9347  _strncpy                 text  93A4
+_sub_013d                text  013D  _sub_01c1                text  01C1
+_sub_01ec                text  0208  _sub_0273                text  02C0
+_sub_02a6                text  02F3  _sub_0353                text  03A0
+_sub_042d                text  04D6  _sub_0470                text  0519
+_sub_0493                text  053C  _sub_053f                text  062C
+_sub_05b5                text  06A2  _sub_05d3                text  06C0
+_sub_05f1                text  06DE  _sub_07e3                text  08F1
+_sub_07f5                text  08FE  _sub_0817                text  0920
+_sub_0a83                text  0C10  _sub_0aed                text  0C7D
+_sub_0b93                text  0D26  _sub_0bfc                text  0D93
+_sub_10a8                text  12BB  _sub_1340                text  1559
+_sub_1441                text  1695  _sub_1b4b                text  1D93
+_sub_1b94                text  1DDB  _sub_1bf7                text  1E3E
+_sub_1ccc                text  1F3D  _sub_1d02                text  1F73
+_sub_1d5a                text  1FC7  _sub_1df0                text  2058
+_sub_1e37                text  209D  _sub_1e58                text  20BD
+_sub_1ebd                text  212B  _sub_1ef1                text  2163
+_sub_1f5d                text  21D6  _sub_2105                text  237B
+_sub_21c7                text  2438  _sub_225a                text  24C8
+_sub_23b4                text  261F  _sub_2529                text  279F
+_sub_255d                text  27D3  _sub_2569                text  27DF
+_sub_25f7                text  2869  _sub_3abf                text  3B66
+_sub_3adf                text  3B88  _sub_3c7e                text  3D71
+_sub_3d24                text  3E3E  _sub_409b                text  41D7
+_sub_4ca4                text  4E07  _sub_4ce8                text  4E94
+_sub_4d15                text  4EC6  _sub_4d67                text  4F1C
+_sub_4d92                text  4F4B  _sub_4e90                text  5086
+_sub_4eed                text  50EB  _sub_516c                text  552E
+_sub_51cf                text  55E0  _sub_51e7                text  560D
+_sub_56a4                text  5BFC  _sub_573b                text  5CDE
+_sub_578d                text  5D64  _sub_583a                text  5E29
+_sub_58bd                text  5EAC  _sub_591d                text  5FE0
+_sub_5a4a                text  6239  _sub_5a76                text  627B
+_sub_5aa4                text  6306  _sub_5ad5                text  633B
+_sub_5b08                text  6371  _sub_5b38                text  63A4
+_sub_5b99                text  640E  _sub_5be1                text  6481
+_sub_5c19                text  6505  _sub_5c50                text  6543
+_sub_5dd1                text  6705  _sub_60db                text  6A0D
+_sub_6360                text  6D45  _sub_6531                text  6F42
+_sub_65e2                text  7010  _sub_69ca                text  741F
+_sub_6fab                text  7C89  _sub_742a                text  8056
+_sub_7454                text  807E  _test_brk                text  9598
+_tmpFile                 data  9C6E  _tmpFp                   bss   A50D
+_tmpLabelId              bss   A456  _tmp_yylex               text  28DC
+_toupper                 text  8886  _ungetCh                 bss   A4A5
+_ungetTok                bss   A4A0  _unlink                  text  9710
+_unreachable             bss   A689  _w_opt                   bss   A58F
+_word_968c               bss   A42B  _word_9caf               bss   A387
+_word_a28b               bss   A685  _xalloc                  text  3B1F
+_yylex                   text  2E60  _yylval                  bss   A4E9
+adiv                     text  8635  aladd                    text  8922
+aldiv                    text  86F9  almod                    text  8720
+almul                    text  8819  amod                     text  8626
+amul                     text  868E  asal                     text  88F4
+asaldiv                  text  86E4  asalmod                  text  8732
+asar                     text  8930  asll                     text  88F4
+aslladd                  text  887E  aslldiv                  text  8718
+asllmod                  text  8745  aslr                     text  8903
+brelop                   text  8F35  cret                     text  85CD
+csv                      text  85C1  indir                    text  85D4
+ladec                    text  87F8  lainc                    text  87DF
+ldiv                     text  8630  lladd                    text  8922
+lldec                    text  87F8  lldiv                    text  870C
+llinc                    text  87DF  llmod                    text  873A
+llmul                    text  8819  llrsh                    text  8805
+lmod                     text  862B  lmul                     text  868E
+ncsv                     text  85D5  nularg                   data  9993
+rcsv                     text  85E9  shal                     text  88E7
+shar                     text  893F  shll                     text  88E7
+shlr                     text  8912  start                    text  0100
+startup                  text  8F58  wrelop                   text  8F49
+
