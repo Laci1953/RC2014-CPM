@@ -12,7 +12,7 @@ The main goal of this project was to obtain an enhanced HiTech C compiler toolch
 For the second (specific) environment, the basic idea was to use the upper 64KB RAM to extend the RAM space available for the HiTech tools.
 This was done by intercepting (part of) the malloc/free calls used by a tool, by using some extra assembler code, 
 to return pointers not from the "usual" lower 64KB RAM, but from the upper 64 KB RAM. 
-Practically, new "memory allocator" were written, to handle the upper 64KB RAM space.
+Practically, new "memory allocators" were written, to handle the upper 64KB RAM space.
 Of course, all the references to those pointers, in the C sources, must be handled by special routines, 
 to move bytes from/to the upper 64KB RAM to the lower 64KB RAM.
 
