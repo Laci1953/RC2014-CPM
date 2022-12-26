@@ -11,7 +11,7 @@ Works ONLY for systems provided with both:
 
 Best results are obtained with RC2014's provided with 64MB CF, due to larger TPA.
 
-The executable is OPTIMNEW.COM
+The executable is OPTIM128.COM
 
 Current settings are made for SC108
 
