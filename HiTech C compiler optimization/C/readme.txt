@@ -1,6 +1,6 @@
 The C compiler with an extra switch -% providing memory use statistics for P1, CGEN and OPTIM
 
-Example:
+Example: (CNEW.COM is executed...)
 
 D>c -v -c -o -% te.c
 HI-TECH C COMPILER (CP/M-80) V3.09
