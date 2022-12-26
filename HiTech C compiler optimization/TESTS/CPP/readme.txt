@@ -1,3 +1,7 @@
+These files are the original source files for CPP.COM, as decompiled by Mark Ogden.
+
+They compile ok.
+
 D>sdir cpp.c
 
 Directory For Drive D:  User  0
