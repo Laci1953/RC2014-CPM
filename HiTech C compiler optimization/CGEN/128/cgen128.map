@@ -1,0 +1,196 @@
+Machine type is Z80
+
+zcrtcpm.obj     text            0      13D      data         851A        1
+data.obj        data         851B     1980      bss          B290      280
+lex1.obj        text          13D       59      data         9E9B      8E5
+lex2.obj        text          196      6BC      data         A780      18F
+                bss          B510       3C
+code.obj        text          852     1112      data         A90F      326
+                bss          B54C        5
+sym1.obj        text         1964      9DC      data         AC35       68
+sym2.obj        text         2340      8EE      data         AC9D      23D
+                bss          B551        B
+sym3.obj        text         2C2E      387
+cgen1.obj       text         2FB5      156      data         AEDA       1F
+cgen2.obj       text         310B      817      data         AEF9       2C
+cgen3.obj       text         3922      880      data         AF25       1C
+tree1.obj       text         41A2      3C4      data         AF41       5A
+tree2.obj       text         4566      26D      data         AF9B       11
+tree3.obj       text         47D3     1104      data         AFAC       50
+local1.obj      text         58D7      835      data         AFFC       48
+local2.obj      text         610C      CDF      data         B044       13
+main.obj        text         6DEB      1B5      data         B057       B1
+                top          B76E      18A
+malloc.obj      text         6FA0      338      bss          B55C        2
+getchar.obj     text         72D8       1D
+libc1.obj       text         72F5      C58      data         B108       11
+                bss          B55E      20E
+libc2.obj       text         7F4D      201
+libc3.obj       text         814E      13F
+libc4.obj       text         828D       1F
+libc5.obj       text         82AC      173      bss          B76C        2
+setup.obj       data         B119       F5
+ctype.obj       data         B20E       81
+alloc128.obj    text         841F       FB      top          B8F8      12C
+nularg.obj      data         B28F        1
+
+TOTAL           Name         Link     Load   Length
+                (abs)           0        0        0
+                text            0        0     851A
+                data         851A     851A     2D76
+                bss          B290     B290      4DE
+                top          B76E     B76E      2B6
+
+                                  Symbol Table
+
+_GetByte        text  84CA  _GetString      text  849F
+_GetWord        text  84E6  _InitDynM       top   B8F8
+_MyAllocMbr     text  6F7E  _MyAllocStr     text  6F54
+_PutByte        text  84BD  _PutString      text  84AE
+_PutWord        text  84D7  _ReadMem        text  84F4
+_StringLen      text  8494  _TotalSize      text  844B
+_WriteMem       text  8507  __Hbss          bss   B76E
+__Hdata         data  B290  __Htext         text  851A
+__Htop          top   BA24  __Lbss          bss   B290
+__Ldata         data  851A  __Ltext         text  0000
+__Ltop          top   B76E  __argc_         bss   B76A
+__ctype_        data  B20E  __doprnt        text  76DE
+__fcb           data  B141  __filbuf        text  7ACF
+__flsbuf        text  79BE  __getargs       text  7E24
+__iob           data  B119  __pnum          text  7655
+__sibuf         bss   B56A  _allocMem       text  6F22
+_allocNode      text  3ABA  _array_AAE8     data  9DE7
+_array_AB24     data  9E23  _array_AB54     data  9E53
+_array_AE13     bss   B3FE  _array_AE57     bss   B2CC
+_array_AE97     bss   B310  _array_AEDB     bss   B381
+_array_AFFD     bss   B3C6  _atoi           text  7F14
+_atol           text  7F4D  _badIntCode     text  0716
+_base           bss   B569  _baseHeap       bss   B3F3
+_bdos           text  7E08  _bdoshl         text  7C9D
+_bflag          bss   B43E  _blkclr         text  7FF9
+_bmove          text  827D  _breakpoint     text  842A
+_brk            text  82FF  _byte_AFFA      bss   B441
+_byte_B013      bss   B3F2  _byte_B014      bss   B3F7
+_calledBy       text  8423  _checksp        text  8333
+_cntx           text  743E  _codeFrag       data  85AB
+_def_fcb        text  74B1  _dopetab        data  9D39
+_eflag          bss   B37E  _errcnt         bss   B3C4
+_exit           text  7BE1  _expect         text  07BA
+_fatalErr       text  6E51  _fclose         text  7C18
+_ffile          bss   B567  _fflush         text  7CB3
+_fgetc          text  7A53  _fgetchar       text  72D8
+_fprintf        text  72F5  _fputc          text  7967
+_fputchar       text  72E1  _free           text  7273
+_freeNode       text  3A8F  _freopen        text  7317
+_getToken       text  0312  _getchar        text  7465
+_gethashptr     text  0203  _hashtab        bss   B442
+_hflag          bss   B3FD  _invertTest     text  64F0
+_leaveBlock     text  0410  _leds           text  843D
+_left           bss   B566  _lineno         bss   B30E
+_lvlidx         bss   B50C  _main           text  6DEB
+_malloc         text  7129  _max            text  179C
+_movmem         text  827D  _myallocmbr     text  8472
+_myallocstr     text  848A  _newLocal       text  18A4
+_nflag          bss   B3FA  _nodesize       text  3D72
+_nstdpth        bss   B3F0  _otherFrag      data  851B
+_parseData      text  07DE  _parseEnum      text  1E35
+_parseExpr      text  4566  _parseInit      text  0B5B
+_parseMembers   text  1C8F  _parseStmt      text  071F
+_parseSwitch    text  0F40  _parseVariable  text  1964
+_pflag          bss   B350  _pputc          text  7641
+_prDefb         text  1681  _prDefb0s       text  0DDC
+_prError        text  6EA4  _prFrameHead    text  0C01
+_prFrameTail    text  0C37  _prGlobalDef    text  0CA1
+_prIXnPush      text  15C3  _prJmpLabel     text  16F7
+_prJump         text  170B  _prMsg          text  6EDC
+_prPop          text  157C  _prPsect        text  0E34
+_prPush         text  1535  _prWarning      text  6E7F
+_printf         text  743F  _progname       bss   B353
+_putchar        text  746E  _regNames       data  9DC9
+_rflag          bss   B3C3  _sbrk           text  8307
+_sortCaseLabels text  0E63  _sprintf        text  7600
+_stab0          data  8F97  _stab1          data  928E
+_stab2          data  9586  _stab3          data  986F
+_stab4          data  9B6B  _strcat         text  836F
+_strcmp         text  838A  _strcpy         text  83A4
+_strlen         text  83B6  _strncpy        text  83C4
+_sub_13D        text  013D  _sub_1420       text  1516
+_sub_14F3       text  15EF  _sub_153A       text  165E
+_sub_15FB       text  171F  _sub_1680       text  17C3
+_sub_1754       text  18AC  _sub_1B2        text  0196
+_sub_1C6D       text  1F92  _sub_1CC4       text  2012
+_sub_1CEF       text  2050  _sub_1EDF       text  228C
+_sub_1F4B       text  2340  _sub_265        text  0249
+_sub_283E       text  2C2E  _sub_2B2A       text  2F12
+_sub_2B79       text  2F5E  _sub_2BD0       text  2FB5
+_sub_2C5E       text  3060  _sub_2CE0       text  30E2
+_sub_2D09       text  310B  _sub_3564       text  3922
+_sub_35E6       text  399E  _sub_377A       text  3AC8
+_sub_37ED       text  3B3B  _sub_385B       text  3BE2
+_sub_387A       text  3C01  _sub_38CA       text  3C78
+_sub_393C       text  3D16  _sub_3952       text  3D2C
+_sub_3968       text  3D42  _sub_39CA       text  3DAA
+_sub_3A79       text  3E53  _sub_3B65       text  3F3F
+_sub_3BC6       text  3FA0  _sub_3CDF       text  40B8
+_sub_3DC9       text  41A2  _sub_3EAA       text  4283
+_sub_415E       text  4532  _sub_43EF       text  47D3
+_sub_46F7       text  4B0C  _sub_475C       text  4B71
+_sub_47B2       text  4BC7  _sub_4B89       text  4FB4
+_sub_4BE5       text  5010  _sub_4C12       text  503D
+_sub_4C6D       text  5098  _sub_4C8B       text  50B6
+_sub_4DA3       text  51CB  _sub_4E8D       text  52BC
+_sub_4FA8       text  53D4  _sub_4FCE       text  53FA
+_sub_508A       text  54B6  _sub_53EE       text  580F
+_sub_54B6       text  58D7  _sub_5CF5       text  610C
+_sub_5DF6       text  627D  _sub_5F52       text  63EE
+_sub_600E       text  64A9  _sub_60A8       text  653A
+_sub_61AA       text  663A  _sub_6246       text  672F
+_sub_627        text  0675  _sub_628F       text  6777
+_sub_62BE       text  67A6  _sub_63B8       text  689F
+_sub_6589       text  6A70  _sub_665B       text  6B3C
+_sub_66BC       text  6B9D  _sub_77F5       text  7BB8
+_sub_808        text  0852  _sub_BEE        text  0C59
+_sub_C57        text  0CE4  _sub_CAB        text  0D5E
+_tmpBuf         bss   B290  _top_main       top   B76E
+_toupper        text  7484  _typeB          bss   B351
+_typeChar       bss   B3C1  _typeDouble     bss   B3F8
+_typeLong       bss   B3EE  _typeUChar      bss   B50E
+_typeVar        bss   B37F  _typeX          bss   B37C
+_varSize        text  1FB3  _warningMsg     bss   B30C
+_wflag          bss   B37B  _word_AFF8      bss   B3FB
+_word_AFFB      bss   B43F  _word_B017      bss   B3F5
+adiv            text  80F5  aladd           text  802F
+aland           text  803D  aldiv           text  819A
+allsh           text  7E84  almod           text  81C1
+almul           text  82C0  alor            text  8066
+alrsh           text  82AC  alsub           text  80C1
+alxor           text  80D1  amod            text  80E6
+amul            text  828D  arelop          text  807B
+asal            text  7EC8  asaladd         text  7EB6
+asaland         text  7EBF  asaldiv         text  8185
+asallsh         text  7E72  asalmod         text  81D3
+asalmul         text  7EE9  asalor          text  7EF2
+asalrsh         text  7E95  asalsub         text  7EFB
+asalxor         text  7F04  asar            text  7EA7
+asll            text  7EC8  aslladd         text  7EB6
+aslland         text  7EBF  aslldiv         text  81B9
+aslllsh         text  7E72  asllmod         text  81E6
+asllmul         text  7EE9  asllor          text  7EF2
+asllrsh         text  7ED7  asllsub         text  7EFB
+asllxor         text  7F04  aslr            text  826E
+brelop          text  809E  cret            text  83E5
+csv             text  83D9  indir           text  83EC
+iregset         text  8009  iregstore       text  8023
+ldiv            text  80F0  lladd           text  802F
+lland           text  803D  lldiv           text  81AD
+lllsh           text  7E84  llmod           text  81DB
+llmul           text  82C0  llor            text  8066
+llrsh           text  8052  llsub           text  80C1
+llxor           text  80D1  lmod            text  80EB
+lmul            text  828D  lrelop          text  807B
+ncsv            text  83ED  nularg          data  B28F
+rcsv            text  8401  shal            text  8352
+shar            text  8342  shll            text  8352
+shlr            text  835F  start           text  0100
+startup         text  7E22  wrelop          text  80B2
+
