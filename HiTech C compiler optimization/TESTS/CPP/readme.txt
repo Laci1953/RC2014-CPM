@@ -1,3 +1,22 @@
+D>sdir cpp.c
+
+Directory For Drive D:  User  0
+
+    Name     Bytes   Recs   Attributes
+------------ ------ ------ ------------
+CPP      C      68k    523 Dir RW
+
+D>sdir cpy.c
+
+Directory For Drive D:  User  0
+
+    Name     Bytes   Recs   Attributes
+------------ ------ ------ ------------
+CPY      C      16k     97 Dir RW
+
+D>
+
+
 CPP.C
 
 D>c -v -c -o cpp.c
