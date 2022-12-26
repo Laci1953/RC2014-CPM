@@ -32,7 +32,7 @@ some significant improvements were obtained, listed below:
 - OPTIM (using the upper 64KB RAM for some of the malloc's)
 
 The most significant improvement for this second environment (128KB RAM computers),
-is that P1 , CGEN and OPTIM can handle now files that cannot be compiled on any available Z80 computer, including here also the emulators/simulators (Z80SIM, ZXCC).
+is that P1 , CGEN and OPTIM can handle now files that could not be compiled previously on any available Z80 computer, including here also the emulators/simulators (Z80SIM, ZXCC).
 
 Also, remember that Z80AS eliminates now all the worries related to the size of files to be assembled.
 
