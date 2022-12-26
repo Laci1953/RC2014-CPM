@@ -1,4 +1,4 @@
-Updated on 11 December 2022
+Updated on 26 December 2022
 
 Improvement for the OPTIM.COM for RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module).
 
