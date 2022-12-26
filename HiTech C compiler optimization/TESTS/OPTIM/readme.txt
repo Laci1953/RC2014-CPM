@@ -1,5 +1,5 @@
 I took the source of the OPTIM.COM, the optim.c file, and sliced-it in 3 parts: optima.c, optimb.c and optimc.c.
-You can see below the size of these files...
+You can see below the size of these files... all these compile ok.
 
 D>sdir optim?.c
 
