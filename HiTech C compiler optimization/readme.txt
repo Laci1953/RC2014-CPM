@@ -38,4 +38,6 @@ Also, remember that Z80AS eliminates now all the worries related to the size of 
 
 As a conclusion, the RC2014's provided with 128 KB RAM can now take full advantage of having more memory space, while working with the HiTech C tools.
 
+A clone of the C.COM compiler is provided, with an extra switch -% listing memory use statistics for P1, CGEN and OPTIM
+
 See the TEST folder for examples of large C files being processed on a RC2014 provided with the SC108 board (128KB RAM).
