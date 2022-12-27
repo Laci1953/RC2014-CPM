@@ -20,8 +20,7 @@ c -v -c -o -dTYPE p1type7.c
 c -v -c -o -dLEX p1lex1.c
 c -v -c -o -dLEX p1lex2.c
 c -v -c -o p1hash.c
-z80as -j p1main
+z80as p1main
 z80as -j libc
 z80as -j p1alloc
 z80as mycrtcpm
-
