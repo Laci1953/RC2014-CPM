@@ -8,29 +8,6 @@ Directory For Drive D:  User  0
 ------------ ------ ------ ------------
 CREF     C      16k    100 Dir RW
 
-D>
-
-( When trying to compile-it on the old HiTech C compiler, something unexpected happens: )
-
-E>c -v -c -o cref.c
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-0:CPP -DCPM -DHI_TECH_C -Dz80 -I CREF.C $CTMP1.$$$
-0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-CREF.C: packSym()
-   219:     qsort(symtab, var4 - symtab, sizeof(sym_t *), (int (*)(void *, void *))cmpSym);
-                                                illegal conversion between pointer types ^  (warning)
-CREF.C: printAll()
-   387:             qsort(psym->xrefs, psym->cntXrefs, sizeof(xref_t), (int (*)(void *, void *))cmpXref);
-                                                              illegal conversion between pointer types ^  (warning)
-0:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:ZAS -J -N -oCREF.OBJ $CTMP2.$$$
-
-(ups... ZAS crashed silently...)
-
-Now, let's compile-it on RC2014 + SC108 using the new HiTech C toolset:
-
 D>c -v -c -o -% cref.c
 HI-TECH C COMPILER (CP/M-80) V3.09
 Copyright (C) 1984-87 HI-TECH SOFTWARE
@@ -84,5 +61,3 @@ Directory For Drive D:  User  0
 CREF     OBJ    12k     70 Dir RW
 
 D>
-
-(... it compiles ok, we have the .obj file)
