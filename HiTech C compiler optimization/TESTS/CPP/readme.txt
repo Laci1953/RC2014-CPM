@@ -1,5 +1,23 @@
 These files are the original source files for CPP.COM, as decompiled by Mark Ogden.
 
+D>sdir cpp.c
+
+Directory For Drive D:  User  0
+
+    Name     Bytes   Recs   Attributes
+------------ ------ ------ ------------
+CPP      C      68k    523 Dir RW
+
+D>sdir cpy.c
+
+Directory For Drive D:  User  0
+
+    Name     Bytes   Recs   Attributes
+------------ ------ ------ ------------
+CPY      C      16k     97 Dir RW
+
+D>
+
 (Let's try first to compile them with the old HiTech C compiler: )
 
 E>c -v -c -o cpp.c
@@ -22,67 +40,19 @@ ERA $CTMP2.$$$
 ERA $CTMP3.$$$
 ERA $$EXEC.$$$
 
+Let's now compile them using the new HiTech C toolset:
 
-
-They compile ok.
-
-D>sdir cpp.c
-
-Directory For Drive D:  User  0
-
-    Name     Bytes   Recs   Attributes
------------- ------ ------ ------------
-CPP      C      68k    523 Dir RW
-
-D>sdir cpy.c
-
-Directory For Drive D:  User  0
-
-    Name     Bytes   Recs   Attributes
------------- ------ ------ ------------
-CPY      C      16k     97 Dir RW
-
-D>
-
-
-CPP.C
-
-D>c -v -c -o cpp.c
+D>c -v -c -o -% cpp.c
 HI-TECH C COMPILER (CP/M-80) V3.09
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 0:CPP -DCPM -DHI_TECH_C -Dz80 -I CPP.C $CTMP1.$$$
-0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-CPP.C:
-  2194: unused variable definition: sccsid (warning)
-0:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:ZAS -J -N -oCPP.OBJ $CTMP2.$$$
-Z80AS Macro-Assembler V4.7
-
-Errors: 0
-
-Jump optimizations done: 128
-Finished.
-ERA $CTMP1.$$$
-ERA $CTMP2.$$$
-ERA $CTMP3.$$$
-ERA $$EXEC.$$$
-
-D> 
-
-(with statistics)
-
-D>CPP -DCPM -DHI_TECH_C -Dz80 -I CPP.C $CTMP1.$$$
-
-D>p1 -n $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:P1 -N $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
 CPP.C:
   2194: unused variable definition: sccsid (warning)
 16 KB used from the upper 64KB RAM
-
-D>cgen -n $CTMP2.$$$ $CTMP1.$$$
+0:CGEN -N $CTMP2.$$$ $CTMP1.$$$
 8 KB used from the upper 64KB RAM
-
-D>optim -n $CTMP1.$$$ $CTMP2.$$$
+0:OPTIM -N $CTMP1.$$$ $CTMP2.$$$
 22K, 3 iterations
 123 Redundant labels
 173 Jumps to jumps
@@ -101,51 +71,32 @@ D>optim -n $CTMP1.$$$ $CTMP2.$$$
 3 Redundant ex de,hl's
 23 Code motions
 51 KB used from the upper 64KB RAM
-
-CPY.C
-
-D>c -v -c -o cpy.c
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-0:CPP -DCPM -DHI_TECH_C -Dz80 -I CPY.C $CTMP1.$$$
-0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-CPY.C: yyparse()
-   414: }
-        ^ unused label: yyerrlab (warning)
-CPY.C:
-   415: unused variable definition: sccsid (warning)
-0:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:ZAS -J -N -oCPY.OBJ $CTMP2.$$$
+0:ZAS -J -N -oCPP.OBJ $CTMP2.$$$
 Z80AS Macro-Assembler V4.7
 
 Errors: 0
 
-Jump optimizations done: 88
+Jump optimizations done: 128
 Finished.
 ERA $CTMP1.$$$
 ERA $CTMP2.$$$
 ERA $CTMP3.$$$
 ERA $$EXEC.$$$
 
-D>
-
-(with statistics)
-
-D>CPP -DCPM -DHI_TECH_C -Dz80 -I CPY.C $CTMP1.$$$
-
-D>p1 -n $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+D>c -v -c -o -% cpy.c
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+0:CPP -DCPM -DHI_TECH_C -Dz80 -I CPY.C $CTMP1.$$$
+0:P1 -N $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
 CPY.C: yyparse()
    414: }
         ^ unused label: yyerrlab (warning)
 CPY.C:
    415: unused variable definition: sccsid (warning)
 4 KB used from the upper 64KB RAM
-
-D>cgen -n $CTMP2.$$$ $CTMP1.$$$
+0:CGEN -N $CTMP2.$$$ $CTMP1.$$$
 2 KB used from the upper 64KB RAM
-
-D>optim -n $CTMP1.$$$ $CTMP2.$$$
+0:OPTIM -N $CTMP1.$$$ $CTMP2.$$$
 15K, 3 iterations
 105 Redundant labels
 112 Jumps to jumps
@@ -162,5 +113,16 @@ D>optim -n $CTMP1.$$$ $CTMP2.$$$
 1 Xor a's used
 14 Code motions
 13 KB used from the upper 64KB RAM
+0:ZAS -J -N -oCPY.OBJ $CTMP2.$$$
+Z80AS Macro-Assembler V4.7
+
+Errors: 0
+
+Jump optimizations done: 88
+Finished.
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $$EXEC.$$$
 
 D>
