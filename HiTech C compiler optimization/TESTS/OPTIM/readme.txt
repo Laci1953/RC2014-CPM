@@ -57,6 +57,56 @@ A>
 
 (ups ... P1 crashed...)
 
+E>c -v -c -o optimb.c
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+0:CPP -DCPM -DHI_TECH_C -Dz80 -I OPTIMB.C $CTMP1.$$$
+0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+OPTIMB.C:
+   465: extern char        key_f;
+                                ^ key_f: storage class redeclared
+   466: extern char        key_s;
+                                ^ key_s: storage class redeclared
+   467: extern int         num_warn;
+                                   ^ num_warn: storage class redeclared
+   496: extern operand_t   regValues[19];
+                                       ^ illegal type for array dimension
+   497: extern char       *alloct;
+                                 ^ alloct: storage class redeclared
+   498: extern char       *name_fun;
+             Out of memory ^
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $$EXEC.$$$
+
+E>c -v -c -o optimc.c
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+0:CPP -DCPM -DHI_TECH_C -Dz80 -I OPTIMC.C $CTMP1.$$$
+0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+OPTIMC.C:
+   465: extern char        key_f;
+                                ^ key_f: storage class redeclared
+   466: extern char        key_s;
+                                ^ key_s: storage class redeclared
+   467: extern int         num_warn;
+                                   ^ num_warn: storage class redeclared
+   496: extern operand_t   regValues[19];
+                                       ^ illegal type for array dimension
+   497: extern char       *alloct;
+                                 ^ alloct: storage class redeclared
+   498: extern char       *name_fun;
+             Out of memory ^
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $$EXEC.$$$
+
+E>
+
+Total failure...
+
 Now, let's compile these files using the new HiTech toolchain:
 
 D>c -v -c -o -% optima.c
