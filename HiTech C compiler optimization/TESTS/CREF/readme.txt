@@ -9,7 +9,8 @@ Directory For Drive D:  User  0
 CREF     C      16k    100 Dir RW
 
 D>
-When trying to compile-it on the old HiTech C compiler, something unexpected happens:
+
+( When trying to compile-it on the old HiTech C compiler, something unexpected happens: )
 
 E>c -v -c -o cref.c
 HI-TECH C COMPILER (CP/M-80) V3.09
@@ -92,7 +93,7 @@ CREF     OBJ    12k     70 Dir RW
 
 D>
 
-(wow... it compiles ok)
+(wow... it compiles ok, we have the .obj file)
 
 (Let's go back and investigate what could get wrong with the ols HiTech C toolchain:)
 
@@ -140,5 +141,5 @@ E>sdir cref.obj
 File Not Found.
 E>
 
-Surprise... the old ZAS.COM could not handle the size of the input file, so it crashed silently and left us without the .obj file...
+Surprise... the old ZAS.COM could not handle the large size of the input file, so it crashed silently and left us without the .obj file...
 
