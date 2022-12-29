@@ -1,5 +1,29 @@
 These files are the original source files for CPP.COM, as decompiled by Mark Ogden.
 
+(Let's try first to compile them with the old HiTech C compiler: )
+
+E>c -v -c -o cpp.c
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+0:CPP -DCPM -DHI_TECH_C -Dz80 -I CPP.C $CTMP1.$$$
+0:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+ctype.h:
+     9: extern  unsigned char   _ctype_[];
+                                         ^ _ctype_: storage class redeclared
+           identifier redefined: _ctype_ ^
+CPP.C: refill()
+   484:                     lineno[ifno] = maclin;
+              undefined identifier: maclin ^
+CPP.C: cotoken()
+   783:         case 'y':
+          Out of memory ^
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $$EXEC.$$$
+
+
+
 They compile ok.
 
 D>sdir cpp.c
