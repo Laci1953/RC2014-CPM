@@ -89,3 +89,6 @@ The files, when loaded, will be displayed using TABs indentation.
 
 The TAB interval (4 or 8) may be set from the command line: >TE file.ext [ 4 | 8 ] ; default = 8.
 
+UPDATE: (31 dec 2022)
+
+I added TEW.COM, a new version for SC108, for very wide screens (it can handle lines up to 175 characters)
