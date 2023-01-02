@@ -18,7 +18,6 @@ link
  local1.obj \
  local2.obj \
  main.obj \
- malloc.obj \
  getchar.obj \
  libc1.obj \
  libc2.obj \
@@ -29,4 +28,5 @@ link
  ctype.obj \
  alloc128.obj \
  cgentop.obj \
- nularg.obj
+ nularg.obj \
+ libc.lib
