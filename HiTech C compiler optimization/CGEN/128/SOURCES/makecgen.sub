@@ -13,7 +13,6 @@ c -v -c -o tree2.c
 c -v -c -o tree3.c
 c -v -c -o local1.c
 c -v -c -o local2.c
-c -v -c -o malloc.c
 c -v -c -o getchar.c
 c -v -c setup.c
 c -v -c ctype.c
