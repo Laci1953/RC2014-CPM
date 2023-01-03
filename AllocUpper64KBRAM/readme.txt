@@ -47,9 +47,9 @@ short	GetWord(char* source);
 /*	source is in Upper RAM */
 short	StringLen(char* source);
 
-After obtaining the pointer to an allocated buffer in the upper 64 KB RAM, the program must read / write bytes in this buffer only using the already mentioned functions. A direct access to tis allocated buffer is impossible.
+After obtaining the pointer to an allocated buffer in the upper 64 KB RAM, the program must read / write bytes in this buffer only using the already mentioned functions. A direct access to this allocated buffer is impossible, if the buffer is located in the Upper 64KB RAM bank.
 
-Then, as an example, after getting access to a pointer, the program must use PutByte, PutWord, PutString to store something in this buffer, or GetByte, GetWord, GetString to read from this buffer, when this buffer is located in the Upper 64KB RAM:
+Then, as an example, after getting access to a pointer, if the buffer is located in the Upper 64KB RAM bank, the program must use PutByte, PutWord, PutString to store something in this buffer, or GetByte, GetWord, GetString to read from this buffer, when this buffer is located in the Upper 64KB RAM:
 
 	void* p;
 	char type;
