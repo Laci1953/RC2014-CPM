@@ -24,7 +24,7 @@ The results:
 
 For the generic environment (all Z80 computers running CP/M 2.2) some limited improvements were obtained, mainly for P1 (4KB more RAM available)
 
-For RC2014's provided with 128 KB RAM (SC108, SC114, SC118 or Phillip Stevens memory module) and 64MB CF, 
+For RC2014's provided with 128 KB RAM (SC108, SC114, SC118, SC150, SC152 or Phillip Stevens memory module) and 64MB CF, 
 some significant improvements were obtained, listed below:
 
 - P1 (using the upper 64KB RAM for some of the malloc's)
