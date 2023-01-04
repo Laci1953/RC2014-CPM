@@ -2,7 +2,7 @@ How to use the run-time routines to allocate memory in the Upper 64 KB RAM bank
 
 In order to use these routines, the host RC2014 hardware system must fulfill some mandatory conditions.
 
-First, it must have 128 KB RAM (SC108, SC114, SC118 or have the Phillip Stevens memory module installed).
+First, it must have 128 KB RAM (SC108, SC114, SC118, SC150, SC152 or have the Phillip Stevens memory module installed).
 
 Use the SC108 condition to select the appropriate hardware, in the dynm128.as file.
 
