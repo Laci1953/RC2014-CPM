@@ -6,7 +6,8 @@ First, it must have 128 KB RAM (SC108, SC114, SC118 or have the Phillip Stevens 
 
 Use the SC108 condition to select the appropriate hardware, in the dynm128.as file.
 
-Also, it must have installed on the 32 KB ROM a SCM version with the $2A and $2B API functions implemented, or to have burned at the address 7F00H in the ROM two JP's pointing to the Upper 64KB RAM read and write routines.
+Also, it must have installed on the 32 KB ROM a SCM version with the $2A and $2B API functions implemented, 
+or to have as ROM a CP/M booter from my BOOT folder (it contains, at the address 7F00H in the ROM, two JP's pointing to the Upper 64KB RAM read and write routines).
 
 This is needed in order to install the "shadow" routines on both the low and up 64 KB RAM banks, at the same address.
 
@@ -24,12 +25,14 @@ void*	Alloc128(short size, char* type); /* returns NULL is no more free memory i
 					  /* returns type = 0 : buffer is allocated in the low 64KB RAM, */
 					  /*		    1 : buffer is allocated in the upper 64KB RAM */
 void	Free128(void* buf, char type);
-int	GetTotalFree(void);		  /* returns total number of available bytes */
+int	GetTotalFree(void);
 
 /*	source is in Upper RAM, destination is in Lower RAM */
+void	ReadMem(char* dest, char* source, short count);
 void	GetString(char* dest, char* source);
 
 /*	source is in Lower RAM, destination is in Upper RAM */
+void	WriteMem(char* source, char* dest, short count);
 void	PutString(char* source, char* dest);
 
 /*	dest is in Upper RAM */
@@ -47,22 +50,9 @@ short	GetWord(char* source);
 /*	source is in Upper RAM */
 short	StringLen(char* source);
 
-After obtaining the pointer to an allocated buffer in the upper 64 KB RAM, the program must read / write bytes in this buffer only using the already mentioned functions. A direct access to this allocated buffer is impossible, if the buffer is located in the Upper 64KB RAM bank.
+After obtaining the pointer to an allocated buffer in the upper 64 KB RAM, the program must read / write bytes in this buffer only using the already mentioned functions. 
+A direct access to this allocated buffer is impossible, if the buffer is located in the Upper 64KB RAM bank.
 
-Then, as an example, after getting access to a pointer, if the buffer is located in the Upper 64KB RAM bank, the program must use PutByte, PutWord, PutString to store something in this buffer, or GetByte, GetWord, GetString to read from this buffer, when this buffer is located in the Upper 64KB RAM:
+An example is provided in test128.c
 
-	void* p;
-	char type;
-
-	p = Alloc128(0x20, &type);
-
-	if (type)
-		PutString("text", p);
-	else
-		strcpy(p, "text");
-
-To release the allocated buffer, Free128 must be called:
-
-	Free128(p, type);
-  
-
+Use make.sub to build the test128.com
