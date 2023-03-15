@@ -1,7 +1,0 @@
-xsub
-link
- -Z -Dp1v128.sym -Mp1v128.map -Ptext=0,data,bss,top -C100H -Op1v128.COM mycrtcpm.obj \
- p1cclass.obj p1emit.obj p1expr1.obj p1expr2.obj p1expr3.obj p1expr4.obj \
- p1expr5.obj p1expr6.obj  p1lex1.obj p1lex2.obj p1main.obj p1op.obj p1prog.obj \
- p1stmt.obj p1sym.obj p1type1.obj p1type2.obj p1type3.obj p1type4.obj p1type5.obj \
- p1type6.obj p1type7.obj p1hash.obj p1alloc.obj libc.obj
