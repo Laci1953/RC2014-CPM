@@ -3,8 +3,8 @@ Updated at 25 March 2023
 
 Text editor "te" for RC2014's following hardware:
 
--Steve Cousins SC108 128KB RAM (128), 
--Spencer Owen 512KB RAM + 512KB ROM memory module (512)
+- SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
+- or the 512KB RAM + 512KB ROM module
 
 Use the HiTech tools to compile & link the sources.
 
