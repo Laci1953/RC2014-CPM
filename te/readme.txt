@@ -1,4 +1,4 @@
-Updated at 25 MarchApril 2023
+Updated at 25 March 2023
 -----------------------------
 
 Text editor "te" for RC2014's following hardware:
@@ -93,3 +93,49 @@ The TAB interval (4 or 8) may be set from the command line: >TE file.ext [ 4 | 8
 UPDATE: (31 dec 2022)
 
 I added TEW.COM, a new version for SC108, for very wide screens (it can handle lines up to 175 characters)
+
+March 2023
+----------
+
+Improving the usability of the TE text editor
+
+I just published on GitHub (  ) a new version of the TE text editor, configured to be used on Z80 systems provided with 128KB or 512KB RAM.
+
+I made some improvements mainly related to the usability of the tool.
+
+1. First, I opted to display a small help message, in the case when RE is executed without parameters;  the message is showing all the available options.
+
+-------------
+D>te
+TE text editor
+Copyright (c) 2015-2021 Miguel Garcia / FloppySoftware
+Adapted for 128KB RAM by Ladislau Szilagyi
+
+Use: >TE [options] [filename]
+
+where options (lowercase or uppercase) are:
+ -Tn (n = 4 or 8) sets the tabs to n spaces, default is 8
+ -Hnn sets the screen height (up to 99, default is 24)
+ -Wnnn sets the screen width (up to 200, default is 80)
+
+Continue? (N/n = quit) :
+------------
+
+You can press N/n to quit to CP/M, or any other key to continue TE,  being presented with an empty screen, ready for text input...
+
+2. Tabs can be used freely in the text; you have two options related to  TAB's alignment ( 4 or 8 ); the default is 8. 
+You can change-it to 4 using  the option -T in the command line.
+It important to mention that the use of TABs does not increase the size  of the text file, nor the size of buffers allocated in memory to store the text;
+ this is because TABs are inflated/deflated to/from blanks only when needed, (e.g.) when displayed on screen.
+
+3. When reading/writing files, a line containing a counter of the lines being processed is displayed, to offer to the user a clue related to the status of the I/O operation.
+
+4. The number of columns/lines can now be selected directly in the command line, using the -W or -H options; default values are 24 for lines, and 80 for columns.
+
+
+I opted to unify the two versions of source code (128/512), now there is a single set of source files for both 128KB and 512KB TE versions.
+
+As a reminder, the TE128 can edit files with sizes up to 70KB, and TE512 up to 400KB.  
+
+Ladislau
+
