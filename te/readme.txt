@@ -97,10 +97,6 @@ I added TEW.COM, a new version for SC108, for very wide screens (it can handle l
 March 2023
 ----------
 
-Improving the usability of the TE text editor
-
-I just published on GitHub (  ) a new version of the TE text editor, configured to be used on Z80 systems provided with 128KB or 512KB RAM.
-
 I made some improvements mainly related to the usability of the tool.
 
 1. First, I opted to display a small help message, in the case when RE is executed without parameters;  the message is showing all the available options.
