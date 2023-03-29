@@ -8,7 +8,7 @@ then
 Your CP/M is ready and can be booted:
 *cpm<CR>
 
-How these .hex files were builded:
+How these .hex files were built:
 
 >z80as putsys
 >objtohex putsys.obj putsys.hex
