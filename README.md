@@ -1,5 +1,26 @@
 # RC2014-CPM
+
+Why a "custom" CP/M ?
+---------------------
+
+Because the "official" RC2014's CP/M is too "fat" ... eating all the available RAM space till 0FFFFH
+
+Why is this a bad thing?
+
+Because this way, it's impossible to make use of the "upper" 64KB RAM available on all 128KB RAM Z80 systems.
+It is impossible because at the top adresses, some "shadow" routines must be stored, at the same address,
+in both the "lower" and "upper" 64KB RAM, in order to be able to move bytes between these two 64KB banks.
+
+This is why I tried to customize the BIOS, in order to obtain a "thinner" CP/M.
+It's a matter of only some dozens of bytes gained...but it's important.
+
+Using this "customized" CP/M, it is now possible to benefit from :
+
+- an enhanced HiTech C Compiler, able to compile larger C source files ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
+- an enhanced TE text editor, able to edit (in memory) larger text tiles ( see https://github.com/Laci1953/RC2014-CPM/tree/main/te )
+
 CP/M and some tools & games for RC2014:
+---------------------------------------
 
 PutSys - CP/M for RC2014's (64MB or 128MB CF)
 
