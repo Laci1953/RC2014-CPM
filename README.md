@@ -7,7 +7,7 @@ Because the "official" RC2014's CP/M is too "fat" ... eating all the available R
 
 Why is this a bad thing?
 
-Because this way, it's impossible to make use of the "upper" 64KB RAM available on all 128KB RAM Z80 systems.
+Because this way, it's impossible to make use of the "upper" 64KB RAM available on all the 128KB RAM Z80 systems.
 
 It is impossible because at the top adresses, some "shadow" routines must be stored, at the same address,
 in both the "lower" and "upper" 64KB RAM, in order to be able to move bytes between these two 64KB banks.
