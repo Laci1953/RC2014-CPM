@@ -1,4 +1,4 @@
-Updated at 25 March 2023
+Updated at 4 April 2023
 -----------------------------
 
 Text editor "te" for RC2014's following hardware:
