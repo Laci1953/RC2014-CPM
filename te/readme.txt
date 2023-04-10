@@ -1,12 +1,21 @@
 Updated at 10 April 2023
 -----------------------------
 
-Text editor "te" for RC2014's following hardware:
+The text editor TE was written by Miguel Garcia.
+
+It's simple, user friendly, and edits the text in the RAM (it's fast...).
+
+But, because the CP/M's 64KB RAM is limited as capacity (the operating system, the program and the text file must fit inside these 64KB RAM), 
+the original TE allowed only small files to be edited (up to 20K).
+
+I made this adaptation to harness the advantages of being provided with some extra RAM, in certain Z80 hardware platforms.
+
+This version of the text editor TE works on the following hardware environments:
 
 - any RC2014 with 64KB RAM
-- SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
-- the 512KB RAM + 512KB ROM module
-- Z80ALL (4 x 32KB RAM, VGA 48x64, keyboard)
+- Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
+- Z80 systems provided with the 512KB RAM + 512KB ROM module
+- Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard)
 
 Use the HiTech tools to compile & link the sources.
 
@@ -137,6 +146,7 @@ I opted to unify the two versions of source code (128/512), now there is a singl
 
 As a reminder, the TE128 can edit files with sizes up to 70KB, and TE512 up to 400KB.  
 
+
 April 2023
 ----------
 
@@ -145,10 +155,6 @@ I made a major improvement, allowing text files with long lines to be processed 
 I published also the (basic) 64KB RAM version, which can be run on any Z80 based computer provided with 64KB RAM (including any RC2014)
 
 I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard)
-
-Ladislau
-
-
 
 Ladislau
 
