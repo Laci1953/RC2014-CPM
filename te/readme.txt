@@ -1,17 +1,21 @@
-Updated at 4 April 2023
+Updated at 10 April 2023
 -----------------------------
 
 Text editor "te" for RC2014's following hardware:
 
+- any RC2014 with 64KB RAM
 - SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
-- or the 512KB RAM + 512KB ROM module
+- the 512KB RAM + 512KB ROM module
+- Z80ALL (4 x 32KB RAM, VGA 48x64, keyboard)
 
 Use the HiTech tools to compile & link the sources.
 
 Settings:
 
+64 - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 128 - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 512 - up to 8192 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+Z80ALL - up to 8192 lines, VGA 48x64, with WordStar style keyboard (accepts also arrow keys)
 
 Design details and some constraints:
 
@@ -132,6 +136,19 @@ It important to mention that the use of TABs does not increase the size  of the 
 I opted to unify the two versions of source code (128/512), now there is a single set of source files for both 128KB and 512KB TE versions.
 
 As a reminder, the TE128 can edit files with sizes up to 70KB, and TE512 up to 400KB.  
+
+April 2023
+----------
+
+I made a major improvement, allowing text files with long lines to be processed (lines with up to 145 chars for 80 column screens, up to 115 chars for 64 column screens).
+
+I published also the (basic) 64KB RAM version, which can be run on any Z80 based computer provided with 64KB RAM (including any RC2014)
+
+I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard)
+
+Ladislau
+
+
 
 Ladislau
 
