@@ -152,8 +152,6 @@ April 2023
 
 I made a major improvement, allowing text files with long lines to be processed (lines with up to 145 chars for 80 column screens, up to 115 chars for 64 column screens).
 
-I published also the (basic) 64KB RAM version, which can be run on any Z80 based computer provided with 64KB RAM (including any RC2014)
-
 I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard)
 
 Ladislau
