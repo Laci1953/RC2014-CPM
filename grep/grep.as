@@ -54,7 +54,7 @@ TooManyFiles:
 GrepHelp:
 	defm	"Use: grep filename.ext"
 	defb	CR,LF
-	defm	"please enter the string to be seached, followed by a <CR>:"
+	defm	"please enter the string to be searched, followed by a <CR>:"
 	defb	CR,LF, CR,LF
 	defm	"Lists the files containing the specified string"
 	defb	CR,LF
@@ -63,7 +63,7 @@ GrepHelp:
 	defm	"( up to 512 files can be searched )"
 	defb	0
 EnterString:
-	defm	"please enter the string to be seached, followed by a <CR>:"
+	defm	"please enter the string to be searched, followed by a <CR>:"
 	defb	0
 fcb:				; fcb
 	defb	0		; disk+1
