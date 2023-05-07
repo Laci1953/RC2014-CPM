@@ -1,6 +1,8 @@
 A simple "UNIX" like grep
 
-a>grep *.c
-please enter the string to be seached, followed by a <CR>:str
+Use: grep filename.ext
+please enter the string to be seached, followed by a <CR>:
 
-Searches specified files for the string "str" and lists the matching files
+Lists the files containing the specified string
+( ambiguous file references may be used, e.g. *.c or test?.asm )
+( up to 512 files can be searched )
