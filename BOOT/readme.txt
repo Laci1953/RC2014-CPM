@@ -1,5 +1,14 @@
 This folder contains the resources needed to boot CP/M from EPROM
-The .hex files must be burned on the module's EEPROM
+
+This might not be necessary when you have an RC2014 provided with SCM, but it's a must if you want to use CP/M in a configuration NOT provided with SCM.
+
+Example: you have a module containing the Z80 processor, a serial module (SIO, ACIA or KIO) and a memory module (64/128/512KB) NOT containing the SCM EPROM.
+
+In this case, you might consider using my boot code, in order to directly boot CP/M at power-up.
+
+The boot code initializes the serial and loads CP/M from the CF.
+
+The booter .hex files must be burned on the module's EEPROM
 
 512 = 512KB RAM + 512KB ROM Spencer Owen memory module
 SC108 = SC108 (CPU + 32KB ROM + 128KB RAM) Steve Cousins module
@@ -15,5 +24,3 @@ For any combination of RC2014's with 64MB CF configurations using:
 - Spencer Owen's 512KB ROM + 512KB RAM memory board (M512)
 
 , provided with serial boards using SIO or KIO or ACIA , you may now use an enhanced CP/M and burn a CP/M booter to start directly with CP/M from power-on.
-
-This booter contains also code that allows to use the TE text editor on SC108 or MM, without SCM (the M512's TE does not have this constraint...)
