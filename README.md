@@ -20,7 +20,7 @@ It's a matter of only some dozens of bytes gained...but it's important.
 Using this "customized" CP/M, it is now possible to benefit from :
 
 - an enhanced HiTech C Compiler, able to compile larger C source files ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
-- an enhanced TE text editor, able to edit (in memory) larger text tiles ( see https://github.com/Laci1953/RC2014-CPM/tree/main/te )
+- an enhanced TE text editor, able to edit (in memory) larger text files ( see https://github.com/Laci1953/RC2014-CPM/tree/main/te )
 
 CP/M and some tools & games for RC2014:
 ---------------------------------------
