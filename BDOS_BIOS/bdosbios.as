@@ -3,8 +3,6 @@
 ;For 128MB CF: 	LINK -pbdos=0D000H,bios=0E600H,top=0FFFEH
 ;
 
-SCM	equ	1	;1=SCM stored in 32KB EPROM, 0=no 32KB EPROM
-
 ACIA	equ	0	;1=ACIA, 0=KIO or SIO
 KIO	equ	0	;1=KIO's SIO, 0=SC110's SIO
 CF64	equ	1	;1=64MB CF, 0=128MB CF
@@ -4719,10 +4717,8 @@ hstbuf:     DEFS 512             ;host buffer
 ; pop the active IO port from the stack (supplied by monitor),
 ; then start CP/M
 popAndRun:
-IF	SCM
             LD A,01		;disable the 32KB ROM
             OUT (38H),A
-ENDIF
             POP AF	       ;A : 0 = port A, 1 = port B
             CP 01
             JR Z,consoleAtB
