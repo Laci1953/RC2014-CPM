@@ -1,4 +1,6 @@
-For RC2014'S with SIO/ACIA/KIO, 64MB/128MB CF
+CP/M BDOS + BIOS in a single file
+
+For RC2014'S with SIO/ACIA/KIO serial, 64MB/128MB CF
 
 This version of BDOS+BIOS is smaller, compared with the "original"
 
