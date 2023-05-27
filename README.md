@@ -43,3 +43,8 @@ DOWNLOAD - tools for moving files to CF
 BDOS_BIOS - CP/M BDOS & BIOS
 
 DEBUG - tiny debugger using Digital I/O module
+
+GREP - search files for a string
+
+ERAQ - erase files with querry
+
