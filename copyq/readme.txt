@@ -1,6 +1,7 @@
 Copy files with query
 
 Use: copyq filename.ext d:
+
 copy files to destination disk (d:), with a query for each file
 ( and an extra query to allow overwriting files )
 ( ambiguous file references may be used, e.g. *.c or test?.asm )
