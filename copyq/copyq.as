@@ -1,5 +1,5 @@
 ;
-;	copy with querry for CP/M
+;	copy with query for CP/M
 ;
 ;	Ladislau Szilagyi
 ;
@@ -47,7 +47,7 @@ TooManyFiles:
 	defb	CR,LF
 	defm	"Too many files match!"
 	defb	0
-Querry:	defb	CR,LF
+Query:	defb	CR,LF
 	defm	"Copy file "
 	defb	0
 Qmark:	defm	" ? (Y/y = yes) :"
@@ -74,9 +74,9 @@ CopyQHelp:
 	defb	CR,LF
 	defm	"Use: copyq filename.ext d:"
 	defb	CR,LF
-	defm	"copy files to destination disk (d:), with a querry for each file"
+	defm	"copy files to destination disk (d:), with a query for each file"
 	defb	CR,LF
-	defm	"( and an extra querry to allow overwriting files )"
+	defm	"( and an extra query to allow overwriting files )"
 	defb	CR,LF
 	defm	"( ambiguous file references may be used, e.g. *.c or test?.asm )"
 	defb	CR,LF
@@ -196,10 +196,10 @@ loop:
 	sbc	hl,bc
 	jp	z,Toomany
 skip:   call    SearchNext      ;get next file name.
-	jp	z,CopyQ		;if no more, go copy with querry
+	jp	z,CopyQ		;if no more, go copy with query
         jp      loop            ;else continue with our list.
 ;
-;	Copy with querry
+;	Copy with query
 ;
 CopyQ:
 	ld	hl,FileNames	;init files pointer
@@ -219,7 +219,7 @@ sloop:
 
 	ld	(FilesPointer),hl;update files pointer
 				
-	ld	bc,Querry	;print querry msg
+	ld	bc,Query	;print query msg
 	call	PrintLine
 				;type the file name & ext
 	ld	hl,sname	;first the name
