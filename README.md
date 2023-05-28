@@ -46,5 +46,6 @@ DEBUG - tiny debugger using Digital I/O module
 
 GREP - search files for a string
 
-ERAQ - erase files with querry
+ERAQ - erase files with query
 
+COPYQ - copy files with query
