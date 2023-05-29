@@ -1,5 +1,5 @@
 ;
-;	erase with querry for CP/M
+;	erase with query for CP/M
 ;
 ;	Ladislau Szilagyi
 ;
@@ -43,14 +43,14 @@ NoFile: defm    "No file name match!"
 TooManyFiles:
 	defm	"Too many files match!"
 	defb	0
-Querry:	defm	"Erase file "
+Query:	defm	"Erase file "
 	defb	0
 Qmark:	defm	" ? (Y/y = yes) :"
 	defb	0
 EraqHelp:
 	defm	"Use: eraq filename.ext"
 	defb	CR,LF
-	defm	"erase the requested files, with a querry for each matching file"
+	defm	"erase the requested files, with a query for each matching file"
 	defb	CR,LF
 	defm	"( ambiguous file references may be used, e.g. *.c or test?.asm )"
 	defb	CR,LF
@@ -155,7 +155,7 @@ Help:	ld	bc,EraqHelp
 	call	PrintLine
 	jp	0
 ;
-;	Erase with querry
+;	Erase with query
 ;
 Erase:
 	ld	hl,FileNames	;init files pointer
@@ -170,9 +170,9 @@ sloop:
 	ldir
 	ld	(FilesPointer),hl;update files pointer
 	call	CleanFCB	;prepare fcb
-				;print querry msg
+				;print query msg
 	call	CrLf
-	ld	bc,Querry
+	ld	bc,Query
 	call	PrintLine
 				;type the file name & ext
 	ld	hl,name		;first the name
