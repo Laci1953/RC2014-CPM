@@ -49,3 +49,6 @@ GREP - search files for a string
 ERAQ - erase files with query
 
 COPYQ - copy files with query
+
+FASTDUMP - twice as faster as DUMP
+
