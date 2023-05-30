@@ -20,3 +20,13 @@ Statistics:
 --------------------------------------------------------
 144 KB file:     95s      50s
 204 KB file:     110s     65s
+
+FDUMPX is the equivalent of DUMPX (but much more faster, because DUMPX is written in C...)
+
+It types also the ASCII chars...
+
+Statistics:
+                 DUMPX     FDUMPX
+-----------------------------------
+36 KB file:      120s      15s
+
