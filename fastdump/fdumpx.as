@@ -48,11 +48,9 @@ start:
 	jp	z,TypeNotFound
 	ld	hl,0		;HL=offset in file
 	ld	de,BUFF		;DE=pointer in rec
-loop:	push	de
-	pop	ix		;save IX=DE
-	ld	a,e
+loop:	ld	a,e
 	cp	BUFF		;if buff empty...
-	jr	nz,1f
+	jr	nz,notempty
 	push	de		;save pointer
 	push	hl		;save offset
 	ld	de,FCB		;read next buff
@@ -62,30 +60,10 @@ loop:	push	de
 	pop	de		;restore pointer
 	or	a
 	jp	nz,0		;quit if EOF
-1:	ld	a,l		;check offset
+notempty:	
+	ld	a,l		;check offset
 	and	0FH
 	jr	nz,nooff
-				;type now ASCII chars, if possible...
-	push	de		;keep DE
-	push	ix
-	pop	de		;restore old DE
-	ld	b,16		;16 chars
-	ld	c,' '
-	call	BiosConout
-typeascii:
-	ld	a,(de)		;get char
-	or	a		
-	jp	m,2f
-	cp	' '
-	jr	c,2f
-	ld	c,a
-	call	BiosConout
-	jr	3f
-2:	ld	c,'.'
-	call	BiosConout
-3:	inc	de
-	djnz	typeascii
-	pop	de
 				;new group of 16 bytes
 	ld	c,CR
 	call	BiosConout	;CR
@@ -98,14 +76,46 @@ typeascii:
 	OutA
 	ld	a,l
 	OutA
-nooff:	ld	c,' '		;blank
+nooff:
+	inc	hl		;increment addr
+	ld	c,' '		;blank
 	call	BiosConout
 	ld	a,(de)		;A=char
-	inc	e		;increment pointer
-	jr	nz,2f		;if end-of-record,
-	ld	e,80H		;reset pointer
-2:	OutA			;print char in hexa
-	inc	hl		;increment addr
+	OutA			;print char in hexa
+	inc	de		;increment pointer
+
+	ld	a,l
+	and	0FH		;after 16 bytes...
+	jr	nz,noascii
+                                ;type the ASCII chars, if possible...
+        push    hl
+        push    de
+        ld      hl,0FFF0H
+        add     hl,de
+        ex      de,hl           ;DE=DE-16
+        ld      b,16            ;16 chars
+        ld      c,' '
+        call    BiosConout
+typeascii:
+        ld      a,(de)          ;get char
+        or      a
+        jp      m,2f
+        cp      ' '
+        jr      c,2f
+        ld      c,a
+        call    BiosConout
+        jr      3f
+2:      ld      c,'.'
+        call    BiosConout
+3:      inc     de
+        djnz    typeascii
+        pop     de
+        pop     hl
+noascii:
+	ld	a,e
+	or	a
+	jp	nz,loop		;if end-of-record,
+	ld	de,BUFF		;reset pointer
 	jp	loop
 ;
 TypeNotFound:
