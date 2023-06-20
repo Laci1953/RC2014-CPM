@@ -1,3 +1,5 @@
+*** updated on 20 June 2023
+
 Copy files with query
 
 Use: copyq filename.ext d:
