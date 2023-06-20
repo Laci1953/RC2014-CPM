@@ -1,5 +1,5 @@
 ;
-;	erase with query for CP/M
+;	erase with querry for CP/M
 ;
 ;	Ladislau Szilagyi
 ;
@@ -43,14 +43,14 @@ NoFile: defm    "No file name match!"
 TooManyFiles:
 	defm	"Too many files match!"
 	defb	0
-Query:	defm	"Erase file "
+Querry:	defm	"Erase file "
 	defb	0
 Qmark:	defm	" ? (Y/y = yes) :"
 	defb	0
 EraqHelp:
 	defm	"Use: eraq filename.ext"
 	defb	CR,LF
-	defm	"erase the requested files, with a query for each matching file"
+	defm	"erase the requested files, with a querry for each matching file"
 	defb	CR,LF
 	defm	"( ambiguous file references may be used, e.g. *.c or test?.asm )"
 	defb	CR,LF
@@ -59,13 +59,12 @@ EraqHelp:
 fcb:				; fcb
 	defb	0		; disk+1
 name:	defb	0,0,0,0,0,0,0,0,0,0,0 ; file name
-dfcbz:	defb	0		; EX=0
+	defb	0		; EX=0
 	defb	0,0		; S1,S2
 	defb	0		; RC=0
 	defb	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	; D0,...D15
-	defb	0		; CR=0
+fcbcr:	defb	0		; CR=0
 	defb	0,0,0		; R0,R1,R2
-fcb_end:
 
 	psect	text
 ;
@@ -155,7 +154,7 @@ Help:	ld	bc,EraqHelp
 	call	PrintLine
 	jp	0
 ;
-;	Erase with query
+;	Erase with querry
 ;
 Erase:
 	ld	hl,FileNames	;init files pointer
@@ -169,10 +168,11 @@ sloop:
 	ld	bc,11
 	ldir
 	ld	(FilesPointer),hl;update files pointer
-	call	CleanFCB	;prepare fcb
-				;print query msg
+	xor	a		;prepare fcb
+	ld	(fcbcr),a
+				;print querry msg
 	call	CrLf
-	ld	bc,Query
+	ld	bc,Querry
 	call	PrintLine
 				;type the file name & ext
 	ld	hl,name		;first the name
@@ -257,17 +257,6 @@ PrintLine:
         pop     hl
         jr      1b
 ;
-;	Prepare FCB
-;
-CleanFCB:
-	ld	hl,dfcbz
-	xor	a
-	ld	b,fcb_end - dfcbz
-clloop:	ld	(hl),a
-	inc	hl
-	djnz	clloop
-	ret
-;
 ;   Get char from console
 ;	returns A = char
 ;
@@ -335,7 +324,7 @@ SyntaxErr:
 1:	ld      a,(hl)          ;print it until a space or null is found.
         cp      ' '
         jp      z,2f
-        OR      A
+        or	a
         jp      z,2f
         push    hl
         call    Print
@@ -445,7 +434,7 @@ ConvFirst:
         call    AddHL
         push    hl		;push fcb 
         push    hl		;push fcb
-        xor     A
+        xor     a
         ld      (ChgDrv),a      ;initialize drive change flag.
         ld      hl,CommLine+1   ;set (hl) as pointer into input line.
         ex      de,hl
@@ -460,10 +449,11 @@ ConvFirst:
         ex      de,hl
         pop     hl		;pop fcb
         ld      a,(de)          ;get first character.
-        OR      A
+        or	a
         jp      z,1f
 	call	ToUpper		;to upper case
-        Sbc     a,'A'-1         ;might be a drive name, convert to binary.
+	or	a
+        sbc     a,'A'-1         ;might be a drive name, convert to binary.
         ld      b,a             ;and save.
         inc     de              ;check next character for a ':'.
         ld      a,(de)
