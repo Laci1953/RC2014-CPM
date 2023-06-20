@@ -1,5 +1,5 @@
 ;
-;	copy with query for CP/M
+;	copy with querry for CP/M
 ;
 ;	Ladislau Szilagyi
 ;
@@ -47,7 +47,7 @@ TooManyFiles:
 	defb	CR,LF
 	defm	"Too many files match!"
 	defb	0
-Query:	defb	CR,LF
+Querry:	defb	CR,LF
 	defm	"Copy file "
 	defb	0
 Qmark:	defm	" ? (Y/y = yes) :"
@@ -74,9 +74,9 @@ CopyQHelp:
 	defb	CR,LF
 	defm	"Use: copyq filename.ext d:"
 	defb	CR,LF
-	defm	"copy files to destination disk (d:), with a query for each file"
+	defm	"copy files to destination disk (d:), with a querry for each file"
 	defb	CR,LF
-	defm	"( and an extra query to allow overwriting files )"
+	defm	"( and an extra querry to allow overwriting files )"
 	defb	CR,LF
 	defm	"( ambiguous file references may be used, e.g. *.c or test?.asm )"
 	defb	CR,LF
@@ -89,25 +89,23 @@ CrLf:	defb	CR,LF
 sfcb:				; fcb
 	defb	0		; disk+1
 sname:	defb	0,0,0,0,0,0,0,0,0,0,0 ; file name
-sdfcbz:	defb	0		; EX=0
+	defb	0		; EX=0
 	defb	0,0		; S1,S2
 	defb	0		; RC=0
 	defb	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	; D0,...D15
-	defb	0		; CR=0
+sfcbcr:	defb	0		; CR=0
 	defb	0,0,0		; R0,R1,R2
-sfcb_end:
 
 				;dest file
 dfcb:				; fcb
 	defb	0		; disk+1
 dname:	defb	0,0,0,0,0,0,0,0,0,0,0 ; file name
-ddfcbz:	defb	0		; EX=0
+	defb	0		; EX=0
 	defb	0,0		; S1,S2
 	defb	0		; RC=0
 	defb	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	; D0,...D15
-	defb	0		; CR=0
+dfcbcr:	defb	0		; CR=0
 	defb	0,0,0		; R0,R1,R2
-dfcb_end:
 
 	psect	text
 ;
@@ -196,10 +194,10 @@ loop:
 	sbc	hl,bc
 	jp	z,Toomany
 skip:   call    SearchNext      ;get next file name.
-	jp	z,CopyQ		;if no more, go copy with query
+	jp	z,CopyQ		;if no more, go copy with querry
         jp      loop            ;else continue with our list.
 ;
-;	Copy with query
+;	Copy with querry
 ;
 CopyQ:
 	ld	hl,FileNames	;init files pointer
@@ -219,7 +217,7 @@ sloop:
 
 	ld	(FilesPointer),hl;update files pointer
 				
-	ld	bc,Query	;print query msg
+	ld	bc,Querry	;print querry msg
 	call	PrintLine
 				;type the file name & ext
 	ld	hl,sname	;first the name
@@ -246,10 +244,9 @@ DoCopy:
 	ld	de,dname
 	ldir
 				;clean fcb's
-	ld	hl,sdfcbz
-	call	CleanFCB
-	ld	hl,ddfcbz
-	call	CleanFCB
+	xor	a
+	ld	(sfcbcr),a
+	ld	(dfcbcr),a
 				;check if dest file already exists
 	ld	de,dfcb		;open file
 	call	Open
@@ -359,17 +356,6 @@ DriveSel:
         cp      (hl)
         ret     z
         jp      DiskSel          ;no. Select it then.
-;
-;	Prepare FCB
-;	HL=xdfcbz (x=s or d)
-;
-CleanFCB:
-	xor	a
-	ld	b,sfcb_end - sdfcbz
-1:	ld	(hl),a
-	inc	hl
-	djnz	1b
-	ret
 ;
 ;   Routine to call bdos and save the return code. The zero
 ; flag is set on a return of 0ffh.
