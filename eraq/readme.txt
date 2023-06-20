@@ -1,3 +1,5 @@
+*** updated on 20 June 2023
+
 Erase with query
 
 Use: eraq filename.ext
