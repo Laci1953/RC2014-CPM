@@ -68,13 +68,12 @@ EnterString:
 fcb:				; fcb
 	defb	0		; disk+1
 name:	defb	0,0,0,0,0,0,0,0,0,0,0 ; file name
-dfcbz:	defb	0		; EX=0
+	defb	0		; EX=0
 	defb	0,0		; S1,S2
 	defb	0		; RC=0
 	defb	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	; D0,...D15
-	defb	0		; CR=0
+fcbcr:	defb	0		; CR=0
 	defb	0,0,0		; R0,R1,R2
-fcb_end:
 
 	psect	text
 ;
@@ -195,7 +194,8 @@ sloop:
 	ld	(Eof),a		;init Eof mark
 	ld	a,EOF
 	ld	(Buf2+128),a	;store EOF mark after Buf2
-	call	cleanfcb	;prepare fcb
+	xor	a		;prepare fcb
+	ld	(fcbcr),a
 	ld	de,fcb
 	call	Open		;open file
 	ld	de,Buf1		;read in Buf1
@@ -296,17 +296,6 @@ PrintLine:
         pop     hl
         jr      1b
 ;
-;	Prepare FCB
-;
-cleanfcb:
-	ld	hl,dfcbz
-	xor	a
-	ld	b,fcb_end - dfcbz
-clloop:	ld	(hl),a
-	inc	hl
-	djnz	clloop
-	ret
-;
 ;   Routine to select disk (A).
 ;
 DiskSel:ld      e,a
@@ -354,7 +343,7 @@ SearchFCB:
 ; status is returned.
 ;
 BDOS2: 	call    BDOS
-        OR      A               ;set zero flag if appropriate.
+        or	a               ;set zero flag if appropriate.
         ret
 ;
 ;   Routine to read the next record from a sequential file.
@@ -376,7 +365,7 @@ SetDMA: ld      c,26
 ;   Routine to convert (A) into upper case ascii. Only letters
 ; are affected.
 ;
-ToUpper:  cp      'a'             ;check for letters in the range of 'a' to 'z'.
+ToUpper:cp      'a'             ;check for letters in the range of 'a' to 'z'.
         ret     c
         cp      '{'
         ret     nc
@@ -391,7 +380,7 @@ SyntaxErr:
 1:	ld      a,(hl)          ;print it until a space or null is found.
         cp      ' '
         jp      z,2f
-        OR      A
+        or	a
         jp      z,2f
         push    hl
         call    Print
@@ -501,7 +490,7 @@ ConvFirst:
         call    AddHL
         push    hl		;push fcb 
         push    hl		;push fcb
-        xor     A
+        xor     a
         ld      (ChgDrv),a      ;initialize drive change flag.
         ld      hl,CommLine+1   ;set (hl) as pointer into input line.
         ex      de,hl
@@ -516,10 +505,11 @@ ConvFirst:
         ex      de,hl
         pop     hl		;pop fcb
         ld      a,(de)          ;get first character.
-        OR      A
+        or	a
         jp      z,1f
 	call	ToUpper		;to upper case
-        Sbc     a,'A'-1         ;might be a drive name, convert to binary.
+	or	a		;CARRY=0
+        sbc     a,'A'-1         ;might be a drive name, convert to binary.
         ld      b,a             ;and save.
         inc     de              ;check next character for a ':'.
         ld      a,(de)
