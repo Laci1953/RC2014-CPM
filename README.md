@@ -28,7 +28,7 @@ CP/M and some tools & games for RC2014:
 PutSys - CP/M for RC2014's (serial SIO, KIO or ACIA, CF 64MB or 128MB) - all combinations covered
 - allows using the enhanced HiTech C Compiler, for 128KB RAM systems ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )    
 - allows using the TE text editor, for 128KB RAM systems
-- offers 2 and half KB extra TPA space for the 64MB version
+- offers 2 and half KB extra TPA space for systems provided with 64MB CF
 
 BOOT - CP/M booters (to be burned to EEPROM)
 
