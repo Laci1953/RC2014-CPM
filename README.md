@@ -25,14 +25,10 @@ Using this "customized" CP/M, it is now possible to benefit from :
 CP/M and some tools & games for RC2014:
 ---------------------------------------
 
-
 PutSys - CP/M for RC2014's (64MB or 128MB CF)
-
-       - allows using the enhanced HiTech C Compiler, for 128KB RAM systems ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
-       
-       - allows using the TE text editor, for 128KB RAM systems
-       
-       - offers 2 and half KB extra TPA space for the 64MB version
+- allows using the enhanced HiTech C Compiler, for 128KB RAM systems ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )    
+- allows using the TE text editor, for 128KB RAM systems
+- offers 2 and half KB extra TPA space for the 64MB version
 
 BOOT - CP/M booters (to be burned to EEPROM)
 
