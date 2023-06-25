@@ -26,21 +26,22 @@ CP/M and some tools & games for RC2014:
 ---------------------------------------
 
 PutSys - CP/M for RC2014's (64MB or 128MB CF)
-
-PutSys - enhanced CP/M for RC2014's configured with 64MB CF (2 and half KB extra TPA space)
+       - allows using the enhanced HiTech C Compiler, for 128KB RAM systems ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
+       - allows using the TE text editor, for 128KB RAM systems
+       - offers 2 and half KB extra TPA space for the 64MB version
 
 BOOT - CP/M booters (to be burned to EEPROM)
 
 TE - Miguel Garcia's text editor "te", configured for boards with 128KB or 512KB RAM, allowing large text files to be edited in the internal memory
 
-1MB - an "extended" model of CP/M, making possible to build huge executables (up to 496KB code, and up to 448 KB memory space to store data),
-when using the 512KB RAM + 512KB ROM memory module.
+1MB - an "extended" model of CP/M, making possible to build huge executables, using overlays (up to 496KB code, and up to 448 KB memory space to store data),
+for systems provided with the 512KB RAM + 512KB ROM memory module.
 
 ZORK - the famous Infocom game, can be played on RC2014+512KB RAM/ROM memory module
 
 DOWNLOAD - tools for moving files to CF
 
-BDOS_BIOS - CP/M BDOS & BIOS
+BDOS_BIOS - source file for CP/M BDOS & BIOS
 
 DEBUG - tiny debugger using Digital I/O module
 
