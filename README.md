@@ -32,7 +32,7 @@ PutSys - CP/M for RC2014's (serial SIO, KIO or ACIA, CF 64MB or 128MB) - all com
 
 BOOT - CP/M booters (to be burned to EEPROM)
 
-TE - Miguel Garcia's text editor "te", configured for boards with 128KB or 512KB RAM, allowing large text files to be edited in the internal memory
+TE - Miguel Garcia's text editor "te", configured for systems with 128KB or 512KB RAM, allowing large text files to be edited in the internal memory
 
 1MB - an "extended" model of CP/M, making possible to build huge executables, using overlays (up to 496KB code, and up to 448 KB memory space to store data),
 for systems provided with the 512KB RAM + 512KB ROM memory module.
@@ -55,5 +55,5 @@ FASTDUMP - twice as fast as DUMP
 
 FASTTYPE - twice as fast as TYPE
 
-SARGON78 - the chess game, including save/load game
+SARGON78 - the famous chess game, including save/load game as added feature
 
