@@ -57,3 +57,6 @@ FASTTYPE - twice as fast as TYPE
 
 SARGON78 - the famous chess game, including save/load game as added feature
 
+STARTREK - the game, including save/load game as added feature
+
+
