@@ -93,7 +93,7 @@
 #define MAXROW      48
 #define MAXCOL      64
 #else
-#define MAXROW      28
+#define MAXROW      24
 #define MAXCOL      80
 #endif
 
