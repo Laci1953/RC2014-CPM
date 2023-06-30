@@ -3803,24 +3803,8 @@ HELP:	 DB	13,10
 	 DB	"CTRL^R to quit the game or CTRL^S to save the game"
 	 DB	13,10,'$'
 ;
-;----------------------------------------------
-;
-; Saved games file structure (one 128 bytes record)
-;
-;kolor:	(KOLOR)		1 byte
-;depth:	(PLYMAX) 	1 byte	
-;moveno:(MOVENO)	1 byte
-;board:	(BOARDA) 	120 bytes
-;dummy			5 bytes
-;
-;----------------------------------------------
-
-Record:				;128 bytes buffer used at load/save game
-kolor:	defs	1
-depth:	defs	1
-moveno:	defs	1
-board:	defs	120
-	defs	5
+Record:				;256 bytes buffer used at load/save game
+	defs	256
 
 fcb:				; fcb
 	defb	0		; disk+1
@@ -3870,14 +3854,14 @@ LoadGame:
 
 	ld	de,CannotOpen	; file not found
 	call	show_string_de
-	jp	0		; quit
+	jp 	0		; quit
 1:
+	xor	a		; prepare fcb
+	ld	(fcbcr),a
+
 	ld	de,Record	; set DMA addr
 	ld	c,26
 	call	BDOS
-
-	xor	a		; prepare fcb
-	ld	(fcbcr),a
 
 	ld	de,fcb		; read record		
 	ld	c,20
@@ -3887,21 +3871,36 @@ LoadGame:
 
 	ld	de,CannotRead	; read failed
 	call	show_string_de
-	jp	0		; quit
+	jp 	0		; quit
+1:
+	ld	de,Record+128	; set DMA addr
+	ld	c,26
+	call	BDOS
+
+	ld	de,fcb		; read record		
+	ld	c,20
+	call	BDOS
+	or	a
+	jr	z,1f
+
+	ld	de,CannotRead	; read failed
+	call	show_string_de
+	jp 	0		; quit
 1:
 	ld	de,fcb		; close file
 	ld	c,16
 	call	BDOS
-				; store game info
-	ld	a,(kolor)
-	ld	(KOLOR),a
+				; load info
+	ld	hl,Record
+	ld	de,BOARDA
+	ld	bc,0ABH
+	ldir
 
-	ld	a,(depth)
-	ld	(PLYMAX),a
+	ld	de,M1
+	ld	bc,34H
+	ldir
 
-	ld	a,(moveno)
-	ld	(MOVENO),a
-				;store to MVENUM A in ASCII decimal
+	ld	a,(MOVENO)	;store to MVENUM A in ASCII decimal
 	ld	hl,MVENUM
 
 	ld	d,a
@@ -3921,11 +3920,6 @@ LoadGame:
 
 	inc	hl
 	ld	(hl),' '
-
-	ld	de,BOARDA	;to
-	ld	hl,board	;from
-	ld	bc,120		;count
-	ldir
 				;setup titles
 	ld	a,(KOLOR)
 	or	a
@@ -3975,19 +3969,15 @@ savegame:
 	jr	nc,1b
 
 	ld	(fname+10),a	; Store game # as final ext char
+
 				; store game info
-	ld	a,(KOLOR)
-	ld	(kolor),a
+	ld	de,Record
+	ld	hl,BOARDA
+	ld	bc,0ABH
+	ldir
 
-	ld	a,(PLYMAX)
-	ld	(depth),a
-
-	ld	a,(MOVENO)
-	ld	(moveno),a
-
-	ld	hl,BOARDA	;from
-	ld	de,board	;to
-	ld	bc,120		;count
+	ld	hl,M1
+	ld	bc,34H
 	ldir
 
 	ld	de,fcb		; delete file (if any...)
@@ -4003,14 +3993,14 @@ savegame:
 
 	ld	de,CannotWrite	; disk directory full
 	call	show_string_de
-	jp	0		; quit
+	jp 	0		; quit
 1:
+	xor	a		; prepare fcb
+	ld	(fcbcr),a
+
 	ld	de,Record	; set DMA addr
 	ld	c,26
 	call	BDOS
-
-	xor	a		; prepare fcb
-	ld	(fcbcr),a
 
 	ld	de,fcb		; write record		
 	ld	c,21
@@ -4020,7 +4010,21 @@ savegame:
 
 	ld	de,CannotWrite	; write failed
 	call	show_string_de
-	jp	0		; quit
+	jp 	0		; quit
+1:
+	ld	de,Record+128	; set DMA addr
+	ld	c,26
+	call	BDOS
+
+	ld	de,fcb		; write record		
+	ld	c,21
+	call	BDOS
+	or	a
+	jr	z,1f
+
+	ld	de,CannotWrite	; write failed
+	call	show_string_de
+	jp 	0		; quit
 1:
 	ld	de,fcb		; close file
 	ld	c,16
@@ -4029,5 +4033,5 @@ savegame:
 	ld	de,GameSaved
 	call	show_string_de
 
-	jp	0		; quit
+	jp 	0			; quit
 ;
