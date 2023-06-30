@@ -1,6 +1,6 @@
 
 1. When you see Command? printed, enter one of the commands
- (nav, srs, lrs, pha, tor, she, dam, com, or xxx).
+ (sav, nav, srs, lrs, pha, tor, she, dam, com, or xxx).
 
 2. If you should type in an illegal command, you'll get 
  a short list of the legal commands printed out.
