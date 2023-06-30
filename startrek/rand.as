@@ -38,6 +38,9 @@ _xrnd:
 	xor	h
 	ld	h,a
 	ld	(_xrnd+1),hl
+IF	1-Z80ALL
+	ld	(0C000H),hl
+ENDIF
 	res	7,h		;make-it positive...
 	ret
 
@@ -63,23 +66,7 @@ loopb:
 
 ELSE
 
-	ld	hl,(6)		;make the sum of last 100 bytes from the stack
-	xor	a
-	ld	de,100h
-	sbc	hl,de
-	ld	de,0
-	ld	b,0
-1:
-	ld	a,(hl)
-	inc	hl
-	add	a,e
-	ld	e,a
-	jr	nc,2f
-	inc	d
-2:
-	djnz	1b
- 	ex	de,hl
-
+	ld	hl,(0C000H)
 ENDIF
 
   	ld	a,l
