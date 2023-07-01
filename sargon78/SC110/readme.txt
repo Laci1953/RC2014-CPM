@@ -1,6 +1,6 @@
 Version for RC2014's with SC110 board
 
-It will display also the move timings, e.g. :
+It will display also the chess pieces move timings, e.g. :
 
   PLAYER SARGON                  
   ====== ======                   
