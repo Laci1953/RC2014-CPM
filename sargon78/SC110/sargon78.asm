@@ -13,9 +13,6 @@
     			;Also, here is the interrupts table
 
     jp DRIVER               ; Jump over all the tables to the start of the program.
-    defs	1
-			;PC=104H, interrupt level 2
-    defw	RTC_INT	;real time clock interrupt (5ms)
 
 ;***********************************************************
 ; EQUATES
@@ -2204,6 +2201,13 @@ space:
 
 ;*** EXIT TO MONITOR ***
 	MACRO	EXIT
+;
+;	stop CTC_2
+;
+	ld	a,00000011B	;disable int,timer,prescale=16,don't care,
+ 				;don't care,no time constant follows,reset,control
+	out (CTC_2),a 		;CTC_2 is on hold now
+;
         jp      0
         ENDM
 
@@ -3889,7 +3893,7 @@ LoadGame:
 
 	ld	de,CannotOpen	; file not found
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	xor	a		; prepare fcb
 	ld	(fcbcr),a
@@ -3906,7 +3910,7 @@ LoadGame:
 
 	ld	de,CannotRead	; read failed
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	ld	de,Record+128	; set DMA addr
 	ld	c,26
@@ -3920,7 +3924,7 @@ LoadGame:
 
 	ld	de,CannotRead	; read failed
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	ld	de,fcb		; close file
 	ld	c,16
@@ -4028,7 +4032,7 @@ savegame:
 
 	ld	de,CannotWrite	; disk directory full
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	xor	a		; prepare fcb
 	ld	(fcbcr),a
@@ -4045,7 +4049,7 @@ savegame:
 
 	ld	de,CannotWrite	; write failed
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	ld	de,Record+128	; set DMA addr
 	ld	c,26
@@ -4059,7 +4063,7 @@ savegame:
 
 	ld	de,CannotWrite	; write failed
 	call	show_string_de
-	jp 	0		; quit
+	EXIT			; quit
 1:
 	ld	de,fcb		; close file
 	ld	c,16
@@ -4068,7 +4072,7 @@ savegame:
 	ld	de,GameSaved
 	call	show_string_de
 
-	jp 	0			; quit
+	EXIT			; quit
 ;
 ;*****************************************************************************
 ;
@@ -4109,16 +4113,11 @@ InitInts:
 ;
 ;CTC interrupt vector
 ;
-	ld	a,00000000B	;adr7 to adr3=0,vector ==> INT level 2
+	ld	a,11100000B	;FFE4H to be used
 	out	(CTC_0),a	;set vector
 ;
-;	Interrupt mode
-;
-;	setup IM 2 
-;
-	im	2
-	ld	a,1		;100H = interrupts table
-	ld	i,a
+	ld	hl,RTC_INT
+	ld	(0FFE4H),hl	;set pointer to RTC interrupt routine
 ;
 	xor	a		;init counter & time
 	ld	hl,counter
