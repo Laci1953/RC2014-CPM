@@ -92,7 +92,6 @@ bool whosehome( int who );
 void checkwin(void);
 int other( int color );
 void winner( int who, int high );
-void putscore(void);
 void reverse(void);
 void halfswap( int n );
 void wipedice(void);
@@ -282,7 +281,7 @@ void	chooseplayer(void) {
 ======================================================================*/
 
 char *p1 = "Play, Reverse, Swap, New, Quit, Load, (CR for more ...) ";
-char *p2 = "Use %s dice, Opponent, Count, Zero (CR to go back...) ";
+char *p2 = "Use %s dice, Opponent, Count (CR to go back...) ";
 
 void main(void) {
 char ch;
@@ -357,11 +356,6 @@ char ch;
 					deciding = FALSE; player = 0;
 					break;
 					}
-				case 'Z': { /* zero the score */
-					myscore = yrscore = 0; putscore();
-					break;
-					}
-				case 3:	exit();//CTRL^C
 				default:  { moremsgline ^= TRUE; break; }
 			}
 		}
@@ -779,16 +773,10 @@ int gammon;
 		case ME: { myscore += gammon; break; }
 		case YOU: { yrscore += gammon; break; }
 	}
-	putscore();
-	msg("Hit any key to resume play"); 
-	getch();
-	player = 0;
-	reverse(); deciding = FALSE; 
-}
 
-void putscore(void) {
-	gotoxy(39,0); blanks(39); gotoxy(53,0);
-	printf("SCORE:  You %d, Me %d",yrscore,myscore);
+	msg("Hit any key to quit play"); 
+	getch();
+	exit();
 }
 
 /*========================================================================
@@ -866,7 +854,7 @@ int i, x, c;
 	if (point[1].x < 40) x = 0; else x = 75;
 	gotoxy(x,11); putstr("HOME");
 
-	putscore(); mytotal(); yrtotal();
+	mytotal(); yrtotal();
 }
 
 /*==========================================================================
