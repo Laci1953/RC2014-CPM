@@ -892,9 +892,9 @@ int d;
 			lookforit = FALSE;
 			puts("\008... ");
 			switch (level) {
-				case 0: { puts("Blocked!");  break; }
-				case 1: { puts("Well, no!"); break; }
-				case 2: { puts("Thurb!");    break; }
+				case 0: { puts("!!!");  break; }
+				case 1: { puts("!!!"); break; }
+				case 2: { puts("!!!");    break; }
 			}
 
 			restoreboard();
