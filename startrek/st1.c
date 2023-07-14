@@ -85,7 +85,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define Z80ALL
+//#define Z80ALL
 
 /* Standard Terminal Sizes */
 
