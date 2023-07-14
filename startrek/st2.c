@@ -3,11 +3,11 @@
 #include <string.h>
 #include <ctype.h>
 
-#define Z80ALL
+//#define Z80ALL
 
 /* Standard Terminal Sizes */
 
-#ifdef Z80ALL
+//#ifdef Z80ALL
 #define MAXROW      48
 #define MAXCOL      64
 #else
