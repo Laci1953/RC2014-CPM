@@ -165,10 +165,7 @@ void phaser_control(void)
 			/* We are now 32bit with four digits accuracy */
 			h = h1 * (get_rand(100) + 200);
 			/* Takes us down to 2 digit accuracy */
-printf("phaser_energy=%lu h1=%lu h=%lu\n", phaser_energy, h1, h);
-
 			h /= distance_to(k);
-printf("h/d=%lu 15*k=%lu\n", h, 15*k->energy);
 
 			if (h <= 15 * k->energy) {	/* was 0.15 */
 				printf("Sensors show no damage to enemy at "
