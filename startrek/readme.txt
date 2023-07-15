@@ -1,4 +1,4 @@
-(updated on July 14)
+(updated on July 15)
 
 The Startrek game
 
