@@ -7,7 +7,7 @@
 
 /* Standard Terminal Sizes */
 
-//#ifdef Z80ALL
+#ifdef Z80ALL
 #define MAXROW      48
 #define MAXCOL      64
 #else
@@ -553,7 +553,7 @@ void dirdist_calc(void)
 	if (targetX < 0 || targetX > 900)
 		return;
 
-	compute_vector(targetX, targetY, ship_x, ship_y);
+	compute_vector(targetY, targetX, ship_y, ship_x);
 }
 
 char *gm_1 = "  ----- ----- ----- ----- ----- ----- ----- -----\n";
