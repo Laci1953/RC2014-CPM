@@ -11,11 +11,13 @@
 
 #define ESCAPE 0x1B
 #define CR 0x0D
-#define CTRL_C 3
+#define CTRL_C 0x03
+#define CTRL_S 0x13
 
 //#define Z80ALL
 
 // 0 means unassigned cells
+char grid_nr;
 int grid[N][N];
 int save[N][N];
 int GRID[3][N][N] = 
@@ -105,6 +107,9 @@ char picture[] = //Y,X,char
 11,13,'9',
 13,1,'1',13,2,'2',13,3,'3',13,5,'4',13,6,'5',13,7,'6',13,9,'7',13,10,'8',13,11,'9',
 -1};
+
+void LoadGame(void);
+void SaveGame(void);
 
 // --------------------------------------------------------------
 // Algorithm by Pradeep Mondal
@@ -248,6 +253,7 @@ void main(void)
 	char x,y,v,hint;
 	int i,j;
 	
+	xrndseed();
 	clear();
 	print_picture();
 
@@ -255,35 +261,51 @@ void main(void)
 	printf("SUDOKU is a popular game in Japan and worldwide.\r\n"
 	       "The objective is to fill a 9x9 grid with digits so that each\r\n"
 	       "column, each row, and each of the nine 3x3 subgrids that\r\n"
-	       "compose the grid contain all of the digits from 1 to 9.\r\n"
-	       "You will start with a grid already containing some digits,\r\n"
-	       "fit to be successfully completed...\r\n"
-	       "Choose a grid# from 0 to 2 or <CR> to pick a random # :");
-choose:
-	v = getch();
+	       "compose the grid contain all of the digits from 1 to 9.\r\n");
 
-	if (v == CR)
+	printf("Load a saved game (Y/y=yes)? :");
+
+	v = getch();
+	putchar(v);
+
+	if (v == 'y' || v == 'Y')
 	{
-		xrndseed();
-		v = xrnd() % 3;
-		putchar(v + '0');
+		LoadGame();
+		clear();
+		print_picture();
 	}
 	else
 	{
-		if (!isdigit(v) || v > '2')
-			goto choose;
+		printf("\r\nYou will start with a grid already containing some digits,\r\n"
+	       		"fit to be successfully completed...\r\n"
+	       		"Choose a grid# from 0 to 2 or <CR> to pick a random # :");
+choose:
+		grid_nr = getch();
 
-		putchar(v);
-		v -= '0';
+		if (grid_nr == CR)
+		{
+			grid_nr = xrnd() % 3;
+			putchar(grid_nr + '0');
+		}
+		else
+		{
+			if (!isdigit(grid_nr) || grid_nr > '2')
+				goto choose;
+
+			putchar(grid_nr);
+			grid_nr -= '0';
+		}
+
+		clear();
+		print_picture();
+		init_grid(grid_nr);
 	}
 
-	clear();
-	print_picture();
-	init_grid(v);
 	print_grid();
 
 	gotoxy(15,0);
-	printf("Grid #%d: fill in the missing digits...\r\n (CTRL^C to see the solution & quit)", v);
+	printf("Grid #%d: fill in the missing digits...\r\n"
+		"(CTRL^C to see the solution & quit, CTRL^S to save game)", grid_nr);
 
 	while (TRUE)
 	{
@@ -298,6 +320,9 @@ choose:
 
 			if (y == CTRL_C) 
 				show();
+
+			if (y == CTRL_S)
+				SaveGame();
 		}
 		while (!isdigit(y) || y == '0');
 
@@ -313,6 +338,9 @@ choose:
 
 			if (x == CTRL_C)
 				show();
+
+			if (y == CTRL_S)
+				SaveGame();
 		}
 		while (!isdigit(x) || x == '0');
 
@@ -335,6 +363,9 @@ choose:
 
 			if (v == CTRL_C) 
 				show();
+
+			if (y == CTRL_S)
+				SaveGame();
 		}
 		while (!isdigit(v) || v == '0');
 
