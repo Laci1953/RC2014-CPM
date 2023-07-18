@@ -61,5 +61,10 @@ STARTREK - the game, including save/load game as added feature
 
 BACKGMMN - the Backgammon game, including save/load game as added feature
 
+SOKOBAN - the Sokoban game
+
+SUDOKU - the Sudoku game, including save/load game
+
+
 
 
