@@ -406,6 +406,7 @@ choose:
 			
 			if (full_grid())
 			{
+				gotoxy(22, 0);
 				printf("\r\nCongratulations, you won!");
 				exit(1);
 			}
