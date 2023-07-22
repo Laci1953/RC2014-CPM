@@ -65,6 +65,8 @@ SOKOBAN - the Sokoban game
 
 SUDOKU - the Sudoku game, including save/load game
 
+CONNECT4 - the Connect Four game
+
 
 
 
