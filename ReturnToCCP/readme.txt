@@ -1,5 +1,14 @@
 How to build a .COM file that does return directly to CCP, without a CP/M warm boot
 
+I choosed a simple program, dumpx.c (it dumps the content of a file, in both hexa & ASCII format).
+
+If you build-it using the standard HiTech command:
+
+C>c -v -o dumpx.c
+
+, it will build DUMPX.COM, which executes a CP/M warm boot, at exit.
+
+Let's build a new program, named MYDUMPX.COM, that does return directly to CCP, without a CP/M warm boot.
 Use :
 
 >submit make
@@ -123,6 +132,12 @@ C>mydumpx dumpx.obj
 06D0 : 78 74 00 6C 32 30 00 C8 01 00 00 00 00 74 65 78 : xt.l20.......tex
 06E0 : 74 00 4C 34 00 D1 01 00 00 00 00 74 65 78 74 00 : t.L4.......text.
 06F0 : 6C 31 38 00 02 00 06 00 00 1A 1A 1A 1A 1A 1A 1A : l18.............
+
+The key component to achieve this is mycrtcpm.as, as a substitute for the original HiTech's crtcpm.
+
+It saves the CCP's SP at the current program start and restores-it at exit.
+
+
 
 C>
 
