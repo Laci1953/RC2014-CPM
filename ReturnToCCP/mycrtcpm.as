@@ -9,7 +9,7 @@ start:	ld	(ccp_sp),sp	; save SP
 	ld	hl,(6)		; base address of BDOS
 	or	a		; CARRY=0
 	ld	bc,CCP_SIZE
-	sbc	hl,bc		; go below CPP
+	sbc	hl,bc		; go below CCP
 	ld	sp,hl		; stack grows downwards
 	ld	de,__Lbss	; Start of BSS segment
 	or	a		; clear carry
