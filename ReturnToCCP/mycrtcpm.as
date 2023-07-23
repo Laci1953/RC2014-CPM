@@ -42,8 +42,8 @@ start:	ld	(ccp_sp),sp	; save SP
 	call	_main
 	push	hl
 	call	_exit
-	ld	sp,(ccp_sp)	; restore CPP's SP
-	ret			; return to CPP
+	ld	sp,(ccp_sp)	; restore CCP's SP
+	ret			; return to CCP
 
 	psect	data
 
