@@ -1,14 +1,14 @@
 	psect	text
 
-CPP_SIZE	equ	0806H
+CCP_SIZE	equ	0806H
 
 	global	start, _main, _exit, __argc_, startup, nularg
 	global __Hbss, __Lbss
 
-start:	ld	(cpp_sp),sp	; save SP
+start:	ld	(ccp_sp),sp	; save SP
 	ld	hl,(6)		; base address of BDOS
 	or	a		; CARRY=0
-	ld	bc,CPP_SIZE
+	ld	bc,CCP_SIZE
 	sbc	hl,bc		; go below CPP
 	ld	sp,hl		; stack grows downwards
 	ld	de,__Lbss	; Start of BSS segment
@@ -42,13 +42,13 @@ start:	ld	(cpp_sp),sp	; save SP
 	call	_main
 	push	hl
 	call	_exit
-	ld	sp,(cpp_sp)	; restore CPP's SP
+	ld	sp,(ccp_sp)	; restore CPP's SP
 	ret			; return to CPP
 
 	psect	data
 
 nularg:	defb	0
-cpp_sp:	defs	2
+ccp_sp:	defs	2
 
 	end start
 
