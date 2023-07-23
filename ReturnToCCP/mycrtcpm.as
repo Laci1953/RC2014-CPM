@@ -6,7 +6,7 @@ CPP_SIZE	equ	0806H
 	global __Hbss, __Lbss
 
 start:	ld	(cpp_sp),sp	; save SP
-	ld	hl,(6)		; base address of fdos
+	ld	hl,(6)		; base address of BDOS
 	or	a		; CARRY=0
 	ld	bc,CPP_SIZE
 	sbc	hl,bc		; go below CPP
