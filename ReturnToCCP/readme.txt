@@ -133,11 +133,9 @@ C>mydumpx dumpx.obj
 06E0 : 74 00 4C 34 00 D1 01 00 00 00 00 74 65 78 74 00 : t.L4.......text.
 06F0 : 6C 31 38 00 02 00 06 00 00 1A 1A 1A 1A 1A 1A 1A : l18.............
 
+C>
+
 The key component to achieve this is mycrtcpm.as, as a substitute for the original HiTech's crtcpm.
 
 It saves the CCP's SP at the current program start and restores-it at exit.
-
-
-
-C>
 
