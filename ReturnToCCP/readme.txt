@@ -137,5 +137,5 @@ C>
 
 The key component to achieve this is mycrtcpm.as, as a substitute for the original HiTech's crtcpm.
 
-It saves the CCP's SP at the current program start and restores-it at exit.
+It saves the CCP's SP at the current program start and restores-it at exit, before returning to the program's caller (CCP).
 
