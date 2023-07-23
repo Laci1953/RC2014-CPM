@@ -40,8 +40,8 @@ start:	ld	(ccp_sp),sp	; save SP
 	ld	hl,(__argc_)
 	push	hl
 	call	_main
-	push	hl
-	call	_exit
+;	push	hl
+;	call	_exit
 	ld	sp,(ccp_sp)	; restore CCP's SP
 	ret			; return to CCP
 
