@@ -1,5 +1,0 @@
-xsub
-zas mycrtcpm.as
-c -v -c -o dumpx.c
-link
- -ptext=100h,data,bss -c100h -omydumpx.com mycrtcpm.obj dumpx.obj libc.lib
