@@ -19,8 +19,6 @@
 
 	GLOBAL	_xrnd, _xrndseed
 
-Z80ALL	equ	1
-
 _xrnd:
 	ld	hl,1		; seed must not be 0
 	ld	a,h
@@ -38,39 +36,15 @@ _xrnd:
 	xor	h
 	ld	h,a
 	ld	(_xrnd+1),hl
-IF	1-Z80ALL
-	ld	(0C000H),hl
-ENDIF
 	res	7,h		;make-it positive...
 	ret
 
-;	works only on Z80ALL
-;	seed = sum (all screen chars)
-;
 _xrndseed:
-
-IF	Z80ALL
-
-	xor	a		;make the sum of all chars from screen
+	ld	a,r
+  	ld	l,a
+	ld	a,r
 	ld	h,a
-	ld	l,a
-	ld	b,a
-	ld	d,a
-	ld	c,0BH
-loopb:
-	in	e,(c)
-	add	hl,de
-	djnz	loopb
-	dec	c
-	jp	p,loopb
-
-ELSE
-
-	ld	hl,(0C000H)
-ENDIF
-
-  	ld	a,l
-  	or	h		; HL must be not NULL
+  	or	l		; HL must be not NULL
   	jr	nz,1f
 	inc	hl
 1:
