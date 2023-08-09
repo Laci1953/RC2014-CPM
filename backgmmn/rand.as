@@ -36,17 +36,15 @@ _xrnd:
 	xor	h
 	ld	h,a
 	ld	(_xrnd+1),hl
-	ld	(0C000H),hl
 	res	7,h		;make-it positive...
 	ret
 
-;	works only on Z80ALL
-;	seed = sum (all screen chars)
-;
 _xrndseed:
-	ld	hl,(0C000H)
-  	ld	a,l
-  	or	h		; HL must be not NULL
+	ld	a,r
+  	ld	l,a
+	ld	a,r
+	ld	h,a
+  	or	l		; HL must be not NULL
   	jr	nz,1f
 	inc	hl
 1:
