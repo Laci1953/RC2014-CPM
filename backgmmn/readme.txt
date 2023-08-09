@@ -1,4 +1,4 @@
-(updated on July 12)
+(updated on August 9)
 
 The game of Backgammon, with save/load game option
 
