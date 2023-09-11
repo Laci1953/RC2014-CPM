@@ -2,7 +2,7 @@
 
 Game 'Birds, eagle and the kite'
 
-Designed for RTM/Z80 - Z80ALL
+Designed for RTM/Z80
 as an example of a CP/M game running 
 on a Z80 multitasking operating system
 
@@ -43,7 +43,7 @@ Run the 'birds.com' as a CP/M executable
 Ladislau Szilagyi, September 2023
 
 ********************************************************************/
-
+// for Z80ALL, uncomment the next line
 //#define Z80ALL	
 
 #include <stdlib.h>
