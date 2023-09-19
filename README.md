@@ -9,7 +9,7 @@ Why is this a bad thing?
 
 Because this way, it's impossible to make use of the "upper" 64KB RAM available on all the 128KB RAM Z80 systems.
 
-So, the owners of Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module are affected by this.
+So, the owners of Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module, or RCBUS-based systems provided with SC707, SC714, are affected by this.
 
 It is impossible to make use of the "upper" 64KB RAM because at the top adresses, some "shadow" routines must be stored, at the same address,
 in both the "lower" and "upper" 64KB RAM, in order to be able to move bytes between these two 64KB banks.
