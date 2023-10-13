@@ -21,9 +21,9 @@ Use the HiTech tools to compile & link the sources.
 
 Settings:
 
-64 - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
-128 - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
-512 - up to 8192 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+64K RAM systems - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+128K RAM systems - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+512K RAM systems - up to 8192 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 Z80ALL - up to 8192 lines, VGA 48x64, with WordStar style keyboard (accepts also arrow keys)
 
 Design details and some constraints:
