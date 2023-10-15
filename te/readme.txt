@@ -12,10 +12,10 @@ I made this adaptation to harness the advantages of being provided with some ext
 
 This version of the text editor TE works on the following hardware environments:
 
-- any RC2014 with 64KB RAM
-- Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
-- Z80 systems provided with the 512KB RAM + 512KB ROM module
-- Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard)
+TE64     - any RC2014 with 64KB RAM
+TE128    - Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
+TE512    - Z80 systems provided with the 512KB RAM + 512KB ROM module
+TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard)
 
 Use the HiTech tools to compile & link the sources.
 
