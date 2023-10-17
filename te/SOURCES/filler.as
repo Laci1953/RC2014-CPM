@@ -4,7 +4,7 @@
 
 	psect	top
 
-COUNT	equ	2108H
+COUNT	equ	2116H
 
 REPT	COUNT
 	defb	0
