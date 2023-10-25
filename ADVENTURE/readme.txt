@@ -1,4 +1,4 @@
-Collosal Cave Adventure
+Collosal Cave Adventure (version DAIM0350)
 
 This is Daimler's 350-point "Adventure" (circa June 1990, according
 to Russel Dalenberg). Its version information lists
