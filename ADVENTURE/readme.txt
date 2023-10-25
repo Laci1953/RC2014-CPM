@@ -16,7 +16,8 @@ into the data files, and disables a handful of inessential verbs
 (presumably in the PC's limited memory).
 
 Adapted for HiTech C Z80 under CP/M by Ladislau Szilagyi, Oct. 2023
-Uncommented Daimler's disabled verbs - game is complete again !
-Added a new pseudo-random number generator (Xorshift)
+
+I uncommented Daimler's disabled verbs - game is complete again !
+I also changed the random number generator (now it is the Xorshift)
 
 Hint: if you get lost, see CaveMap.jpg
