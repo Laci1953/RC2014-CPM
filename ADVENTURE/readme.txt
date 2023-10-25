@@ -1,4 +1,4 @@
-Collosal Cave Adventure (version DAIM0350)
+Collosal Cave Adventure (version DAIM0350 from https://github.com/Quuxplusone/Advent)
 
 This is Daimler's 350-point "Adventure" (circa June 1990, according
 to Russel Dalenberg). Its version information lists
