@@ -5,7 +5,7 @@ Here are the necessary 3 steps, depending on your specific Z80 computer's hardwa
 This is a mandatory step only for computers provided with the 512KB ROM + 512KB RAM board.
 (For computers provided with Steve Cousins SCM, e.g. SC108, this step is not mandatory, you can boot CP/M from SCM, so go to step 2)
 
-For computers provided with 512KB RAM, you need to boot CP/M at power ON, in order to use the enhanced HiTech C compiler.
+For computers provided with 512KB RAM, you need to boot CP/M at power ON, in order to use the TE text editor.
 Why? Running CP/M from ROMWBW will not allow the TE editor to be executed !
 
 Choose the appropriate .hex file (according to your RC2014's serial type & CF size), and burn-it to an (E)EPROM, then insert the EPROM to your 512KB RAM + 512KB ROM board.
