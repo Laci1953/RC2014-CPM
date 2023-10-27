@@ -28,49 +28,12 @@ Then:
 
 Now, the CF contains a smaller CP/M.
 
-3. The TE editor
+3. Creating the TE editor executable
 
 This step is mandatory for all computers.
 
-To implement on your computer the enhanced HiTech C, you need to copy the appropriate .HEX file (according to your hardware), here I will use the "generic" names, then execute:
+You need to copy the appropriate .HEX file (according to your hardware), here I will use the "generic" name, then execute:
 
 LOAD TE
-LOAD P1
-LOAD CGEN
-LOAD OPTIM
-LOAD Z80AS
-PIP ZAS.COM=Z80AS.COM
 
-Now, you have the enhanced HiTech C installed.
-
-NOTE
-----
-
-For Z80 computers provided with 512KB RAM and 64MB CF, although the "original" CP/M may be used, 
-I highly recommend to change-it with the smaller CP/M contained here https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys
-
-The reason is the gain of 2 and a half KB TPA space, which is not negligeable when compiling large C files.
-The explanation for this is the fact that, although most of the C compiler memory allocations are done in the "extra" RAM space, there are also some structures allocated in the main 64KB RAM space (the high part of the TPA). This could prove vital in certain cases.
-
-So, why not use a "smaller" CP/M ?
-
-The only problem is how to install on the CF this smaller CP/M...
-
-Tipical case: you have a Z80 computer provided with 512KB RAM + 512KB ROM board, as SIO serial board and a 64KB CF.
-
-You must use a second Z80 computer, provided with Steve Cousins SCM, in order to be able to copy the smaller CP/M to the CF.
-
-On this second Z80 computer, you need to insert the CF from the 512KB RAM computer, then paste the SIO_PutSys_CF64_CPM_DA00H.hex file
-(from https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys),
-to the terminal, then:
-*g8000<CR>
-
-Now, the CF contains the smaller CP/M, so inserting it to the 512KB RAM computer and booting-it, the smaller CP/M will be loaded and executed.
-
-However, for Z80 computers provided with 512KB RAM and 128MB CF, this is not feasable (you will need to use the original CP/M)
-
-This is because the gain in TPA space was obtained, for the smaller CP/M, at the BIOS level, by dropping the use of interrupts for the serial and by commenting out the buffers reserved for the disks used only for 128MB CF, in case the actual CF has only 64MB. 
-
-Example: In the case of a Z80 computer provided with 128KB RAM and 64MB CF, the gain obtained by dropping the use of interrupts for the serial is sufficient to allow obtaining a "free" space at the top of the 64KB RAM, to store there the "shadow" copy routines, but for a Z80 computer provided with 512KB RAM and 128MB CF, the gain obtained by dropping the use of interrupts for the serial will mean that only a small "free" RAM area was obtained, insufficient to "move" the whole CP/M CPP+BDOS+BIOS at a higher load address...
-
-That's why, ironically, it's better to have a computer provided with a 64MB CF, instead of one with a 128MB CF...
+Now, you have the TE text editor installed.
