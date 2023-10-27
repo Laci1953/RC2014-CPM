@@ -1,0 +1,76 @@
+Here are the necessary 3 steps, depending on your specific Z80 computer's hardware:
+
+1. The boot (E)EPROM
+
+This is a mandatory step only for computers provided with the 512KB ROM + 512KB RAM board.
+(For computers provided with Steve Cousins SCM, e.g. SC108, this step is not mandatory, you can boot CP/M from SCM, so go to step 2)
+
+For computers provided with 512KB RAM, you need to boot CP/M at power ON, in order to use the enhanced HiTech C compiler.
+Why? Running CP/M from ROMWBW will not allow the TE editor to be executed !
+
+Choose the appropriate .hex file (according to your RC2014's serial type & CF size), and burn-it to an (E)EPROM, then insert the EPROM to your 512KB RAM + 512KB ROM board.
+Example: you have a Z80 computer with 512KB RAM, an ACIA serial and 64MB CF. You will choose the CPM_boot_512_ACIA_CF64.hex file.
+Now, at power ON, the CP/M directly boots.
+
+2. The smaller CP/M (for 128KB RAM Z80 computers)
+
+This step is mandatory only for 128KB RAM computers.
+(For computers provided with 512KB RAM + 512KB ROM boards, you may use the "original" CP/M, go to step 3, but read also the final NOTE)
+
+Why is this needed? The RC2014 "original" CP/M is too "fat", it consumes all the RAM space till 0FFFFH, and because of that, there is no space, at the top of RAM memory, to store the "shadow" routines, needed to move bytes between the two 64KB RAM banks.
+
+To change your CP/M with the smaller CP/M, to be able to run the TE editor for 128KB RAM Z80 computers, you need to 
+paste on the terminal the appropriate .hex file, from https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys.
+Example: you have an 128KB RAM Z80 computer with an ACIA serial and 64MB CF. You will choose the ACIA_PutSys_CF64_CPM_DA00H.hex file.
+
+Then:
+*g8000<CR>
+
+Now, the CF contains a smaller CP/M.
+
+3. The TE editor
+
+This step is mandatory for all computers.
+
+To implement on your computer the enhanced HiTech C, you need to copy the appropriate .HEX file (according to your hardware), here I will use the "generic" names, then execute:
+
+LOAD TE
+LOAD P1
+LOAD CGEN
+LOAD OPTIM
+LOAD Z80AS
+PIP ZAS.COM=Z80AS.COM
+
+Now, you have the enhanced HiTech C installed.
+
+NOTE
+----
+
+For Z80 computers provided with 512KB RAM and 64MB CF, although the "original" CP/M may be used, 
+I highly recommend to change-it with the smaller CP/M contained here https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys
+
+The reason is the gain of 2 and a half KB TPA space, which is not negligeable when compiling large C files.
+The explanation for this is the fact that, although most of the C compiler memory allocations are done in the "extra" RAM space, there are also some structures allocated in the main 64KB RAM space (the high part of the TPA). This could prove vital in certain cases.
+
+So, why not use a "smaller" CP/M ?
+
+The only problem is how to install on the CF this smaller CP/M...
+
+Tipical case: you have a Z80 computer provided with 512KB RAM + 512KB ROM board, as SIO serial board and a 64KB CF.
+
+You must use a second Z80 computer, provided with Steve Cousins SCM, in order to be able to copy the smaller CP/M to the CF.
+
+On this second Z80 computer, you need to insert the CF from the 512KB RAM computer, then paste the SIO_PutSys_CF64_CPM_DA00H.hex file
+(from https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys),
+to the terminal, then:
+*g8000<CR>
+
+Now, the CF contains the smaller CP/M, so inserting it to the 512KB RAM computer and booting-it, the smaller CP/M will be loaded and executed.
+
+However, for Z80 computers provided with 512KB RAM and 128MB CF, this is not feasable (you will need to use the original CP/M)
+
+This is because the gain in TPA space was obtained, for the smaller CP/M, at the BIOS level, by dropping the use of interrupts for the serial and by commenting out the buffers reserved for the disks used only for 128MB CF, in case the actual CF has only 64MB. 
+
+Example: In the case of a Z80 computer provided with 128KB RAM and 64MB CF, the gain obtained by dropping the use of interrupts for the serial is sufficient to allow obtaining a "free" space at the top of the 64KB RAM, to store there the "shadow" copy routines, but for a Z80 computer provided with 512KB RAM and 128MB CF, the gain obtained by dropping the use of interrupts for the serial will mean that only a small "free" RAM area was obtained, insufficient to "move" the whole CP/M CPP+BDOS+BIOS at a higher load address...
+
+That's why, ironically, it's better to have a computer provided with a 64MB CF, instead of one with a 128MB CF...
