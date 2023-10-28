@@ -32,7 +32,14 @@ Now, the CF contains a smaller CP/M.
 
 This step is mandatory for all computers.
 
-You need to copy the appropriate .HEX file (according to your hardware), here I will use the "generic" name, then execute:
+To implement on your computer the enhanced TE editor, you need to copy the appropriate .HEX file (according to your hardware):
+
+TE128.HEX = for SC108 & compatibles
+TE114.HEX = for SC114, Phillip Stevens Memory Module & compatibles
+TE512.HEX = for 512KB RAM systems
+TEZ80ALL.HEX = for Z80ALL
+
+then:
 
 LOAD TE
 
