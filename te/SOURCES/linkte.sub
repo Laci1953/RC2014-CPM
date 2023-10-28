@@ -1,5 +1,5 @@
 xsub
 link
--Z -N -Mte.map -Ptext=100h,data,bss -C100H -Ote.COM mycrtcpm.obj \
+-Ptext=100h,data,bss -C100H -Ote.COM mycrtcpm.obj \
 te.obj teconf.obj teedit.obj teerror.obj tefile.obj tekeys.obj telines.obj \
 temisc.obj teui.obj teui1.obj tews100.obj tabs.obj dynm.obj LIBC.LIB
