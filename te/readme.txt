@@ -62,10 +62,12 @@ The 128KB RAM is divided into 2 "virtual" 64KB banks: the lower and the upper ba
 In order to execute code that switches from the lower to the upper bank (and back...), 
 that piece of code must be present at the same physical address in both of banks (the so called "shadow code)". 
 It is impossible to store shadow code in the upper bank using only programs resident in RAM, 
-for this only ROM-based code may help; my version of SCM contains an API function ( $2B ) which moves a byte to a given address of the upper RAM bank. 
-This API call is not documented (it cannot be found in the SCM manual), I've found-it by browsing through the SCM source code... 
+for this only ROM-based code may help; SCM contains an API function ( $2B ) which moves a byte to a given address of the upper RAM bank. 
+In early SCM version (e.g. v1.0), this API call is not documented (it cannot be found in the SCM manual), I've found-it by browsing through the SCM source code... 
 
 Therefore, by using this $2B SCM API call, the shadow code can be moved to the upper RAM bank.
+
+As a second possibility, this routine can be stored also, at a fixed address (7F00H) in the EPROM used to boot CP/M (see https://github.com/Laci1953/RC2014-CPM/tree/main/BOOT ).
 
 But, for the memory allocator, we have also another important constraint: the shadow code must be stored in top of the physical 64KB RAM, in order to offer as much possible RAM available to be allocated (storing at the bottom of the physical 64KB RAM is out of question, we have there the 100H BIOS buffers area). There is only one possible solution: storing a small shadow code on top of CP/M's BIOS. My shadow code is less than 40H. 
 
@@ -154,5 +156,13 @@ I made a major improvement, allowing text files with long lines to be processed 
 
 I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard)
 
-Ladislau
+September 2023
+--------------
+
+I improved the code related to cursor placement, in the line and up/down between lines; this involves keeping track of TAB's, and assuring that the cursor is always positioned to a position containing a "real" character (e.g. when moving the cursor in a line containing multiple TAB's, the cursor is never placed to a position that does not contain a character or a TAB)
+
+Also, BackSpace behavior was aligned to the above rule.
+
+--------------
+
 
