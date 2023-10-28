@@ -18,4 +18,4 @@ For any RC2014's configurations using:
 
 , provided with serial boards using SIO or KIO or ACIA and 64/128MB CF
 
-For harware configurations using 2 x 64KB banked RAM boards, the code contains, at 7F00H, 2 small routines that move bytes between the two 64KB memory banks; this is used in the enhanced HiTech C compiler here https://github.com/Laci1953/HiTech-C-compiler-enhanced/tree/main, and in the TE editor here https://github.com/Laci1953/RC2014-CPM/tree/main/te
+For hardware configurations using 2 x 64KB banked RAM boards, the code contains, at 7F00H, 2 small routines that move bytes between the two 64KB memory banks; this is used in the enhanced HiTech C compiler here https://github.com/Laci1953/HiTech-C-compiler-enhanced/tree/main, and in the TE editor here https://github.com/Laci1953/RC2014-CPM/tree/main/te
