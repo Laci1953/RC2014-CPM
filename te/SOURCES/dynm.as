@@ -18,9 +18,9 @@ IF	?2X64K
 ;	in case ?2X64K is set to 1,
 ;	only one of SC108, MM, S80 must be set to 1
 ;
-SC108	equ	1	;1 : SC108
+SC108	equ	0	;1 : SC108
 MM	equ	0	;1 : 32KB ROM + 128KB RAM Phillip Stevens memory module or SC114
-S80	equ	0	;1 : Simple80 
+S80	equ	1	;1 : Simple80 
 
 ELSE
 
