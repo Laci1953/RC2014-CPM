@@ -2,4 +2,4 @@ xsub
 link
 -Ptext=100h,data,bss -C100H -Otenew.COM mycrtcpm.obj \
 te.obj teconf.obj teedit.obj teerror.obj tefile.obj tekeys.obj telines.obj \
-temisc.obj teui.obj teui1.obj tews100.obj tabs.obj filler.obj dynm.obj LIBC.LIB
+temisc.obj teui.obj teui1.obj tews100.obj tabs.obj filler.obj sbrk.obj dynm.obj LIBC.LIB
