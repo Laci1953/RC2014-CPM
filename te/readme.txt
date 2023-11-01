@@ -5,8 +5,7 @@ The text editor TE was written by Miguel Garcia.
 
 It's simple, user friendly, and edits the text in the RAM (it's fast...).
 
-But, because the CP/M's 64KB RAM is limited as capacity (the operating system, the program and the text file must fit inside these 64KB RAM), 
-the original TE allowed only small files to be edited (up to 20K).
+But, because the CP/M's 64KB RAM is limited as capacity (the operating system, the program and the text file must fit inside these 64KB RAM), the original TE allowed only small files to be edited (up to 20K).
 
 I made this adaptation to harness the advantages of being provided with some extra RAM, in certain Z80 hardware platforms.
 
