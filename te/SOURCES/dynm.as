@@ -9,7 +9,7 @@
 ;
 ;	only one of ?2X64K , ?512K, ?Z80ALL must be set to 1
 ;
-?2X64K	equ	0	;1 : SC108 or 32KB ROM + 128KB RAM Phillip Stevens memory module or SC114 or Simple80
+?2X64K	equ	1	;1 : SC108 or 32KB ROM + 128KB RAM Phillip Stevens memory module or SC114 or Simple80
 ?512K	equ	0	;1 : 512KB RAM + 512KB EPROM
 ?Z80ALL equ	0	;1 : Z80ALL 4 x 32KB RAM
 
