@@ -5,7 +5,7 @@ M512 : 512KB RAM
 
 SC108
 Z80ALL
-MM
+MM = Phillip Stevens 32KB EPROM + 128KB RAM module
 SC114
 S80 = Simple80
 
