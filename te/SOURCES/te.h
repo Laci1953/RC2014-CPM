@@ -73,7 +73,7 @@
 */
 
 //#define M64 1
-#define M128	1
+//#define M128	1
 //#define M512	1
 //#define Z80ALL	1
 //#define SC108	1	
