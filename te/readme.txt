@@ -81,7 +81,7 @@ Besides the address of the buffer, a byte containing the RAM bank index is retur
 
 To access a buffer reserved in the upper 64KB RAM bank, special functions must be used to read/write a byte, a word, or a string.
  
-Text files up to 70KB can be edited. 
+Text files up to 80KB can be edited. 
 
 But, this comes with a cost: when opening a file to be edited, the editor reads all the text and store this text in the dynamic memory, and this takes time, because every single byte that has to be moved to the upper RAM bank is not simply moved, as in case of the lower bank, but is passed to the shadow code in order to be stored in the upper RAM bank. Also, a buffer for every new text line that is read must be allocated, and this allocation means also accessing the shadow code, in order to manage (read/write) the data structures that handle the available memory pool.  
 
@@ -91,7 +91,7 @@ As a conclusion: the TE editor 128KB version will work only for RC2014 systems p
 
 Comparing the two versions of TE (128KB vs. 512KB), the 512KB version is by far the best. 
 
-First, the size of files that can be edited is larger (400KB vs. 70KB).
+First, the size of files that can be edited is larger (400KB vs. 80KB).
 Then, the initial phase of file reading when starting the editor is faster.
 
 But, I consider both versions of the TE editor as a step forward in the right direction, allowing larger files to be edited in memory, with an elegant an efficient user interface.
@@ -154,7 +154,9 @@ April 2023
 
 I made a major improvement, allowing text files with long lines to be processed (lines with up to 145 chars for 80 column screens, up to 115 chars for 64 column screens).
 
-I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard). This version is fast enough to allow handling large files without the handicap of long waiting interval until the whole file is read - some seconds are enough...
+I have now also a TE adapted for Bill Shen's Z80ALL (Z80 at 25MHz, 4 x 32KB RAM, VGA 48x64, keyboard). 
+Text files up to 64KB can be edited.
+This version is fast enough to allow handling large files without the handicap of long waiting interval until the whole file is read - some seconds are enough...
 
 September 2023
 --------------
