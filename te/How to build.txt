@@ -1,4 +1,4 @@
-Edit the following files: TE.H, FILLER.AS, DYNM.AS to choose the target hardware
+Edit the following files: TE.H, FILLER.AS, DYNM.AS, SBRK.AS to choose the target hardware
 
 M128 : 2 x 64KB RAM
 M512 : 512KB RAM
