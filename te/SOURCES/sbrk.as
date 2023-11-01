@@ -1,3 +1,7 @@
+Z80ALL	equ	0
+
+IF	Z80ALL
+
 ;
 ;	Implements two heap mechanism
 ;
@@ -53,4 +57,6 @@ notzero:
 	psect	bss
 
 memtop:	defs	2
+
+ENDIF
 
