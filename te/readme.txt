@@ -164,6 +164,8 @@ I improved the code related to cursor placement, in the line and up/down between
 
 Also, BackSpace behavior was aligned to the above rule.
 
+October 2023
 --------------
 
+The 128KB RAM version is now capable to edit text files with size up to 80KB; also, the initial "read file" step is faster.
 
