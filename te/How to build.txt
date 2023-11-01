@@ -1,0 +1,7 @@
+Edit the follwing files: TE.H, FILLER.AS, DYNM.AS to choose the target hardware
+
+Then:
+
+SUBMIT MAKETE
+SUBMIT LINKTE
+
