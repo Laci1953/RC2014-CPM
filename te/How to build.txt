@@ -1,4 +1,4 @@
-Edit the follwing files: TE.H, FILLER.AS, DYNM.AS to choose the target hardware
+Edit the following files: TE.H, FILLER.AS, DYNM.AS to choose the target hardware
 
 Then:
 
