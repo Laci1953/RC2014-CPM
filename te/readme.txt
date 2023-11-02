@@ -37,15 +37,14 @@ How it works:
 The 512KB RAM module uses 32 16KB "virtual" RAM pages, mapped to one of 4 "physical" pages 0000-3FFF, 4000-7FFF, 8000-BFFF and C000-FFFF. 
 Any virtual page can be mapped to any physical page.
 
-The memory physical area from 8000H to BFFFH (let's name-it "work area") is used to load one of the 32 "virtual" 16KB pages from the 512KB RAM, 
-and the memory allocator returns a pointer to the available buffer and a byte containing the index of the 16KB page that contains this buffer (let's name-it "page index"). 
+The memory physical area from 8000H to BFFFH (let's name-it "work area") is used to load one of the 32 "virtual" 16KB pages from the 512KB RAM, and the memory allocator returns a pointer to the available buffer and a byte containing the index of the 16KB page that contains this buffer (let's name-it "page index"). 
 
 When that buffer needs to be accessed for read/write operations, the 16KB RAM page must be first loaded into the "work area", 
 using a function call with the "page index" as parameter.
 
 Of course, to "free" the allocated buffer, this "page index" must be provided too.
 
-Text files up to 350KB can be edited.
+Text files up to 400KB can be edited.
 
 The 521KB version can be run on any CP/M version, regardless of its TPA area size.
 
@@ -104,10 +103,6 @@ The files, when loaded, will be displayed using TABs indentation.
 
 The TAB interval (4 or 8) may be set from the command line: >TE file.ext [ 4 | 8 ] ; default = 8.
 
-UPDATE: (31 dec 2022)
-
-I added TEW.COM, a new version for SC108, for very wide screens (it can handle lines up to 175 characters)
-
 March 2023
 ----------
 
@@ -135,18 +130,15 @@ You can press N/n to quit to CP/M, or any other key to continue TE,  being prese
 
 2. Tabs can be used freely in the text; you have two options related to  TAB's alignment ( 4 or 8 ); the default is 8. 
 You can change-it to 4 using  the option -T in the command line.
-It important to mention that the use of TABs does not increase the size  of the text file, nor the size of buffers allocated in memory to store the text;
- this is because TABs are inflated/deflated to/from blanks only when needed, (e.g.) when displayed on screen.
+It important to mention that the use of TABs does not increase the size  of the text file, nor the size of buffers allocated in memory to store the text; this is because TABs are inflated/deflated to/from blanks only when needed, (e.g.) when displayed on screen.
 
 3. When reading/writing files, a line containing a counter of the lines being processed is displayed, to offer to the user a clue related to the status of the I/O operation.
 
 4. The number of columns/lines can now be selected directly in the command line, using the -W or -H options; default values are 24 for lines, and 80 for columns.
 
-
 I opted to unify the two versions of source code (128/512), now there is a single set of source files for both 128KB and 512KB TE versions.
 
-As a reminder, the TE128 can edit files with sizes up to 70KB, and TE512 up to 400KB.  
-
+As a reminder, the TE128 can edit files with sizes up to 80KB, and TE512 up to 400KB.  
 
 April 2023
 ----------
