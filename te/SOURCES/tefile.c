@@ -29,8 +29,8 @@
         19 Jan 2019 : Optimize WriteFile().
         04 Jan 2021 : Use configuration variables.
            Nov 2021 : (Ladislau Szilagyi) Adapted for RC2014's SC108 128KB RAM memory module
-	   Mar 2022 : (Ladislau Szilagyi) Adapted for RC2014's 512KB RAM memory module
-	   Mar 2023 : (Ladislau Szilagyi) Review & created single source for 128/512
+           Mar 2022 : (Ladislau Szilagyi) Adapted for RC2014's 512KB RAM memory module
+           Mar 2023 : (Ladislau Szilagyi) Review & created single source for 128/512
 */
 
 #include <te.h>
@@ -172,11 +172,11 @@ void BackupFile(char *fn)
 */
 void RefreshLineNr(int i)
 {
-	char buf[5];
+        char buf[5];
 
-	sprintf(buf, "%d", i);
-	CrtLocate(cf_rows - 1, 22);
-	putstr(buf);
+        sprintf(buf, "%d", i);
+        CrtLocate(cf_rows - 1, 22);
+        putstr(buf);
 }
 
 /* Read text file
@@ -186,7 +186,7 @@ void RefreshLineNr(int i)
 int ReadFile(char* fn)
 {
         FILE *fp;
-	int i, len;
+        int i, len;
         unsigned char err, oversize;
         char *p;
 
@@ -207,8 +207,8 @@ int ReadFile(char* fn)
         /* Read the file */
         for(i = 0; i < 32000; ++i)
         {
-		/* refresh number of lines read */
-		RefreshLineNr(i);
+                /* refresh number of lines read */
+                RefreshLineNr(i);
 
                 if(!fgets(ln_dat, LINE_SIZE_MAX + 1, fp))
                         break;
@@ -223,14 +223,14 @@ int ReadFile(char* fn)
                 if(ln_dat[len - 1] == '\n')
                         ln_dat[--len] = 0;
 
-		p = ln_dat;
+                p = ln_dat;
 
-		if ((len=strlen(p)) > LINE_SIZE_MAX)
-		{
-			p[LINE_SIZE_MAX]=0;
-			len = LINE_SIZE_MAX;
-			oversize = 1;
-		}
+                if ((len=strlen(p)) > LINE_SIZE_MAX)
+                {
+                        p[LINE_SIZE_MAX]=0;
+                        len = LINE_SIZE_MAX;
+                        oversize = 1;
+                }
 
                 ptmp = (char*)AllocMem(len+1, &b);
 
@@ -249,6 +249,22 @@ int ReadFile(char* fn)
                 }
         }
 
+        // add an extra empty line
+
+        ptmp = (char*)AllocMem(1, &b);
+
+        if (ptmp)
+        {
+                PutWord(lp_arr, lp_now, ptmp, b_lp_arr);
+                PutByte(lp_arr_i_b, lp_now, b, b_lp_arr_i_b);
+
+                PutString("", ptmp, b);
+
+                lp_now++;
+        }
+        else
+                err = 1;
+
         /* Close the file */
         fclose(fp);
 
@@ -263,9 +279,9 @@ int ReadFile(char* fn)
                 InsertLine(0, NULL);
         }
 
-	/* Check truncated lines */
-	if(oversize)
-		ErrLine("Some lines were truncated!");
+        /* Check truncated lines */
+        if(oversize)
+                ErrLine("Some lines were truncated!");
 
         /* Success */
         return 0;
@@ -295,10 +311,14 @@ int WriteFile(char* fn)
         /* Write the file */
         for(i = 0; i < lp_now; ++i)
         {
-		/* refresh number of lines written */
-		RefreshLineNr(i);
+                /* refresh number of lines written */
+                RefreshLineNr(i);
 
                 GetString(tmpbuf, GetWord(lp_arr, i, b_lp_arr), GetByte(lp_arr_i_b, i, b_lp_arr_i_b));
+
+                // do not write a final empty line
+                if (i == lp_now-1 && tmpbuf[0] == 0)
+                        break;
 
                 if(fputs(tmpbuf, fp) == EOF || fputc('\n', fp) == EOF)
                 {
@@ -323,4 +343,3 @@ int WriteFile(char* fn)
         /* Success */
         return (lp_chg = 0);
 }
-
