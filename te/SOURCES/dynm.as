@@ -160,10 +160,21 @@ ENDIF
 ;-------------------------------------------------------------Z80ALL
 
 IF	?Z80ALL
-;	must be stored above 8000H
+
 	psect	top
+
+;	must be stored above 8000H
+
+COUNT	equ	2100H
+
+REPT	COUNT
+	defb	0
+ENDM
+
 ELSE
+
 	psect	text
+
 ENDIF
 
 ;------------------------------------------------------SC108 .or. MM
