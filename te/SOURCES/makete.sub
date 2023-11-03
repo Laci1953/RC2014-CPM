@@ -11,5 +11,4 @@ c -v -c teui1.c
 c -v -c tews100.c
 z80as -j tabs
 z80as -j mycrtcpm
-z80as -j sbrk
 z80as -j dynm
