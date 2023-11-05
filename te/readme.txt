@@ -166,10 +166,32 @@ The 128KB RAM version is now capable to edit text files with size up to 80KB; al
 November 2023
 -------------
 
-The TE128, TESimple80 & TE512 versions enable the user to edit a file while waiting for the file to be completely loaded...
+The basic idea of the TE editor is to work directly with text files stored in the RAM memory; the advantage is the high processing speed ( e.g. when using the "next page" command repeatedly ). 
 
-This feature is useful when editing large files; now, after loading the first "page", you may browse, and even edit your file, 
-even before it is fully loaded in memory, eliminating the initial annoying waiting time to have the file loaded in memory...
+The problem is the long time taken until the complete loading of the text file from the disk.
+
+Until now, the user had to wait until the file was completely loaded from disk to memory, to be able to start navigating through the text and editing the text.
+
+So I tried to somehow solve the problem.
+
+Now, in the new version of the TE editor, when opening a file, after reading a number of lines that fit on the screen (usually 24 lines... but depending also on the settings used in the command line), the user is free to start editing the file; during this time, in the "background", reading the file will continue, until the end of the file.
+
+The user is warned that he can start editing, as the first text screen has been filled with records read from the text file. 
+
+Then, after the last record has been read, the user will be notified again (the notification messages are typed on the last line of the screen, outside the space provided for editing).
+
+Therefore, while the file is being read, the user may browse trough the already loaded part of the file, or even delete/add text.
+
+When the user wants to save the edited file back to the disk, a counter representing the number of lines already written will be displayed on the last line of the screen, while writing continues.
+
+A 60KB text file takes about a minute to load on a system provided with SC108.
+On a system provided with 512KB RAM, it takes less, only about 15 seconds, but still disturbing...
+So this improvement may prove useful for these systems...
+
+On Z80ALL, the same file takes only 5 seconds to load, therefore it does not make sense to implement this improvement also on Z80ALL.
+
+This improvement for the TE text editor is implemented for versions running on systems with 2 x 64 KB RAM or with 512 KB RAM.
+
 
 
 
