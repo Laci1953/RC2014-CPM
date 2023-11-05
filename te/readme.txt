@@ -14,7 +14,7 @@ This version of the text editor TE works on the following hardware environments:
 TE64     - any RC2014 with 64KB RAM
 TE128    - Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module (128 KB RAM),
 TE512    - Z80 systems provided with the 512KB RAM + 512KB ROM module
-TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard)
+TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard) (see https://github.com/Laci1953/Software-for-Z80ALL-retro-computer/tree/main/TE)
 
 Use the HiTech tools to compile & link the sources.
 
@@ -164,7 +164,7 @@ The 128KB RAM version is now capable to edit text files with size up to 80KB; al
 November 2023
 -------------
 
-The TE128 & TE512 versions enable the user to edit a file while waiting for the file to be completely loaded...
+The TE128, TESimple80 & TE512 versions enable the user to edit a file while waiting for the file to be completely loaded...
 
 This feature is useful when editing large files; now, after loading the first "page", you may browse, and even edit your file, 
 even before it is fully loaded in memory, eliminating the initial annoying waiting time to have the file loaded in memory...
