@@ -1,4 +1,4 @@
-# Updated at 5 November 2023
+# Updated on 5 November 2023
 -----------------------------
 
 The text editor TE was written by Miguel Garcia.
