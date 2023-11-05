@@ -4,7 +4,6 @@ M128 : 2 x 64KB RAM
 M512 : 512KB RAM
 
 SC108 : set it to 1 for 128KB RAM systems
-Z80ALL : set it to 1 for Z80ALL
 MM : set it to one for Phillip Stevens 32KB EPROM + 128KB RAM module
 SC114 : set it to 1 for SC114 
 S80 = Simple80 : set it to 1 for Simple80 
