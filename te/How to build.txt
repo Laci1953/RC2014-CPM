@@ -13,3 +13,4 @@ Then:
 SUBMIT MAKETE
 SUBMIT LINKTE
 
+For Z80ALL, see https://github.com/Laci1953/Software-for-Z80ALL-retro-computer/tree/main/TE
