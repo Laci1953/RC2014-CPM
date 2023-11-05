@@ -1,4 +1,4 @@
-# Updated at 1 November 2023
+# Updated at 5 November 2023
 -----------------------------
 
 The text editor TE was written by Miguel Garcia.
@@ -160,4 +160,15 @@ October 2023
 --------------
 
 The 128KB RAM version is now capable to edit text files with size up to 80KB; also, the initial "read file" step is faster.
+
+November 2023
+-------------
+
+The TE128 & TE512 versions enable the user to edit a file while waiting for the file to be completely loaded...
+
+This feature is useful when editing large files; now, after loading the first "page", you may browse, and even edit your file, 
+even before it is fully loaded in memory, eliminating the initial annoying waiting time to have the file loaded in memory...
+
+
+
 
