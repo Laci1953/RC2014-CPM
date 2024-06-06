@@ -9,6 +9,8 @@ These routines may be called from C source files (HiTech C)
 
 The routines must be executed ONLY on "real" Z80 computers (they contain undocumented Z80 instructions...)
 
+The source file "new malloc.as" must be assembled using Z80AS.
+
 Results of a test (see test.c) comparing the "classic" HiTech C malloc/free with this new package:
 
 (NEW ALLOC)
