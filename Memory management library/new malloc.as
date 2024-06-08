@@ -17,7 +17,8 @@
 _get_flp::
 	ld	hl,(flp)
 	ret
-
+;
+;	void	init_mem(void);
 _init_mem::
 	ld	de,__Hbss	;free buffer addr
 	ld	(flp),de
@@ -36,7 +37,7 @@ _init_mem::
 	ld	(hl),a
 	ret
 
-;	short	total_free(void);
+;	int	total_free(void);
 _total_free::
 	ld      de,0 	
 	ld      hl,(flp)	
@@ -55,9 +56,9 @@ loopt:
 	or      h	
 	jr      nz,loopt 	
 	ex      de,hl 	
-	ret		;HL=total free bytes
+	ret			;HL=total free bytes
 
-;	void*	mymalloc(short size)
+;	void*	mymalloc(int size)
 _mymalloc::
 	push	ix
 	push	iy
@@ -77,7 +78,7 @@ _mymalloc::
 	ld      de,0	
 	push    de 	
 	ld      hl,(flp) 	
-loop1: 	
+loop1: 				;try to find an exact fit in the free list
 	ld      a,h 	
 	or      l 	
 	jp      z,endloop1 	
@@ -110,6 +111,7 @@ endif1:
 	dec     hl 	
 	cp      b 	
 	jr      nz,else2 	
+				;found-it, remove-it from the freelist and return-it
 	ld      a,d 	
 	or      e 	
 	jr      z,else3 	
@@ -143,7 +145,7 @@ endif3:
 	pop	iy
 	pop	ix 	
 	ret	
-else2: 	
+else2: 				;save the smallest available free buffer
 	ex      de,hl 	
 	ex      (sp),hl 	
 	ex      de,hl 	
@@ -189,7 +191,9 @@ endif4_a:
 	ld      h,(hl) 	
 	ld      l,a 	
 	jp      loop1 	
-endloop1:	
+endloop1:
+				;try to split the free block, if possible
+				;and return a pointer to the upper part
 	ld      d,iyh 	
 	ld      e,iyl 	
 	pop     hl 	
@@ -247,7 +251,7 @@ endif6:
 	pop	iy
 	pop	ix 	
 	ret 	
-endif5: 	
+endif5: 			;no big enough free space available
 	ld      hl,0	
 	pop	iy
 	pop	ix 	
@@ -271,7 +275,8 @@ _myfree::
 	pop     iy 	
 	xor     a 	
 	ld      (iy+2),a 	
-	ld      (iy+3),a 	
+	ld      (iy+3),a
+				;try to aggregate the buffer with adiacent free buffers	
 	ld      ix,(flp)	
 	ld      bc,0	
 loop: 	
@@ -382,7 +387,7 @@ off_ofp3         equ     4
 off_fp2          equ     6 	
 off_incr         equ     8 	
 
-;	void*	myrealloc(void* pbuf, short size)
+;	void*	myrealloc(void* pbuf, int size)
 _myrealloc::
 	push	ix
 	push	iy
@@ -390,12 +395,12 @@ _myrealloc::
 	add	hl,sp
 	ld	e,(hl)
 	inc	hl
-	ld	d,(hl)	;DE=pbuf
+	ld	d,(hl)		;DE=pbuf
 	inc	hl
 	ld	c,(hl)
 	inc	hl
-	ld	b,(hl)	;BC=size
-	ex	de,hl	;HL=pbuf
+	ld	b,(hl)		;BC=size
+	ex	de,hl		;HL=pbuf
 	ld      a,b 	
 	or      a 	
 	jr      nz,2f 	
@@ -412,14 +417,15 @@ _myrealloc::
 	pop	bc
 	pop	iy
 	pop	ix
-	ret 		;ret HL
+	ret 			;ret HL
 1: 	
 	ld      d,h 	
 	ld      e,l 	
 	dec     de 	
 	dec     de 	
 	ld      ixl,e 	
-	ld      ixh,d 	
+	ld      ixh,d
+				;growing or shrinking?
 	ld      a,b 	
 	cp      (ix+1) 	
 	jp      z,cplowf 	
@@ -491,7 +497,7 @@ cplowf:
 	cp      (ix+0) 	
 	jp      c,doiff 	
 	jp      z,doiff 	
-endiff:	
+endiff:				;growing...
 	push    hl 	
 	ld      h,b 	
 	ld      l,c	
@@ -535,7 +541,7 @@ loop3:
 	cp      (iy+off_incr+1) 	
 	jp      c,endifh 	
 	jp      z,cplowh 	
-doifh: 	
+doifh: 				;found a fit
 	dec     hl 	
 	dec     hl 	
 	dec     hl 	
@@ -544,7 +550,7 @@ doifh:
 	cp      (iy+off_incr+1) 	
 	jr      c,elsei 	
 	jr      z,cplowi 	
-doifi: 	
+doifi: 				;split-it
 	pop     hl 	
 	push    hl 	
 	add     hl,bc 	
@@ -591,7 +597,7 @@ cplowi:
 	cp      (iy+off_incr+0) 	
 	jr      c,elsei 	
 	jr      nz,doifi 	
-elsei:	
+elsei:				;use-it fully
 	ld      e,(ix+0) 	
 	ld      d,(ix+1) 	
 	ld      l,(iy+off_fp3+0) 	
@@ -661,7 +667,7 @@ endifh:
 	ld      a,(de) 	
 	ld      (iy+off_fp3+1),a 	
 	jp      loop3 	
-endloop3: 	
+endloop3: 			;alloc a new buffer then copy the data
 	pop     de 	
 	ld      hl,8 	
 	add     hl,sp 	
@@ -686,11 +692,11 @@ copy:
 	ld      b,(ix+1) 	
 	ex      de,hl 	
 	push    de 	
-	push    hl	;to be freed	
+	push    hl		;to be freed	
 	ldir 	
-	call	_myfree
+	call	_myfree		;free old
 	pop	hl
-	pop     hl	;HL=new pbuf	
+	pop     hl		;HL=new pbuf	
 	pop	iy
 	pop	ix
 	ret 	
