@@ -1,4 +1,11 @@
-#Compile with -dNEW for the new alloc
+#	Compile with -dNEW for the new alloc:
+#	C -v -o -dNEW test.c newalloc.as xrnd.as
+#
+#	else use the original alloc
+#	C -v -o test.c xrnd.as
+#
+#	newalloc.as must be assembled using Z80AS,
+#		therefore substitute ZAS.COM with Z80AS.COM before compiling
 
 #include "stdlib.h"
 #include "stdio.h"
@@ -14,7 +21,7 @@ unsigned int xrnd(void);
 void xrndseed(void);
 
 int handles[1024];		// allocated buffers pointers
-int sizes[1024];			// buffers size
+int sizes[1024];		// buffers size
 int max=0;			// max index
 unsigned int size;		// current buffer size
 unsigned int alloc_count;	// how many to allocate
