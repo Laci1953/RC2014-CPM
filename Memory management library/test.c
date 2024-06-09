@@ -1,11 +1,13 @@
 #	Compile with -dNEW for the new alloc:
-#	C -v -o -dNEW test.c newalloc.as xrnd.as
+#		C -v -o -dNEW test.c newalloc.as xrnd.as
 #
 #	else use the original alloc
-#	C -v -o test.c xrnd.as
+#		C -v -o test.c xrnd.as
 #
 #	newalloc.as must be assembled using Z80AS,
 #		therefore substitute ZAS.COM with Z80AS.COM before compiling
+#
+#	if your CCP.COM does not support //comments, replace them with /* comments */
 
 #include "stdlib.h"
 #include "stdio.h"
@@ -100,6 +102,7 @@ void main(void)
 			if (!pbuf)	// if no more free memory, print statistics & exit
 				statistics();
 
+			//uncomment to see allocated buffers
 			//printf("allocated @ %04xH %u bytes\r\n", pbuf, size);
 
 			total_allocs++;
@@ -120,6 +123,7 @@ void main(void)
 #else
 				free((void*)handles[m]);		
 #endif
+				//uncomment to see released buffers
 				//printf("freed handle %d (%04x)\r\n", m, handles[m]);
 
 				handles[m] = 0;
