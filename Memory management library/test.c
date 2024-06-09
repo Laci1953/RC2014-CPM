@@ -1,3 +1,5 @@
+#Compile with -dNEW for the new alloc
+
 #include "stdlib.h"
 #include "stdio.h"
 
@@ -88,7 +90,7 @@ void main(void)
 #else
 			pbuf = (int)malloc(size);
 #endif
-			if (!pbuf)
+			if (!pbuf)	// if no more free memory, print statistics & exit
 				statistics();
 
 			//printf("allocated @ %04xH %u bytes\r\n", pbuf, size);
@@ -98,7 +100,7 @@ void main(void)
 			store_handle(pbuf, size);
 		}
 
-		free_count = random(alloc_count);
+		free_count = random(alloc_count);	//free some of previously allocated
 
 		for (n=0; n<free_count; n++)
 		{
