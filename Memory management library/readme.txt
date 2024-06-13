@@ -1,6 +1,7 @@
 You may find here an efficient memory allocation package
 
 It contains the following functions:
+- init_mem
 - alloc
 - free
 - realloc
