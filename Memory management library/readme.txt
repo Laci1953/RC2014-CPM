@@ -145,14 +145,12 @@ int main(int argc, char*argv[])
   }
 
   if (!(in_sym=fopen(argv[2], "r")))
-  if (!(in_sym=fopen("TWATSON.SYM","r")))
   {
     printf("Cannot open .SYM file!\r\n");
     exit(0);
   }
 
   if (!(out_as=fopen(argv[1], "w")))
-  if (!(out_as=fopen("WWW.AS","w")))
   {
     printf("Cannot open .AS file!\r\n");
     exit(0);
