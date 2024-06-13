@@ -4,6 +4,8 @@ It contains the following functions:
 - alloc
 - free
 - realloc
+- sbrk
+- total_free
 
 These routines may be called from C source files (HiTech C)
 
