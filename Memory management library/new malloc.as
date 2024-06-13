@@ -58,6 +58,8 @@ loopt:
 	ex      de,hl 	
 	ret			;HL=total free bytes
 
+;	void*	sbrk(int size)
+_sbrk::
 ;	void*	mymalloc(int size)
 _mymalloc::
 	push	ix
