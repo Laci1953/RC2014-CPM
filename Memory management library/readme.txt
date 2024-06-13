@@ -199,9 +199,9 @@ int main(int argc, char*argv[])
   exit(1);
 }
 
-Instead using only the functions provided by the standard HiTech C library, we will use also functions provided by the new allocation package.
-The particular C library function important in our test is 'sbrk'.
-It is used by all file related functions to allocate a 512 buffer, to be used by disk I/O operations.
+Instead using only the functions provided by the standard HiTech C library, we will use also specific functions provided by the new allocation package.
+The particular C library function important in our test is 'sbrk'. It allocates a buffer in the heap.
+It is used by all file related system functions to allocate a 512 buffer, to be used by disk I/O operations.
 So, we will include 'myalloc.as' in the C command line, to "force" the linker to use the new 'sbrk', instead of the 'sbrk' from CLIB.LIB
 
 D>c -v -o -ft.sym -mt.map t.c myalloc.as
@@ -235,7 +235,8 @@ ERA $$EXEC.$$$
 
 D>
 
-Let's be sure that the new 'sbrk' is used, and NOT the 'old sbrk' from CLIB.LIB :
+Let's verify that the new 'sbrk' is used, and NOT the 'old sbrk' from CLIB.LIB :
+
 D>type t.map
 Machine type is Z80
 
@@ -352,7 +353,8 @@ wrelop      text  2114
 
 D>
 
-As you noticed, sbrk = 0336H, which is inside myalloc.obj address space.
+As you noticed, in the list of symbols, sbrk = 0336H, which is inside myalloc.obj address space.
+Therefore, the 'new' sbrk will be used.
 
 Let's now test the new app:
 
