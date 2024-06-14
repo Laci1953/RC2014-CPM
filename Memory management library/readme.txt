@@ -138,6 +138,8 @@ short n;
 
 int main(int argc, char*argv[])
 {
+  init_mem();
+
   if (argc != 3)
   {
     printf("Invalid parameters!\r\nUsage is: symtoas file.as file.sym\r\n");
