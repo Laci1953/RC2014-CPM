@@ -3,9 +3,13 @@
 ;
 ;	Fixed point math
 ;
+;	parts taken from http://z80-heaven.wikidot.com/advanced-math
+;	with some bugs fixed
+;
+
 	psect text
 ;
-;       Fixed point 8.8 format: 16 bitst
+;       Fixed point 8.8 format: 16 bits
 
 ;       HIGH=int part
 ;       LOW=fract part
