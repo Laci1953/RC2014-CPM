@@ -4,4 +4,4 @@ You have to hit an apple sitting on a table...
 So, the only chance is to shoot with a vault above the tree,
  hoping to hit the apple.
 You can train for the competition, if you add any extra parameter
- to the command line... (e.g '>arrow t<CR>'
+ to the command line... (e.g '>arrow t<CR>')
