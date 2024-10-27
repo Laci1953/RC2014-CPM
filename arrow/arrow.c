@@ -318,7 +318,7 @@ int main(int argc, char** argv)
 	printf(" hoping to hit the apple.\r\n");
 	printf("You can train for the competition, if you add any extra parameter\r\n");
 	printf(" to the command line... (e.g '>arrow t<CR>'\r\n");
-	printf("Please extend the size of the screen to at least 48 rows x 64 columns\r\n");
+	printf("Please extend the size of the screen to at least 48 rows x 80 columns\r\n");
 	printf("Hit any key when ready...\r\n");
 	CrtIn();
 
