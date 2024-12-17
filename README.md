@@ -71,3 +71,14 @@ TEXTFALL - a 'Matrix digital rain' style console game
 
 BIRDS - the "birds, eagle and kite" game
 
+MAZE - VT100 game
+
+CURLING - VT100 game
+
+POOL - VT100 game
+
+BOWLING - VT100 game
+
+MARKSMAN - VT100 game
+
+
