@@ -83,4 +83,7 @@ BOWLING - VT100 game
 
 MARKSMAN - VT100 game
 
+TREASURE - VT100 game
+
+
 
