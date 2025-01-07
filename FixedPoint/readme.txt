@@ -29,3 +29,6 @@ This library is used in the following games: arrow, bowling, curling, marksman, 
 If you want to use, on the screen, objects placed in a (-127 ... 127) x (-127 ... 127) system of coordinates, this library works ok.
 It is faster, compared to floating point, and offers good enough accuracy.
 However, some basic rules must be observed, e.g. if you want to compute S = A * B / C, use S = A * (B / C), to avoid overflow.
+
+TEST.C contains a small test: verifying that sin(x)^2 + cos(x)^2 = 1
+TEST.LST is the listing of running TEST
