@@ -26,6 +26,10 @@ int atofixed(char* p); // converts the ascii string to fixed point : accepts iii
 
 This library is used in the following games: arrow, bowling, curling, marksman, pool, treasure
 
+Using the functions provided by this library, I was able to implement, among others:
+- the accurate linear movement of a ball on a pool table, including the ricochet with the edges of the table
+- the elastic collision of a moving ball with a static ball
+
 If you want to use, on the screen, objects placed in a (-127 ... 127) x (-127 ... 127) system of coordinates, this library works ok.
 It is faster, compared to floating point, and offers good enough accuracy.
 However, some basic rules must be observed, e.g. if you want to compute S = A * B / C, use S = A * (B / C), to avoid overflow.
