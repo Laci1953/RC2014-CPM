@@ -25,4 +25,10 @@ Also, some geometry formulas are used when managing the balls interaction (colli
 If there are any extra arguments specified in the command line, the game starts in 'training' mode, 
 so that you can practice hitting repeatedly the ball, from the same starting position, using different aiming points, to see the different resulting trajectories.
 
-POOL30.HEX is a customized version, for those of you who have Geoff's VT100 Terminal Kit ( https://www.tindie.com/products/petrohi/geoffs-vt100-terminal-kit/ ).
+POOL30.HEX is a customized version, for those of you who have Geoff's VT100 Terminal Kit ( https://www.tindie.com/products/petrohi/geoffs-vt100-terminal-kit/ ), to be played on a 30 lines x 80 columns screen.
+
+Settings needed:
+
+[Terminal] [Char set] = IBM PC 437
+[Video] [Number of lines] = 30
+
