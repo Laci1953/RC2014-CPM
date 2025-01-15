@@ -1,3 +1,5 @@
+For 128KB RAM (SC108, SC114, SC118, SC150, SC152) RC2014'S with SIO/ACIA/KIO serial, 64MB/128MB CF
+
 How to install the "custom" CP/M
 --------------------------------
 
