@@ -1,23 +1,23 @@
 # RC2014-CPM
 
-Why a "custom" CP/M ?
+Why a "customized" CP/M ?
 ---------------------
 
-Because the "official" RC2014's CP/M is too "fat" ... eating all the available RAM space till 0FFFFH
+Because the "official" RC2014's CP/M BIOS is too "fat" and it is not configured according to the size of the current CF (64 / 128 MB).
+
+The "official" CP/M base address is always 0D000H, eating all the available RAM space till 0FFFFH.
 
 Why is this a bad thing?
 
-Because this way, it's impossible to make use of the "upper" 64KB RAM available on all the 128KB RAM Z80 systems.
+For two reasons.
 
-So, the owners of Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module, or RCBUS-based systems provided with SC707, SC714, are affected by this.
+First, BIOS allocates buffers for 16 disk drives. For systems provided with a 64MB CF, this results in vasted 2KB RAM.
 
-It is impossible to make use of the "upper" 64KB RAM because at the top adresses, some "shadow" routines must be stored, at the same address,
-in both the "lower" and "upper" 64KB RAM, in order to be able to move bytes between these two 64KB banks.
+Second, for the 128KB RAM Z80 systems, it's impossible to access the second 64KB RAM bank. It is impossible to make use of the "upper" 64KB RAM because at the top adresses, some "shadow" routines must be stored, at the same address, in both the "lower" and "upper" 64KB RAM, in order to be able to move bytes between these two 64KB banks, and this "free" space is not available. So, the owners of Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Phillip Stevens memory module, or RCBUS-based systems provided with SC707, SC714, are affected by this.
 
 This is why I tried to customize the BIOS, in order to obtain a "thinner" CP/M.
-It's a matter of only some dozens of bytes gained...but it's important.
 
-Using this "customized" CP/M, it is now possible to benefit from :
+Using this "customized" BIOS, it is now possible to benefit from :
 
 - an enhanced HiTech C Compiler, able to compile larger C source files ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
 - an enhanced TE text editor, able to edit (in memory) larger text files ( see https://github.com/Laci1953/RC2014-CPM/tree/main/te )
@@ -26,9 +26,9 @@ CP/M and some tools & games for RC2014:
 ---------------------------------------
 
 PutSys - CP/M for RC2014's (serial SIO, KIO or ACIA, CF 64MB or 128MB) - all combinations covered
-- allows using the enhanced HiTech C Compiler, for 128KB RAM systems ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )    
-- allows using the TE text editor, for 128KB RAM systems
-- offers 2 and half KB extra TPA space for systems provided with 64MB CF
+- allows using the enhanced HiTech C Compiler ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced ), able to compile larger C source files.   
+- allows using the TE text editor, able to edit larger text files
+- offers 2 and half KB extra TPA space for systems provided with 64MB CF (instead of 128MB)
 
 BOOT - CP/M booters (to be burned to EEPROM)
 
