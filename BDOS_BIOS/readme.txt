@@ -1,7 +1,5 @@
 CP/M BDOS + BIOS in a single file
 
-For 128KB RAM (SC108, SC114, SC118, SC150, SC152) RC2014'S with SIO/ACIA/KIO serial, 64MB/128MB CF
-
 This version of BDOS+BIOS is smaller, compared with the "original"
 
 The advantage of having a smaller BIOS:
@@ -11,6 +9,6 @@ The software packages that want to use the extra 64KB RAM are constrained to "im
 With the "original" RC2014 BIOS, this is not possible, because this version of BIOS "eats" all the available memory, up to 0FFFFH. 
 My version of BIOS, being smaller, reserves some small buffer at the highest RAM addresses, for this purpose.
 
-  2.If you have a 64MB CF, the resulting CP/M is smaller, being loaded at 0DA00H. This offers a larger TPA.
+  2.If you have a 64MB CF, the resulting CP/M is smaller, being loaded at 0DA00H. This offers a larger TPA (2 and half KB more RAM).
 
 The source file must be assembled using Z80AS.
