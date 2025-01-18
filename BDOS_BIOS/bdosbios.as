@@ -4714,6 +4714,9 @@ hstbuf:     DEFS 512             ;host buffer
 
 ;biosEnd --------------------------------------------------------------------
 
+;
+; Called ONLY from SCM, for 128KB systems
+;
 ; pop the active IO port from the stack (supplied by monitor),
 ; then start CP/M
 popAndRun:
