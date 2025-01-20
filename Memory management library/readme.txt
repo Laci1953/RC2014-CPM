@@ -113,6 +113,8 @@ D>
 It can be noticed that this new alloc/free package allows the user to allocate more memory (~4Kb more), compared to the old one.
 This is probably because the new alloc/free algorithm works better, compared with the old one, in the case of a highly fragmented free memory.
 
+The file testall.c contains a stress test for the new memory management routines.
+
 Testing a C app which uses the new alloc
 ----------------------------------------
 
