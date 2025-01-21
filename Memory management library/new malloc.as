@@ -58,10 +58,8 @@ loopt:
 	ex      de,hl 	
 	ret			;HL=total free bytes
 
-;	void*	sbrk(int size)
-_sbrk::
 ;	void*	mymalloc(int size)
-_mymalloc::
+_malloc::
 	push	ix
 	push	iy
 	ld	hl,6
@@ -260,7 +258,7 @@ endif5: 			;no big enough free space available
 	ret
 ;
 ;	myfree(void* pbuf)
-_myfree::
+_free::
 	ld	hl,2
 	add	hl,sp
 	ld	a,(hl)
@@ -390,7 +388,7 @@ off_fp2          equ     6
 off_incr         equ     8 	
 
 ;	void*	myrealloc(void* pbuf, int size)
-_myrealloc::
+_realloc::
 	push	ix
 	push	iy
 	ld	hl,6
@@ -415,7 +413,7 @@ _myrealloc::
 	or      l 	
 	jp      nz,1f 	
 	push	bc
-	call	_mymalloc
+	call	_malloc
 	pop	bc
 	pop	iy
 	pop	ix
@@ -488,7 +486,7 @@ endifg:
 	inc     de 	
 	inc     de  	
 	push	de	
-	call	_myfree
+	call	_free
 	pop	de
 	pop     hl 	
 	pop	iy
@@ -677,7 +675,7 @@ endloop3: 			;alloc a new buffer then copy the data
 	push    ix 	
 	push    de 	
 	push	bc
-	call	_mymalloc
+	call	_malloc
 	pop	bc
 	ld      a,h 	
 	or      l 	
@@ -696,7 +694,7 @@ copy:
 	push    de 	
 	push    hl		;to be freed	
 	ldir 	
-	call	_myfree		;free old
+	call	_free		;free old
 	pop	hl
 	pop     hl		;HL=new pbuf	
 	pop	iy
