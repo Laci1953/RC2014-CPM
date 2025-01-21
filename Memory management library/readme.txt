@@ -123,7 +123,7 @@ Also, crtcpm.obj must be replaced (new file crtcpm.as is included).
 
 The stress.c contains a test - some file functions (read, write) then a series of malloc & free calls, repeated until no more memory is available.
 
-A log of executing stress.com (built with the new LIBC.LIB), compared with the execution of stressoo.com (built with the original LIBC.LIB):
+A log of executing stress.com (built with the new LIBC.LIB and the new crtcpm.obj), compared with the execution of stressoo.com (built with the original LIBC.LIB):
 
 D>stress
 00000000000000000000000000000
