@@ -158,3 +158,29 @@ Total bytes allocated = 31334
 D>
 
 Again, you may see a better performance of the new allocation functions (~4KB more bytes allocated with the new functions)
+
+How the new library was built
+-----------------------------
+
+First, save the old files:
+
+>pip libco.lib=libc.lib
+>ren crtcpmo.obj=crtcpm.obj
+
+Then, assemble the new versions of the files:
+
+>z80as crtcpm
+>z80as -j malloc
+>z80as sbrk
+
+Then, replace the old modules with the new ones:
+
+>libr r libc.lib malloc.obj
+>libr r libc.lib sbrk.obj
+
+Now, we have a new, updated LIBC.LIB and a new CRTCPM.OBJ
+
+To build STRESS.COM:
+
+>C -o stress.c xrnd.as
+
