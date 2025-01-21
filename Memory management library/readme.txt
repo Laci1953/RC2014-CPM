@@ -1,11 +1,9 @@
 You may find here an efficient memory allocation package
 
 It contains the following functions:
-- init_mem
 - alloc
 - free
 - realloc
-- sbrk
 - total_free
 
 These routines may be called from C source files (HiTech C)
