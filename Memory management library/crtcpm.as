@@ -3,6 +3,7 @@
 
 	global	start, _main, _exit, __Hbss, __Lbss, __argc_, startup, nularg, _init_mem
 
+	defs	100h
 start:	ld	hl,(6)		; base address of fdos
 	ld	sp,hl		; stack grows downwards
 	ld	de,__Lbss	; Start of BSS segment
