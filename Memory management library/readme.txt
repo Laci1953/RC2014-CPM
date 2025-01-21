@@ -122,9 +122,15 @@ Replaced modules:
 Also, crtcpm.obj must be replaced (new file crtcpm.as is included).
 
 The stress.c contains a test - some file functions (read, write) then a series of malloc & free calls, repeated until no more memory is available.
+The target was : by using a C program using file I/O and malloc/free (to check that the new malloc library is compatible with the original file I/O), to determine the maximum total size of memory blocks that can be allocated.
 
 A log of executing stress.com (built with the new LIBC.LIB and the new crtcpm.obj), compared with the execution of stressoo.com (built with the original LIBC.LIB and crtcpm.obj):
 
+D>type in.txt
+00000000000000000000000000000
+1111111111111111111111111
+22222222222222222
+D>
 D>stress
 00000000000000000000000000000
 1111111111111111111111111
@@ -140,6 +146,12 @@ D>stress
 1111111111111111111111111
 22222222222222222
 Total bytes allocated = 35577
+D>
+D>type out.txt
+00000000000000000000000000000
+1111111111111111111111111
+22222222222222222
+D>
 D>stressoo
 00000000000000000000000000000
 1111111111111111111111111
