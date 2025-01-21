@@ -113,9 +113,15 @@ This is probably because the new alloc/free algorithm works better, compared wit
 
 The file testall.c contains a stress test for the new memory management routines.
 
-The LIBC.LIB file contains a modified HiTech C library, with this new alloc replacing the old alloc routines.
+The LIBC.LIB file contains a modified HiTech C library.
 
-The stress.c contains a test containing some file functions (read, write) then a series of malloc & free calls, repeated until no more memory is available.
+Replaced modules:
+- malloc.obj
+- sbrk.obj
+
+Also, crtcpm.obj must be replaced (new file crtcpm.as is included).
+
+The stress.c contains a test - some file functions (read, write) then a series of malloc & free calls, repeated until no more memory is available.
 
 A log of executing stress.com (built with the new LIBC.LIB), compared with the execution of stressoo.com (built with the original LIBC.LIB):
 
