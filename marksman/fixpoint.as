@@ -640,175 +640,117 @@ xdivytofp::
 	jr	nz,ok
 	ld	h,e
 	ld	l,a		;HL=DE*256
-	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
 	sbc	hl,bc
 	jr	nc,ok
 	ld	hl,0		;return 0
 	ret
-ok:				;it will return a non-zero decimal part
+ok:	
+	ld	h,d
+	ld	l,e		;HL=DE=X
+	ld	e,0		;result=0
+				;it will return a non-zero decimal part
 				;2*X >= Y ?
-	add	hl,hl		;HL=2*X
-	xor	a		;A=0, CARRY=0
+	add	hl,hl
 	sbc 	hl,bc
 	jr	c,1f
-	or	80H		;A=A or 80H
-				;X=2*X-Y
+	set	7,e		;result |= 80H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
 	rl	b		;Y=2*Y
 	jr	2f
-1:	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X	
-2:				;4*X > Y ?
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl		;HL=4*X
 	sbc 	hl,bc
 	jr	c,1f
-	or	40H		;A=A or 40H
-				;X=4*X-Y
+	set	6,e		;result |= 40H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=4*Y
+	rl	b		;Y=2*Y
 	jr	2f
-1:	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
-2:				;8*X > Y ?
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl
-	add	hl,hl		;HL=8*X
 	sbc 	hl,bc		
 	jr	c,1f
-	or	20H		;A=A or 20H 
-				;X=8*X-Y
+	set	5,e		;result |= 20H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b
-	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=8*Y
+	rl	b		;Y=2*Y
 	jr	2f
-1:	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
-2:				;16*X > Y ?
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl		;HL=16*X
 	sbc 	hl,bc
 	jr	c,1f
-	or	10H		;A=A or 10H
-				;X=16*X-Y
+	set	4,e		;result |= 10H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b		
-	sla	c
-	rl	b
-	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=16*Y
+	rl	b		;Y=2*Y
 	jr	2f
-1:
-	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
-2:				;32*X > Y ?
-	add	hl,hl	
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl		;HL=32*X
 	sbc 	hl,bc
 	jr	c,1f
-	or	8H		;A=A or 8H
-				;X=32*X-Y
+	set	3,e		;result |= 8H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b
-	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=32*Y
+	rl	b		;Y=2*Y
 	jr	2f
-1:
-	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
-2:				;64*X > Y
-	add	hl,hl	
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl		;HL=64*X
 	sbc 	hl,bc
 	jr	c,1f
-	or	4H		;A=A or 4H
-				;X=64*X-Y
+	set	2,e		;result |= 4H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b
-	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=64*Y
+	rl	b		;Y=2*Y
 	jr	2f
-1:
-	ex	de,hl		;HL=X
-	ld	d,h
-	ld	e,l		;DE=X
-2:				;128*X > Y
-	add	hl,hl	
+1:	
+	add	hl,bc	
+2:				;2*X > Y ?
 	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl
-	add	hl,hl		;HL=128*X
 	sbc 	hl,bc
 	jr	c,1f
-	or	2H		;A=A or 2H
-				;X=128*X-Y
+	set	1,e		;result |= 2H
+	ld	a,h
+	or	l
+	jp	z,return
 	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b		
-	sla	c
-	rl	b
-	sla	c
-	rl	b
-	sla	c
-	rl	b		;Y=128*Y
+	rl	b		;Y=2*Y
 	jr	2f
 1:
-	ex	de,hl		;HL=X
-2:				;256*X > Y
-	ld	h,l
-	ld	l,0
-	or	a
+	add	hl,bc	
+2:				;2*X > Y ?
+	add	hl,hl
 	sbc	hl,bc
-	jr	c,1f
-	or	1H		;A=A or 1H
-1:	ld	h,0		;high part=0
-	ld	l,a		;low part
+	jr	c,return
+	set	0,e		;result |= 1H
+return:	
+	ld	h,0		;high part=0
+	ld	l,e		;low part
 	ret
 ;
+
 
 	
 
