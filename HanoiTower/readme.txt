@@ -1,3 +1,7 @@
+Tower of Hanoi - game 
+
+It works on any Z80 machine provided with a VT100 compatible terminal
+
 D>hanoi
 Tower of Hanoi
 
