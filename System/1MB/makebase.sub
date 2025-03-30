@@ -1,0 +1,3 @@
+c -v -o -fbase.sym -mm.map base.c overlays.as dyn512.as
+symtoas basedefs.as base.sym
+zas basedefs.as

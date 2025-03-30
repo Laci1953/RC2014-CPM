@@ -1,0 +1,6 @@
+xsub
+link
+-ptext=4000H/0,data/ -oov5.obj over5.obj basedefs.obj libc.lib
+objtohex ov5.obj ov5.hex
+type ov5.hex
+era ov5.hex

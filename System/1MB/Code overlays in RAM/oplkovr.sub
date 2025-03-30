@@ -1,0 +1,10 @@
+xsub
+link
+-z -X -N -dopovr1.sym -mopovr1.map -ptext=4000H/0,data -C0 -oop1.com \
+opov1red.obj optim1b.obj optim1c.obj optim1d.obj \
+op21a.obj op21b.obj op21c.obj op21d.obj op41a.obj op41b.obj opbdefs.obj
+link
+-z -X -N -dopovr2.sym -mopovr2.map -ptext=4000H/0,data -C0 -oop2.com \
+opov2red.obj op31a.obj op31b.obj op31c.obj op31d.obj opbdefs.obj
+ren optim.ov1=op1.com
+ren optim.ov2=op2.com
