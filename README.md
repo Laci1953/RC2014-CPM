@@ -29,7 +29,7 @@ This is why I tried to customize the BIOS, in order to obtain a "thinner" CP/M.
 Using this "customized" BIOS, it is now possible to benefit from :
 
 - an enhanced HiTech C Compiler, able to compile larger C source files ( see https://github.com/Laci1953/HiTech-C-compiler-enhanced )
-- an enhanced TE text editor, able to edit (in memory) larger text files ( see https://github.com/Laci1953/RC2014-CPM/tree/main/te )
+- an enhanced TE text editor, able to edit (in memory) larger text files ( see https://github.com/Laci1953/RC2014-CPM/tree/main/System/te%20text%20editor )
 
 CP/M and some tools & games for RC2014:
 ---------------------------------------
