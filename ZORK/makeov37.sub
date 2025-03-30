@@ -1,7 +1,0 @@
-c -v -s -o gamevent.c
-zas -j gamevent.as
-era gamevent.as
-c -v -s -o misceven.c
-zas -j misceven.as
-era misceven.as
-c -v -c tables2.c

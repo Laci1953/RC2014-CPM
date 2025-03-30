@@ -1,3 +1,0 @@
-c -v -s -o domitake.c
-zas -j domitake.as
-era domitake.as

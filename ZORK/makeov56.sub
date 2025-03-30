@@ -1,6 +1,0 @@
-c -v -s -o takeallr.c
-zas -j takeallr.as
-era takeallr.as
-c -v -s -o miscallr.c
-zas -j miscallr.as
-era miscallr.as

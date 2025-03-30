@@ -1,4 +1,0 @@
-c -v -c zorkpars.c
-c -v -s -o miscpars.c
-zas -j miscpars.as
-era miscpars.as

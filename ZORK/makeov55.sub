@@ -1,7 +1,0 @@
-c -v -s -o actthrow.c
-zas -j actthrow.as
-era actthrow.as
-c -v -s -o miscactt.c
-zas -j miscactt.as
-era miscactt.as
-

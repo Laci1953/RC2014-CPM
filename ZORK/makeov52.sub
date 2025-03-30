@@ -1,6 +1,0 @@
-c -v -s -o miscdomi.c
-zas -j miscdomi.as
-era miscdomi.as
-c -v -s -o domiscdo.c
-zas -j domiscdo.as
-era domiscdo.as

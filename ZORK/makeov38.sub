@@ -1,3 +1,0 @@
-c -v -s -o ovobdesc.c
-zas -j ovobdesc.as
-era ovobdesc.as

@@ -1,7 +1,0 @@
-c -v -s -o parstake.c
-zas -j parstake.as
-era parstake.as
-c -v -c misctak1.c
-c -v -s -o misctak2.c
-zas -j misctak2.as
-era misctak2.as

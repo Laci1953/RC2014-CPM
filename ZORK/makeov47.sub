@@ -1,4 +1,0 @@
-c -v -c villblow.c
-c -v -s -o villbusy.c
-zas -j villbusy.as
-era villbusy.as

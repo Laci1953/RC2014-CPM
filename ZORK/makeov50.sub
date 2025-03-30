@@ -1,3 +1,0 @@
-c -v -s -o domgithr.c
-zas -j domgithr.as
-era domgithr.as

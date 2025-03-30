@@ -1,7 +1,0 @@
-c -v -s -o zorkbase.c
-zas -j zorkbase.as
-era zorkbase.as
-c -v -s -o loadhex.c
-zas -j loadhex.as
-era loadhex.as
-
