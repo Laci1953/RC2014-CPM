@@ -1,1 +1,0 @@
-c -v -o backgmmn.c gameplan.c rand.as backfile.as tokens.as
