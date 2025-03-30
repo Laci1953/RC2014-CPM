@@ -1,1 +1,0 @@
-c -v -o test128.c dynm128.as
