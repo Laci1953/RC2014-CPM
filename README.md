@@ -6,6 +6,9 @@ You may find here CP/M system-related software (folder System) and some games (f
 SYSTEM
 ------
 
+The folders BDOS_BIOS, BOOT, PutSys - customized CP/M
+-----------------------------------------------------
+
 Why a "customized" CP/M ?
 ---------------------
 
