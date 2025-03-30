@@ -6,7 +6,7 @@ You may find here CP/M system-related software (folder System) and some games (f
 Folder SYSTEM
 -------------
 
-Some CP/M system programs ( copyq, eraq, grep, fasttype, fastdump ) and a customized CP/M ( folders BDOS_BIOS, BOOT, PutSys )
+Some CP/M system programs ( copyq, eraq, grep, fasttype, fastdump, pdir ) and a customized CP/M ( folders BDOS_BIOS, BOOT, PutSys )
 
 Why a "customized" CP/M ?
 ---------------------
