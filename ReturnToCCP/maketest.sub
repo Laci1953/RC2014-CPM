@@ -1,5 +1,0 @@
-xsub
-zas mycrtcpm.as
-c -v -c -o test.c
-link
- -ptext=100h,data,bss -c100h -omytest.com mycrtcpm.obj test.obj libc.lib
