@@ -1,0 +1,6 @@
+xsub
+z80as rand
+c -v -c -o birds.c
+link
+-pboot=0E300H/100H,zero=0/,text/,data/,ram=0D000H/,bss/ -c100h -obirds.com \
+cpmboot.obj birds.obj rand.obj rt.lib libc.lib
