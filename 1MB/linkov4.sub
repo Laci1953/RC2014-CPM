@@ -1,6 +1,0 @@
-xsub
-link
--ptext=4000H/0,data/ -oov4.obj over4.obj basedefs.obj libc.lib
-objtohex ov4.obj ov4.hex
-type ov4.hex
-era ov4.hex

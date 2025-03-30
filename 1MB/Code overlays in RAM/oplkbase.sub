@@ -1,6 +1,0 @@
-xsub
-link
--Z -X -N -Dopbase.sym -Mopbase.map -Ptext=100H,data,bss,top -C100h -Oop512.com \
-opcrtcpm.obj odynm512.obj opover.obj oplibc.obj opbase.obj opdata.obj opbss.obj opctype1.obj optop.obj 
-symtoas opbdefs.as opbase.sym
-z80as opbdefs
