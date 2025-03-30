@@ -1,4 +1,7 @@
 # RC2014-CPM
+------------
+
+You may find here CP/M system-related software (folder System) and some games (folder Games).
 
 Why a "customized" CP/M ?
 ---------------------
