@@ -1,4 +1,4 @@
-# Updated on 5 November 2023
+# Updated on April 2025
 -----------------------------
 
 The text editor TE was written by Miguel Garcia.
@@ -163,36 +163,22 @@ October 2023
 
 The 128KB RAM version is now capable to edit text files with size up to 80KB; also, the initial "read file" step is faster.
 
-November 2023
--------------
+April 2025
+----------
 
-The basic idea of the TE editor is to work directly with text files stored in the RAM memory; the advantage is the high processing speed ( e.g. when using the "next page" command repeatedly ). 
+Besides the "arrow" keys (UP, DOWN, LEFT, RIGHT), in the TE version 1.12, also the following keys can be used to move the cursor:
 
-The problem is the long time taken until the complete loading of the text file from the disk.
+-PgUp (displays the previous page of text), 
+-PgDn (displays the next page of text), 
+-Home (displays the first page of text),
+-End (displays the last page of text)
 
-Until now, the user had to wait until the file was completely loaded from disk to memory, to be able to start navigating through the text and editing the text.
+Also, here are some clarifications related to the "text blocks handling" feature:
 
-So I tried to somehow solve the problem.
+TE is able to select, copy, paste and delete contiguous sets of lines of text (blocks).
 
-Now, in the new version of the TE editor, when opening a file, after reading a number of lines that fit on the screen (usually 24 lines... but depending also on the settings used in the command line), the user is free to start editing the file; during this time, in the "background", reading the file will continue, until the end of the file.
+Use ^KB to mark the starting line of a block and ^KK to mark the ending line of a block.
 
-The user is warned that he can start editing, as the first text screen has been filled with records read from the text file. 
-
-Then, after the last record has been read, the user will be notified again (the notification messages are typed on the last line of the screen, outside the space provided for editing).
-
-Therefore, while the file is being read, the user may browse trough the already loaded part of the file, or even delete/add text.
-
-When the user wants to save the edited file back to the disk, a counter representing the number of lines already written will be displayed on the last line of the screen, while writing continues.
-
-A 60KB text file takes about a minute to load on a system provided with SC108.
-On a system provided with 512KB RAM, it takes less, only about 15 seconds, but still disturbing...
-So this improvement may prove useful for these systems...
-
-On Z80ALL, the same file takes only 5 seconds to load, therefore it does not make sense to implement this improvement also on Z80ALL.
-
-This improvement for the TE text editor is implemented for versions running on systems with 2 x 64 KB RAM or with 512 KB RAM.
-
-
-
-
-
+Then, you may:
+ -type ^O to copy this block to the clipboard (the block will be displayed on video reverse), move the cursor to another place in the file and type ^W to paste the block
+ -or type ^KY to delete the block
