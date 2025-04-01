@@ -163,7 +163,7 @@ October 2023
 
 The 128KB RAM version is now capable to edit text files with size up to 80KB; also, the initial "read file" step is faster.
 
-April 2025
+March 2025
 ----------
 
 Besides the "arrow" keys (UP, DOWN, LEFT, RIGHT), in the TE version 1.12, also the following keys can be used to move the cursor:
@@ -179,6 +179,15 @@ TE is able to select, copy, paste and delete contiguous sets of lines of text (b
 
 Use ^KB to mark the starting line of a block and ^KK to mark the ending line of a block.
 
-Then, you may:
- -type ^O to copy this block to the clipboard (the block will be displayed on video reverse), move the cursor to another place in the file and type ^W to paste the block
- -or type ^KY to delete the block
+Then, you may use block-related operations, e.g.:
+Type ^O to copy this block to the clipboard (the block will be displayed on video reverse), 
+move the cursor to another place in the file and type ^W to paste the block.
+
+April 2025
+----------
+
+The TEWBW.HEX file is built to be used on RC2014 computers running RomWBW (version 3.5.0 or later)
+The size of the files that can be edited depends on the RomWBW configuration (more exactly on the number of RAM banks available for apps).
+For example, if installing RCZ80_std.rom on a RC2014 provided with 512KB ROM + 512KB RAM, we get 3 x 32KB = 96KB available to store the files.
+Files up to 4096 lines are accepted.
+
