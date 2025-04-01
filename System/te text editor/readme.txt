@@ -18,15 +18,13 @@ TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard) (see https://gi
 TES80    - Simple80 (2 x 64KB RAM)
 TEWBW    - RC2014 running RomWBW (v3.5.0 and later)
 
-Use the HiTech tools to compile & link the sources.
-
 Settings:
 
 TE64:  64K RAM systems - up to 2048 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
-TE128: 128K RAM systems - up to 4093 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+TE128: 128K RAM systems - up to 4096 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 TE512: 512K RAM systems - up to 8192 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 TEZ80ALL: Z80ALL standalone retro computer - up to 8192 lines, VGA 48x64, with WordStar style keyboard (accepts also arrow keys)
-TES80: 128K RAM systems - up to 4093 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+TES80: 128K RAM systems - up to 4096 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 TEWBW: up to 4096 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 
 Design details and some constraints:
