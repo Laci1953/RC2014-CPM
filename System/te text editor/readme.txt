@@ -16,6 +16,7 @@ TE128    - Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Ph
 TE512    - Z80 systems provided with the 512KB RAM + 512KB ROM module
 TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard) (see https://github.com/Laci1953/Software-for-Z80ALL-retro-computer/tree/main/TE)
 TES80    - Simple80 (2 x 64KB RAM)
+TEWBW    - RC2014 running RomWBW
 
 Use the HiTech tools to compile & link the sources.
 
@@ -26,6 +27,7 @@ TE128: 128K RAM systems - up to 4093 lines, VT100 compatible, with WordStar styl
 TE512: 512K RAM systems - up to 8192 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 TEZ80ALL: Z80ALL standalone retro computer - up to 8192 lines, VGA 48x64, with WordStar style keyboard (accepts also arrow keys)
 TES80: 128K RAM systems - up to 4093 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
+TEWBW: up to 4096 lines, VT100 compatible, with WordStar style keyboard (accepts also arrow keys)
 
 Design details and some constraints:
 
