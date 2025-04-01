@@ -5,7 +5,7 @@ The text editor TE was written by Miguel Garcia.
 
 It's simple, user friendly, and edits the text in the RAM (it's fast...).
 
-But, because the CP/M's 64KB RAM is limited as capacity (the operating system, the program and the text file must fit inside these 64KB RAM), the original TE allowed only small files to be edited (up to 20K).
+But, because the CP/M's 64KB RAM is limited as capacity (the operating system, the program and the text file must fit inside these 64KB RAM), the original TE allowed only small files to be edited (with size up to 20KB).
 
 I made this adaptation to harness the advantages of being provided with some extra RAM, in certain Z80 hardware platforms.
 
@@ -16,7 +16,7 @@ TE128    - Z80 systems provided with SC108, SC114, SC118, SC150, SC152 or the Ph
 TE512    - Z80 systems provided with the 512KB RAM + 512KB ROM module
 TEZ80ALL - Z80ALL (25MHz Z80, 4 x 32KB RAM, VGA 48x64, keyboard) (see https://github.com/Laci1953/Software-for-Z80ALL-retro-computer/tree/main/TE)
 TES80    - Simple80 (2 x 64KB RAM)
-TEWBW    - RC2014 running RomWBW
+TEWBW    - RC2014 running RomWBW (v3.5.0 and later)
 
 Use the HiTech tools to compile & link the sources.
 
