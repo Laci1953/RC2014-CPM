@@ -1,9 +1,9 @@
 Here are the necessary 3 steps, depending on your specific Z80 computer's hardware:
 
-1. The boot (E)EPROM
-
-This is a mandatory step only for computers provided with the 512KB ROM + 512KB RAM board.
+(For computers provided with the 512KB ROM + 512KB RAM board and running RomWBW, go to step 3).
 (For computers provided with Steve Cousins SCM, e.g. SC108, this step is not mandatory, you can boot CP/M from SCM, so go to step 2)
+
+1. The boot (E)EPROM
 
 For computers provided with 512KB RAM, you need to boot CP/M at power ON, in order to use the TE text editor.
 Why? Running CP/M from ROMWBW will not allow the TE editor to be executed !
@@ -38,6 +38,7 @@ TE128.HEX = for SC108 & compatibles
 TE114.HEX = for SC114, Phillip Stevens Memory Module & compatibles
 TE512.HEX = for 512KB RAM systems
 TEZ80ALL.HEX = for Z80ALL
+TEWBW.HEX = for RomWBW (version 3.5.0 or later)
 
 then:
 
