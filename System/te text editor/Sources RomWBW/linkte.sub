@@ -1,5 +1,5 @@
 xsub
 link
--Ptext=100h,top,data,bss -C100H -Otenew.COM mycrtcpm.obj \
+-Ptext=100h,top,data,bss -C100H -Otewbw.COM mycrtcpm.obj \
 te.obj teconf.obj teedit.obj teerror.obj tefile.obj tekeys.obj telines.obj \
 temisc.obj teui.obj teui1.obj tews100.obj tabs.obj allocwbw.obj LIBC.LIB
