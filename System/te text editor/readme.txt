@@ -191,3 +191,37 @@ The size of the files that can be edited depends on the RomWBW configuration (mo
 For example, if installing RCZ80_std.rom on a RC2014 provided with 512KB ROM + 512KB RAM, we get 3 x 32KB = 96KB available to store the files.
 Files up to 4096 lines are accepted.
 
+I fixed the Delete key issue.
+Therefore, the following keys can be used:
+
+-arrows(up, down, lef, right) moves the cursor accordingly
+-PgUp (displays the previous page of text), 
+-PgDn (displays the next page of text), 
+-Home (displays the first page of text, positions the cursor at the beginning of the file),
+-End (displays the last page of text, positions the cursor at the end of the file)
+-Backspace (erases the character to the left)
+-Delete (erases the character to the right)
+
+Plus, I now load the screen size & tab settings from the file TE.CFG (if present on the same drive as TE). 
+
+Example:
+
+For TE.CFG loaded with the following contents:
+
+T4
+H60
+W120
+
+, when using:
+
+>TE64 test.txt
+
+, the screen will be configured as 60 lines x 120 cols, with TAB positions = multiple of 4.
+
+Of course, specifying an option in the command line has precedence, e.g.:
+
+>TE -w140 -h50 test.txt
+, will open test.txt using an 140 x 55 screen, regardless on TE.CFG is present or not.
+
+
+
