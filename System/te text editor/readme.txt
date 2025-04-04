@@ -186,6 +186,8 @@ move the cursor to another place in the file and type ^W to paste the block.
 April 2025
 ----------
 
+IMPORTANT: TE can now be also used on computers running RomWBW !
+
 The TEWBW.HEX file is built to be used on RC2014 computers running RomWBW (version 3.5.0 or later)
 The size of the files that can be edited depends on the RomWBW configuration (more exactly on the number of RAM banks available for apps).
 For example, if installing RCZ80_std.rom on a RC2014 provided with 512KB ROM + 512KB RAM, we get 3 x 32KB = 96KB available to store the files.
