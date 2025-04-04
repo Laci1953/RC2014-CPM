@@ -17,7 +17,8 @@ Now, at power ON, the CP/M directly boots.
 This step is mandatory only for 128KB RAM computers.
 (For computers provided with 512KB RAM + 512KB ROM boards, you may use the "original" CP/M, go to step 3, but read also the final NOTE)
 
-Why is this needed? The RC2014 "original" CP/M is too "fat", it consumes all the RAM space till 0FFFFH, and because of that, there is no space, at the top of RAM memory, to store the "shadow" routines, needed to move bytes between the two 64KB RAM banks.
+Why is this needed? The RC2014 "original" CP/M is too "fat", it consumes all the RAM space till 0FFFFH, and because of that, 
+there is no space, at the top of RAM memory, to store the "shadow" routines, needed to move bytes between the two 64KB RAM banks.
 
 To change your CP/M with the smaller CP/M, to be able to run the TE editor for 128KB RAM Z80 computers, you need to 
 paste on the terminal the appropriate .hex file, from https://github.com/Laci1953/RC2014-CPM/tree/main/PutSys.
