@@ -22,8 +22,8 @@ I also changed the random number generator (now it is the Xorshift)
 
 Hint: if you get lost, see CaveMap.jpg
 
-To build the executable, use:
+To build-it, use:
 
-c -v -o advent.c database.c english.c itverb.c turn.c verb.c rand.as
+>C -o adv.c xrnd.as
 
-But, you MUST use my enhanced HiTech C compiler (https://github.com/Laci1953/HiTech-C-compiler-enhanced) & Z80AS (https://github.com/Laci1953/Z80AS), otherwise the original HiTech C compiler fails to compile/assemble the source files...
+The advent1.txt ... advent4.txt must be present on the disk when playing the game.
