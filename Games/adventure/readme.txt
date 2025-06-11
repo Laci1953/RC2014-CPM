@@ -26,4 +26,6 @@ To build-it, use:
 
 >C -o adv.c xrnd.as
 
+To compile-it, you must use https://github.com/Laci1953/HiTech-C-compiler-enhanced
+
 The advent1.txt ... advent4.txt must be present on the disk when playing the game.
