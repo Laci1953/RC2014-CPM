@@ -1,0 +1,715 @@
+ #
+ #  Binary Editor -- a small binary editor for programmers
+ #
+ #  Copyright (C) 2017-2022 Lars Lindehaven
+ #  All rights reserved.
+ #
+ #  Redistribution and use in source and binary forms, with or without
+ #  modification, are permitted provided that the following conditions are
+ #  met:
+ #
+ #    * Redistributions of source code must retain the above copyright
+ #      notice, this list of conditions and the following disclaimer.
+ #
+ #    * Redistributions in binary form must reproduce the above copyright
+ #      notice, this list of conditions and the following disclaimer in the
+ #      documentation and/or other materials provided with the distribution.
+ #
+ #  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ #  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ #  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ #  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ #  HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ #  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ #  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ #  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ #  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ #  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ #  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #
+ #
+
+##########################################################################
+# 
+# Small change to allow-it to be run on CP/M 2.2 (instead of CP/M 3)
+# 
+# Adapted it to the Cowgol language
+#
+# Changed to process binary files with size up to B000H (instead of 8000H)
+#
+#             Szilagyi Ladislau, 2025
+#
+##########################################################################
+
+
+include "misc.coh";
+include "string.coh";
+include "seqfile.coh";
+
+const WORDBITS  :=  16;                              # nr of bits in a word
+const MAX_WHERE :=  2816;                            # Max change info size 
+const MAX_BYTES :=  (MAX_WHERE * WORDBITS);          # Max byte buffer size 
+
+const ED_ROWS   :=  18;                              # # of rows          
+const ED_COLS   :=  16;                              # # of columns       
+const ED_PAGE   :=  (ED_ROWS * ED_COLS);             # Page size          
+
+const ED_TITLE  :=  1;                               # Title row          
+const ED_INFO   :=  (ED_TITLE + 1);                  # Information row    
+const ED_MSG    :=  (ED_INFO + 1);                   # Message row        
+const ED_HEAD   :=  (ED_MSG + 2);                    # Heading row        
+const ED_ROWT   :=  (ED_HEAD + 1);                   # Top of page        
+const ED_ROWB   :=  (ED_ROWT + ED_ROWS - 1);         # Bottom of page     
+const ED_TAIL   :=  (ED_ROWB + 1);                   # Trailing row       
+
+const ED_CLM    :=  2;                               # Column Left Margin 
+const ED_CHW    :=  3;                               # Column Hex Width   
+const ED_CHL    :=  (ED_CLM + 8);                    # Column Hex Left    
+const ED_CHR    :=  (ED_CHL + ED_COLS * ED_CHW);     # Column Hex Right   
+const ED_CAW    :=  1;                               # Column ASCII Width 
+const ED_CAL    :=  (ED_CHR + 4);                    # Column ASCII Left  
+const ED_CAR    :=  (ED_CAL + ED_COLS * ED_CAW);     # Column ASCII Right 
+
+const ESC	:= 0x1B;
+const CTRL_A	:= 1;
+const CTRL_C	:= 3;
+const CTRL_H	:= 8;
+const CTRL_S	:= 13;
+const K_UP	:= 128;
+const K_DOWN	:= 129;
+const K_LEFT	:= 130;
+const K_RIGHT	:= 131;
+const K_PGUP	:= 132;
+const K_PGDN	:= 133;
+const K_HOME	:= 134;
+const K_END	:= 135;
+
+const TERM_ROWS  := 25;    # nr of rows on terminal screen.              
+const TERM_COLS  := 80;    # nr of columns on terminal screen.           
+
+var fname: [uint8];        	     # Filename                          
+var eatop: uint16 := 0;              # Address on top row in editor      
+var aoffs: uint16 := 0x0100;         # Offset when displaying address    
+var erow: uint16 := 0;               # Row in editor                     
+var ecol: uint16 := 0;               # Column in editor                  
+var eascii: uint8 := 0;              # Edit mode: 0 (HEX) or 1 (ASCII)   
+var bcurr: uint16 := 0;              # Current position in byte buffer   
+var bsize: uint16 := 0;              # Size of byte buffer               
+var bchanges: uint16 := 0;           # nr of changes made in byte buffer  
+var bwhere: uint16[MAX_WHERE];       # Where changes have been made      
+var bbuff: uint8[MAX_BYTES];         # Byte buffer 
+
+# ------------------- BIOS ------------------
+
+sub BiosSetup() is
+@asm "ld hl,(1)";
+@asm "inc hl";
+@asm "inc hl";
+@asm "inc hl";
+@asm "ld de,BiosConst";
+@asm "ld bc,9";
+@asm "ldir";
+@asm "ret";
+@asm "BiosConst:jp 0";
+@asm "BiosConin:jp 0";
+@asm "BiosConout:jp 0";
+end sub;
+
+sub ConIn(): (ret: uint8) is
+@asm "call BiosConin";
+@asm "ld (", ret, "),a";
+end sub;
+
+# --------------- VT100 -----------------------
+
+var scrShowCursor: [uint8] := "_[?25h";
+var scrHideCursor: [uint8] := "_[?25l";
+var scrNorVideo: [uint8] := "_[27m";
+var scrInvVideo: [uint8] := "_[7m";
+var scrClrEol: [uint8] := "_[K";
+var scrClr: [uint8] := "_[2J_[H";
+
+[scrShowCursor] := ESC;
+[scrHideCursor] := ESC;
+[scrNorVideo] := ESC;
+[scrInvVideo] := ESC;
+[scrClrEol] := ESC;
+
+scrClr := scrClr + 4;
+[scrClr] := ESC;
+scrClr := scrClr - 4;
+[scrClr] := ESC;
+
+sub scrPosCur(row: uint16, col: uint16) is
+	print_char(ESC);
+	print_char('[');
+	print_i16(row as int16 + 1);
+	print_char(';');
+	print_i16(col as int16 + 1);
+	print_char('H');
+end sub;
+
+sub scrClrRow(row: uint16) is
+	scrPosCur(row, 0);
+	print(scrClrEol);
+end sub;
+
+# --------------- Info -----------------------
+
+# Print message on system line
+sub sysMsg(s: [uint8]) is
+	scrClrRow(ED_MSG);
+	scrPosCur(ED_MSG, ED_CLM);
+	print(s);
+end sub;
+
+# Print message on system line and wait for a key press
+sub sysMsgKey(s: [uint8]): (ret: uint8) is
+	print(scrInvVideo);
+	sysMsg(s);
+	ret := get_char();
+	print(scrNorVideo);
+	scrClrRow(ED_MSG);
+end sub;
+
+# Print header on system line
+sub sysHead() is
+	var i: uint8;
+
+	scrPosCur(ED_HEAD, 0);
+
+	i := 0;
+	while i < TERM_COLS loop
+		print_char('=');
+		i := i + 1;
+	end loop;
+
+	scrPosCur(ED_HEAD, ED_CLM-1);
+	print(" ADDR ");
+	scrPosCur(ED_HEAD, ED_CHL-1);
+    	print(" HEX ");
+	scrPosCur(ED_HEAD, ED_CAL-1);
+	print(" ASCII ");
+	scrPosCur(ED_TAIL, 0);
+
+	i := 0;
+	while i < TERM_COLS loop
+		print_char('=');
+		i := i + 1;
+	end loop;
+end sub;
+
+# Display the file information
+sub sysInfo() is
+	scrPosCur(ED_INFO, ED_CLM);
+	print(fname);
+
+	if bchanges != 0 then
+		print(scrInvVideo);
+		print_char('*');
+	else
+		print(scrNorVideo);
+		print_char(' ');
+    	end if;
+
+	print_char(' ');
+	print_i16(bchanges as int16);
+	print("    ");
+	print(scrNorVideo);
+	print_hex_i16(bcurr);
+	print_char('/');
+	print_hex_i16(bsize - 1);
+	print_char(' ');
+
+	if eascii != 0 then
+		print("ASCII");
+	else
+		print("HEX  ");
+	end if;
+end sub;
+
+# Print system title
+sub sysTitle() is
+	scrPosCur(ED_TITLE, 0);
+	print("Cursor:up,down,left,right,pgup,pgdn,home,end; ^H:HEX, ^A:ASCII, ^S:Save, ^C:Quit");
+end sub;
+
+# --------------- Cursor -----------------------
+
+@decl sub edUpdAll();
+@decl sub edPosCur();
+
+# Move cursor one row up 
+sub rowUp() is
+	if bcurr >= ED_COLS then
+		bcurr := bcurr - ED_COLS;
+        	if eatop >= ED_COLS and erow == 0 then
+			eatop := eatop - ED_COLS;
+			edUpdAll();
+		elseif erow > 0 then
+			erow := erow - 1;
+        	end if;
+        	edPosCur();
+	end if;
+end sub;
+
+# Move cursor one row down 
+sub rowDown() is
+	if bcurr < bsize - ED_COLS then
+		bcurr := bcurr + ED_COLS;
+		if eatop <= bsize - ED_COLS and erow == ED_ROWS - 1 then
+			eatop := eatop + ED_COLS;
+			edUpdAll();
+		elseif erow < ED_ROWS - 1 then
+			erow := erow + 1;
+		end if;
+		edPosCur();
+	end if;
+end sub;
+
+# Move cursor one column left 
+sub colLeft() is
+	if bcurr > 0 then
+		bcurr := bcurr - 1;
+		if ecol > 0 then
+			ecol := ecol - 1;
+		else
+            		ecol := ED_COLS - 1;
+			if eatop >= ED_COLS and erow == 0 then
+				eatop := eatop - ED_COLS;
+				edUpdAll();
+			elseif erow > 0 then
+				erow := erow - 1;
+			end if;
+		end if;
+		edPosCur();
+	end if;
+end sub;
+
+# Move cursor one column right 
+sub colRight() is
+	if bcurr < bsize - 1 then
+		bcurr := bcurr + 1;
+		if ecol < ED_COLS - 1 then
+			ecol := ecol + 1;
+		else
+			ecol := 0;
+            		if eatop <= bsize - ED_COLS and erow == ED_ROWS - 1 then
+				eatop := eatop + ED_COLS;
+				edUpdAll();
+			elseif erow < ED_ROWS - 1 then
+				erow := erow + 1;
+			end if;
+		end if;
+		edPosCur();
+	end if;
+end sub;
+
+# Move cursor one page up 
+sub pageUp() is
+	if bcurr >= ED_PAGE then
+		bcurr := bcurr - ED_PAGE;
+		if bcurr < ED_PAGE then
+			bcurr := ecol;
+			eatop := 0;
+			erow := 0;
+		else 
+			eatop := eatop - ED_PAGE;
+		end if;
+		edUpdAll();
+		edPosCur();
+	end if;
+end sub;
+
+# Move cursor one page down 
+sub pageDown() is
+	if bsize > ED_PAGE and bcurr < bsize - ED_PAGE then
+		bcurr := bcurr + ED_PAGE;
+		eatop := eatop + ED_PAGE;
+		edUpdAll();
+		edPosCur();
+	end if;
+end sub;
+
+# Move cursor to beginning of buffer 
+sub buffTop() is
+	if bcurr != 0 then
+		bcurr := 0;
+		eatop := 0;
+		erow := 0;
+		ecol := 0;
+		edUpdAll();
+ 		edPosCur();
+	end if;
+end sub;
+
+# Move cursor to end of buffer 
+sub buffBottom() is
+	if bcurr != bsize - 1 then
+		bcurr := bsize - 1;
+		eatop := bsize - ED_COLS;
+		erow := 0;
+		ecol := bcurr % ED_COLS;
+		edUpdAll();
+		edPosCur();
+	end if;
+end sub;
+
+# --------------- Edit -----------------------
+
+# Check if byte is changed 
+sub edIsChanged(bindex: uint16): (ret: uint16) is
+    ret := (bwhere[bindex / WORDBITS] >> ((bindex % WORDBITS) as uint8)) & 1;
+end sub;
+
+# Store number of changes and where they have been made  
+sub edSetChange(bindex: uint16) is
+	if edIsChanged(bindex) == 0 then
+		var tmp1:uint16 := bindex / WORDBITS;
+		var one:uint16 := 1;
+		var tmp2:uint16 := one << ((bindex % WORDBITS) as uint8);
+		bwhere[tmp1] := bwhere[tmp1] | tmp2;
+		bchanges := bchanges + 1;
+	end if;
+end sub;
+
+# Reset number of changes and where they have been made  
+sub edResetChanges() is
+	var i: uint16;
+
+	i := 0;
+	while i < MAX_WHERE loop
+		bwhere[i] := 0;
+		i := i + 1;
+	end loop;
+
+	bchanges := 0;
+end sub;
+
+# Position cursor depending on edit mode (HEX or ASCII) 
+@impl sub edPosCur is
+	if eascii != 0 then
+        	scrPosCur(ED_ROWT + erow, ED_CAL + ED_CAW * ecol);
+	else
+		scrPosCur(ED_ROWT + erow, ED_CHL + ED_CHW * ecol);
+	end if;
+end sub;
+
+# Convert hexadecimal to nibble (0-15) 
+sub edHex2Nibble(ch: uint8): (ret: int8) is
+	if ch >= '0' and ch <= '9' then
+		ret := ch as int8 - '0';
+	elseif ch >= 'A' and ch <= 'F' then
+		ret := ch as int8 - 'A' + 10;
+	elseif ch >= 'a' and ch <= 'f' then
+		ret := ch as int8 - 'a' + 10;
+	else
+		ret := -1;
+	end if;
+end sub;
+
+# Update all columns on row(s) on editor screen 
+sub edUpd(fromrow:uint16, nrows:uint16) is
+	var r: uint16;
+	var c: uint16;
+	var i: uint16;
+
+	r := fromrow;
+
+	while r < fromrow + nrows and r < ED_ROWS loop
+		scrClrRow(ED_ROWT + r);
+		scrPosCur(ED_ROWT + r, ED_CLM);
+		print_hex_i16(aoffs + eatop + r * ED_COLS);
+
+		c := 0;
+ 		while c < ED_COLS loop
+			i := eatop + r * ED_COLS + c;
+			scrPosCur(ED_ROWT + r, ED_CHL + ED_CHW * c);
+
+            		if edIsChanged(i) != 0 then
+				print(scrInvVideo);
+			end if;
+
+			print_hex_i8(bbuff[i]);
+			scrPosCur(ED_ROWT + r, ED_CAL + ED_CAW * c);
+
+			if bbuff[i] > 0x1f and bbuff[i] < 0x7f then
+				print_char(bbuff[i]);
+			else
+				print_char('.');
+			end if;
+
+            		if edIsChanged(i) != 0 then
+				print(scrNorVideo);
+			end if;
+
+			c := c + 1;
+		end loop;
+
+		r := r + 1;
+	end loop;
+end sub;
+
+# Update editor screen from first row to last row 
+@impl sub edUpdAll is
+	print(scrHideCursor);
+	edUpd(0, ED_ROWS);
+	print(scrShowCursor);
+end sub;
+
+# Edit current line 
+sub edInput(ch: uint8) is
+	var hi: int8;
+	var lo: int8;
+	var new: uint8;
+
+	if eascii != 0 then
+		if ch != bbuff[bcurr] and ch > 0x1f and ch < 0x7f then
+			bbuff[bcurr] := ch;
+			edSetChange(bcurr);
+			edUpd(erow, 1);
+			colRight();
+		end if;
+	else
+		hi := edHex2Nibble(ch);
+		if hi > -1 then
+            		print_char(tolower(ch as uint8));
+			ch := get_char();
+			lo := edHex2Nibble(ch);
+			if lo > -1 then
+				print_char(tolower(ch as uint8));
+                		new := (16 * hi + lo) as uint8;
+				if new != bbuff[bcurr] then
+					bbuff[bcurr] := new;
+					edSetChange(bcurr);
+                		end if;
+			end if;
+			edUpd(erow, 1);
+			colRight();
+		end if;
+	end if;
+end sub;
+
+@decl sub fileWrite();
+
+# Let user choose to save or disregard any changes made 
+sub fileQuit() is
+	var ch: uint8;
+
+	if bchanges != 0 then
+		ch := sysMsgKey("There are unsaved changes. S(ave) or Q(uit)? ");
+		if ch == 'S' or ch == 's' then
+			fileWrite();
+		end if;
+	end if;
+end sub;
+
+var ESCSeq: uint8 := 0;
+
+# Get key (including arrow keys, ...)
+sub getKey(): (ret: uint8) is
+@asm "back:";
+	ret := ConIn();
+
+	if ret == ESC then
+		ESCSeq := 1;
+		ret := ConIn();
+@asm "try2:";
+		if ret == '[' then
+			ret := ConIn();
+@asm "try:";
+			if ret == 'A' then 
+				ESCSeq := 0; ret := K_UP; return;
+			elseif ret == 'B' then 
+				ESCSeq := 0; ret := K_DOWN; return;
+			elseif ret == 'C' then 
+				ESCSeq := 0; ret := K_RIGHT; return;
+			elseif ret == 'D' then 
+				ESCSeq := 0; ret := K_LEFT; return;
+			elseif ret == '5' then
+				ret := ConIn();
+				if ret == '~' then
+					ESCSeq := 0; ret := K_PGUP; return;
+				else 
+					@asm "jp back";
+				end if;
+			elseif ret == '6' then
+				ret := ConIn();
+				if ret == '~' then
+					ESCSeq := 0; ret := K_PGDN; return;
+				else 
+					@asm "jp back";
+				end if;
+			elseif ret == '1' then
+				ret := ConIn();
+				if ret == '~' then
+					ESCSeq := 0; ret := K_HOME; return;
+				else 
+					@asm "jp back";
+				end if;
+			elseif ret == '4' then
+				ret := ConIn();
+				if ret == '~' then
+					ESCSeq := 0; ret := K_END; return;
+				else 
+					@asm "jp back";
+				end if;
+			else  
+				ESCSeq := 0; 
+				@asm "jp back";
+			end if;
+		else
+			@asm "jp try";
+		end if;
+	elseif ESCSeq == 1 then
+		@asm "jp try2";
+	end if;
+end sub;
+
+# Main editor loop 
+sub edLoop() is
+	var ch: uint8;
+
+	sysTitle();
+	sysHead();
+	edResetChanges();
+	edUpdAll();
+
+	loop
+		sysInfo();
+		edPosCur();
+
+		ch := getKey();
+
+		if ch == K_UP then
+			rowUp();
+		elseif ch == K_DOWN then
+			rowDown();
+		elseif ch == K_LEFT then
+			colLeft();
+		elseif ch == K_RIGHT then
+			colRight();
+		elseif ch == K_PGUP then
+			pageUp();
+		elseif ch == K_PGDN then
+			pageDown();
+		elseif ch == K_HOME then
+			buffTop();
+		elseif ch == K_END then
+			buffBottom();
+		elseif ch == CTRL_H then
+			eascii := 0;
+		elseif ch == CTRL_A then
+			eascii := 1;
+		elseif ch == CTRL_S then
+			fileWrite();
+		elseif ch == CTRL_C then
+			fileQuit();
+			break;
+		else
+			edInput(ch);
+		end if;
+	end loop;
+end sub;
+
+# --------------- File I/O -----------------------
+
+# Read file to byte buffer 
+sub fileRead(): (ret: int8) is
+	var file: FCB;
+	var i: uint16;
+	var err: uint8;
+	var byte: uint8;
+
+	var dummy := memset(&bbuff[0], 0, MAX_BYTES);
+
+	err := FCBOpenIn(&file, fname, IO_BIN);
+
+	if err != 0 then
+		print("Cannot open ");
+		print(fname);
+		ret := -1;
+		return;
+	end if;
+
+	i := 0;
+	while i < MAX_BYTES loop
+		(byte, err) := FCBGetChar(&file);
+
+		if err != 0 then
+			break;
+		end if;
+
+		bbuff[i] := byte;
+		i := i + 1;
+	end loop;
+
+	err := FCBClose(&file);
+
+	if i >= MAX_BYTES then
+		print("Not enough memory to read ");
+		print(fname);
+		ret := -1;
+		return;
+	end if;
+
+	bsize := i;
+	ret := 0;
+end sub;
+
+# Write byte buffer to file 
+@impl sub fileWrite is
+	var file: FCB;
+	var i: uint16;
+	var err: uint8;
+	var byte: uint8;
+	var dummy: uint8;
+
+	err := FCBOpenOut(&file, fname, IO_BIN);
+
+	if err != 0 then
+		dummy := sysMsgKey("Cannot open file for writing! Press any key: ");
+		return;
+	end if;
+
+	i := 0;
+	while i < bsize loop
+		err := FCBPutChar(&file, bbuff[i]);
+		if err != 0 then
+			dummy := sysMsgKey("Could not write to file! Press any key: ");
+			return;
+		end if;
+		i := i + 1;
+	end loop;
+
+	err := FCBClose(&file);
+
+	if err != 0 then
+		dummy := sysMsgKey("Could not close file after writing! Press any key: ");
+		return;
+	end if;
+
+	edResetChanges();
+	edUpdAll();
+end sub;
+
+# ---------------------- main --------------
+
+	BiosSetup();
+
+	ArgvInit();
+
+	fname := ArgvNext();
+
+	if [fname] != 0 then
+		if fileRead() < 0 then exit(); end if;
+		print(scrClr);
+		edLoop();
+    		print(scrClr);
+	else
+		print("Usage: >BE filename\n");
+		print(" maximum file size = ");
+		print_hex_i16(MAX_BYTES);
+		print("H bytes\n");
+	end if;
+
