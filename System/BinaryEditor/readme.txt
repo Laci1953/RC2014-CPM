@@ -1,4 +1,4 @@
-Binary editor, written in Cowgol
+Binary editor, written in Cowgol, for VT100 compatible terminals
 
 Can edit binery files with size up to 44KB.
 
