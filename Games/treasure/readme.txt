@@ -1,3 +1,5 @@
+For TV100 terminals
+
 The TREASURE game
 
 You ('*') are in a mine full of very deep pits ('O').
