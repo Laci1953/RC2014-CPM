@@ -1,3 +1,5 @@
+For VT100 terminals
+
 Welcome to the archery competition!
 You have to hit an apple sitting on a table...
 , but it's not that simple, because the table is hidden behind a bushy tree.
