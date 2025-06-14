@@ -1,3 +1,5 @@
+For VT100 terminals
+
 You have to cross a maze with a '*' ball,
  in order to reach the '+' target
 Once started, the ball will move,
