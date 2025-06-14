@@ -1,3 +1,5 @@
+For TV100 terminals
+
 (updated on August 5)
 
 The Startrek game
