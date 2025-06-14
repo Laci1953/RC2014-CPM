@@ -1,3 +1,5 @@
+For VT100 terminals
+
 The game consists of 8 sessions in which, alternatively, you and the computer
  try to push as many stones as possible into the house.
 Stones touching the edges will be disqualified.
