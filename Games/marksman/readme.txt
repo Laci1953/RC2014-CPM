@@ -1,3 +1,5 @@
+For VT100 terminals
+
 The 'marksman' game
 
 On a pool table (without pockets), a lot of obstacles
