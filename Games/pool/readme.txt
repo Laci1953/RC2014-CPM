@@ -1,3 +1,5 @@
+For VT100 terminals
+
 The little game of pool
 
 Your job is to aim (using '+') and hit the four black (*) balls
