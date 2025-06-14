@@ -1,4 +1,4 @@
-How to use the run-time routines to allocate memory in the Upper 64 KB RAM bank
+How to allocate memory in the Upper 64 KB RAM bank, for hardware configurations provided with 128KB RAM.
 
 In order to use these routines, the host RC2014 hardware system must fulfill some mandatory conditions.
 
